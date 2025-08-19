@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { X, Search, Filter, Flame, Clock, Users, Plus } from 'lucide-react';
+import { X, Search, Filter, Flame, Clock, Users, Plus, Heart } from 'lucide-react';
 import AddDishForm from './AddDishForm';
+import { useAuth } from '../contexts/AuthContext';
 
 const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDish }) => {
+  const { user, toggleFavorite } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCuisine, setSelectedCuisine] = useState('all');
   const [showAddDishForm, setShowAddDishForm] = useState(false);
+  const [dishFavorites, setDishFavorites] = useState({});
 
   const getMealTypeIcon = (mealType) => {
     const icons = {
@@ -53,6 +56,26 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
       console.error('Error adding dish:', error);
       throw error; // Re-throw to let AddDishForm handle the error display
     }
+  };
+
+  const handleToggleFavorite = async (e, dishId) => {
+    e.stopPropagation();
+    if (!user) return;
+
+    const result = await toggleFavorite(dishId);
+    if (result.success) {
+      setDishFavorites(prev => ({
+        ...prev,
+        [dishId]: result.isFavorite
+      }));
+    }
+  };
+
+  const isDishFavorite = (dish) => {
+    if (dishFavorites[dish.id] !== undefined) {
+      return dishFavorites[dish.id];
+    }
+    return dish.isFavorite || false;
   };
 
   const filteredDishes = dishes.filter(dish => {
@@ -186,6 +209,18 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
                           {dish.type}
                         </span>
                       </div>
+                      {user && (
+                        <button
+                          onClick={(e) => handleToggleFavorite(e, dish.id)}
+                          className={`absolute -top-2 -left-2 p-1.5 bg-white rounded-full shadow-md transition-colors ${
+                            isDishFavorite(dish)
+                              ? 'text-red-500 hover:text-red-600'
+                              : 'text-gray-400 hover:text-red-500'
+                          }`}
+                        >
+                          <Heart className={`h-4 w-4 ${isDishFavorite(dish) ? 'fill-current' : ''}`} />
+                        </button>
+                      )}
                     </div>
 
                     <div className="flex-1 min-w-0">
