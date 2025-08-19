@@ -1,0 +1,8009 @@
+[
+  {
+    "name": "Butter Chicken",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Tomatoes",
+      "Cream",
+      "Butter",
+      "Garam Masala",
+      "Ginger",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 633
+  },
+  {
+    "name": "Chicken Biryani",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Basmati Rice",
+      "Chicken",
+      "Saffron",
+      "Yogurt",
+      "Onions",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 759
+  },
+  {
+    "name": "Mutton Biryani",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Basmati Rice",
+      "Mutton",
+      "Saffron",
+      "Yogurt",
+      "Onions",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 156
+  },
+  {
+    "name": "Paneer Makhani",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Tomatoes",
+      "Cream",
+      "Cashews",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 557
+  },
+  {
+    "name": "Dal Tadka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Yellow Lentils",
+      "Onions",
+      "Tomatoes",
+      "Cumin",
+      "Turmeric",
+      "Cilantro"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 524
+  },
+  {
+    "name": "Dal Makhani",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Black Lentils",
+      "Cream",
+      "Butter",
+      "Tomatoes",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 427
+  },
+  {
+    "name": "Rogan Josh",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Yogurt",
+      "Fennel",
+      "Ginger",
+      "Garlic",
+      "Red Chili"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 472
+  },
+  {
+    "name": "Chole Bhature",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpeas",
+      "Flour",
+      "Yogurt",
+      "Spices",
+      "Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 707
+  },
+  {
+    "name": "Rajma",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Kidney Beans",
+      "Tomatoes",
+      "Onions",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 503
+  },
+  {
+    "name": "Palak Paneer",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Spinach",
+      "Paneer",
+      "Onions",
+      "Tomatoes",
+      "Cream",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 346
+  },
+  {
+    "name": "Aloo Gobi",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Potatoes",
+      "Cauliflower",
+      "Turmeric",
+      "Cumin",
+      "Coriander"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 256
+  },
+  {
+    "name": "Bhindi Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Okra",
+      "Onions",
+      "Tomatoes",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 171
+  },
+  {
+    "name": "Kadai Chicken",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Bell Peppers",
+      "Onions",
+      "Tomatoes",
+      "Kadai Masala"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 241
+  },
+  {
+    "name": "Tandoori Chicken",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Yogurt",
+      "Tandoori Masala",
+      "Ginger",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 290
+  },
+  {
+    "name": "Chicken Tikka Masala",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken Tikka",
+      "Tomatoes",
+      "Cream",
+      "Onions",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 735
+  },
+  {
+    "name": "Naan",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Flour",
+      "Yogurt",
+      "Yeast",
+      "Salt",
+      "Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 275
+  },
+  {
+    "name": "Garlic Naan",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Flour",
+      "Yogurt",
+      "Yeast",
+      "Garlic",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 515
+  },
+  {
+    "name": "Amritsari Kulcha",
+    "type": "Veg",
+    "cuisine": "Punjabi",
+    "ingredients": [
+      "Flour",
+      "Potatoes",
+      "Onions",
+      "Spices",
+      "Yogurt"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 656
+  },
+  {
+    "name": "Sarson Ka Saag",
+    "type": "Veg",
+    "cuisine": "Punjabi",
+    "ingredients": [
+      "Mustard Greens",
+      "Spinach",
+      "Cornmeal",
+      "Ginger",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 581
+  },
+  {
+    "name": "Makki Ki Roti",
+    "type": "Veg",
+    "cuisine": "Punjabi",
+    "ingredients": [
+      "Corn Flour",
+      "Water",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 219
+  },
+  {
+    "name": "Masala Dosa",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Urad Dal",
+      "Potatoes",
+      "Mustard Seeds",
+      "Curry Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 415
+  },
+  {
+    "name": "Plain Dosa",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Urad Dal",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 421
+  },
+  {
+    "name": "Rava Dosa",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Semolina",
+      "Rice Flour",
+      "Cumin",
+      "Ginger",
+      "Curry Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 326
+  },
+  {
+    "name": "Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Toor Dal",
+      "Tamarind",
+      "Vegetables",
+      "Sambar Powder",
+      "Curry Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 174
+  },
+  {
+    "name": "Idli",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Urad Dal",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 514
+  },
+  {
+    "name": "Vada",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Urad Dal",
+      "Green Chili",
+      "Ginger",
+      "Curry Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 619
+  },
+  {
+    "name": "Rasam",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tomatoes",
+      "Tamarind",
+      "Toor Dal",
+      "Black Pepper",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 526
+  },
+  {
+    "name": "Uttapam",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Urad Dal",
+      "Vegetables",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 326
+  },
+  {
+    "name": "Fish Curry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Coconut",
+      "Tamarind",
+      "Curry Leaves",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 312
+  },
+  {
+    "name": "Upma",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Semolina",
+      "Vegetables",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 622
+  },
+  {
+    "name": "Pongal",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Moong Dal",
+      "Black Pepper",
+      "Cumin",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 676
+  },
+  {
+    "name": "Appam",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Coconut",
+      "Yeast",
+      "Sugar"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 721
+  },
+  {
+    "name": "Puttu",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice Flour",
+      "Coconut",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 499
+  },
+  {
+    "name": "Payasam",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Milk",
+      "Sugar",
+      "Cardamom",
+      "Nuts"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 765
+  },
+  {
+    "name": "Curd Rice",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Rice",
+      "Yogurt",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 165
+  },
+  {
+    "name": "Vada Pav",
+    "type": "Veg",
+    "cuisine": "Maharashtrian",
+    "ingredients": [
+      "Potatoes",
+      "Bread",
+      "Gram Flour",
+      "Green Chili",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 496
+  },
+  {
+    "name": "Poha",
+    "type": "Veg",
+    "cuisine": "Maharashtrian",
+    "ingredients": [
+      "Flattened Rice",
+      "Onions",
+      "Turmeric",
+      "Mustard Seeds",
+      "Curry Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 322
+  },
+  {
+    "name": "Misal Pav",
+    "type": "Veg",
+    "cuisine": "Maharashtrian",
+    "ingredients": [
+      "Mixed Lentils",
+      "Spices",
+      "Bread",
+      "Onions",
+      "Coriander"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 480
+  },
+  {
+    "name": "Pav Bhaji",
+    "type": "Veg",
+    "cuisine": "Maharashtrian",
+    "ingredients": [
+      "Mixed Vegetables",
+      "Bread",
+      "Butter",
+      "Onions",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 318
+  },
+  {
+    "name": "Puran Poli",
+    "type": "Veg",
+    "cuisine": "Maharashtrian",
+    "ingredients": [
+      "Wheat Flour",
+      "Chana Dal",
+      "Jaggery",
+      "Cardamom"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 218
+  },
+  {
+    "name": "Dhokla",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Gram Flour",
+      "Yogurt",
+      "Ginger",
+      "Green Chili",
+      "Mustard Seeds"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 702
+  },
+  {
+    "name": "Thepla",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Wheat Flour",
+      "Fenugreek Leaves",
+      "Spices",
+      "Yogurt"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 774
+  },
+  {
+    "name": "Undhiyu",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Mixed Vegetables",
+      "Green Beans",
+      "Sweet Potato",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 245
+  },
+  {
+    "name": "Khandvi",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Gram Flour",
+      "Yogurt",
+      "Ginger",
+      "Green Chili",
+      "Mustard Seeds"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 753
+  },
+  {
+    "name": "Fafda",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Gram Flour",
+      "Oil",
+      "Turmeric",
+      "Salt",
+      "Baking Soda"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 278
+  },
+  {
+    "name": "Khaman",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Gram Flour",
+      "Ginger",
+      "Green Chili",
+      "Lemon",
+      "Sugar"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 751
+  },
+  {
+    "name": "Gujarati Dal",
+    "type": "Veg",
+    "cuisine": "Gujarati",
+    "ingredients": [
+      "Toor Dal",
+      "Jaggery",
+      "Tamarind",
+      "Turmeric",
+      "Mustard Seeds"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 381
+  },
+  {
+    "name": "Litti Chokha",
+    "type": "Veg",
+    "cuisine": "Bihari",
+    "ingredients": [
+      "Wheat Flour",
+      "Roasted Gram",
+      "Eggplant",
+      "Tomatoes",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 275
+  },
+  {
+    "name": "Machher Jhol",
+    "type": "Non-Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Fish",
+      "Potatoes",
+      "Tomatoes",
+      "Ginger",
+      "Turmeric",
+      "Mustard Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 562
+  },
+  {
+    "name": "Mishti Doi",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Milk",
+      "Sugar",
+      "Yogurt Culture"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 281
+  },
+  {
+    "name": "Rasgulla",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Cottage Cheese",
+      "Sugar",
+      "Cardamom"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 247
+  },
+  {
+    "name": "Sandesh",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Cottage Cheese",
+      "Sugar",
+      "Cardamom"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 728
+  },
+  {
+    "name": "Aloo Posto",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Potatoes",
+      "Poppy Seeds",
+      "Green Chili",
+      "Mustard Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 434
+  },
+  {
+    "name": "Kosha Mangsho",
+    "type": "Non-Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Mutton",
+      "Onions",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 544
+  },
+  {
+    "name": "Shorshe Ilish",
+    "type": "Non-Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Hilsa Fish",
+      "Mustard Seeds",
+      "Green Chili",
+      "Turmeric"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 582
+  },
+  {
+    "name": "Chingri Malai Curry",
+    "type": "Non-Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Prawns",
+      "Coconut Milk",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 710
+  },
+  {
+    "name": "Beguni",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Eggplant",
+      "Gram Flour",
+      "Turmeric",
+      "Salt",
+      "Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 510
+  },
+  {
+    "name": "Puchka",
+    "type": "Veg",
+    "cuisine": "Bengali",
+    "ingredients": [
+      "Semolina",
+      "Potatoes",
+      "Tamarind Water",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 587
+  },
+  {
+    "name": "Sweet and Sour Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Bell Peppers",
+      "Pineapple",
+      "Vinegar",
+      "Sugar",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 734
+  },
+  {
+    "name": "Kung Pao Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Peanuts",
+      "Dried Chilies",
+      "Soy Sauce",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 795
+  },
+  {
+    "name": "Vegetable Fried Rice",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Rice",
+      "Vegetables",
+      "Soy Sauce",
+      "Garlic",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 747
+  },
+  {
+    "name": "Chicken Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Rice",
+      "Chicken",
+      "Vegetables",
+      "Soy Sauce",
+      "Eggs"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 236
+  },
+  {
+    "name": "Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Rice",
+      "Shrimp",
+      "Vegetables",
+      "Soy Sauce",
+      "Eggs"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 313
+  },
+  {
+    "name": "Beef Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Rice",
+      "Beef",
+      "Vegetables",
+      "Soy Sauce",
+      "Oyster Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 206
+  },
+  {
+    "name": "Vegetable Chow Mein",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Noodles",
+      "Vegetables",
+      "Soy Sauce",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 640
+  },
+  {
+    "name": "Chicken Chow Mein",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Noodles",
+      "Chicken",
+      "Vegetables",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 634
+  },
+  {
+    "name": "Hot and Sour Soup",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Mushrooms",
+      "Tofu",
+      "Vinegar",
+      "White Pepper",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 731
+  },
+  {
+    "name": "Wonton Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Wontons",
+      "Chicken Broth",
+      "Green Onions",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 451
+  },
+  {
+    "name": "Peking Duck",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Duck",
+      "Hoisin Sauce",
+      "Cucumber",
+      "Spring Onions",
+      "Pancakes"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 318
+  },
+  {
+    "name": "Mapo Tofu",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Doubanjiang",
+      "Sichuan Peppercorns",
+      "Ground Pork"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 530
+  },
+  {
+    "name": "Dim Sum",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Flour",
+      "Shrimp",
+      "Pork",
+      "Soy Sauce",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 664
+  },
+  {
+    "name": "General Tso Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Sugar",
+      "Vinegar",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 549
+  },
+  {
+    "name": "Ma Po Eggplant",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Doubanjiang",
+      "Garlic",
+      "Ginger",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 647
+  },
+  {
+    "name": "Orange Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Orange Juice",
+      "Soy Sauce",
+      "Sugar",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 639
+  },
+  {
+    "name": "Beef and Broccoli",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Broccoli",
+      "Soy Sauce",
+      "Oyster Sauce",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 285
+  },
+  {
+    "name": "Spring Rolls",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Spring Roll Wrappers",
+      "Cabbage",
+      "Carrots",
+      "Bean Sprouts"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 281
+  },
+  {
+    "name": "Szechuan Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Szechuan Peppercorns",
+      "Dried Chilies",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 454
+  },
+  {
+    "name": "Black Bean Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Black Bean Sauce",
+      "Bell Peppers",
+      "Onions"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 238
+  },
+  {
+    "name": "Cashew Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Cashews",
+      "Soy Sauce",
+      "Hoisin Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 724
+  },
+  {
+    "name": "Salt and Pepper Shrimp",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Salt",
+      "White Pepper",
+      "Jalapeños"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 159
+  },
+  {
+    "name": "Dan Dan Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Noodles",
+      "Ground Pork",
+      "Sesame Paste",
+      "Chili Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 719
+  },
+  {
+    "name": "Tea Smoked Duck",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Duck",
+      "Tea Leaves",
+      "Sugar",
+      "Rice",
+      "Spices"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 319
+  },
+  {
+    "name": "Mongolian Beef",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Scallions",
+      "Ginger",
+      "Soy Sauce",
+      "Hoisin Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 672
+  },
+  {
+    "name": "Honey Garlic Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Honey",
+      "Garlic",
+      "Soy Sauce",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 163
+  },
+  {
+    "name": "Sesame Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Sesame Seeds",
+      "Soy Sauce",
+      "Sugar",
+      "Vinegar"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 792
+  },
+  {
+    "name": "Chinese Broccoli with Oyster Sauce",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chinese Broccoli",
+      "Oyster Sauce",
+      "Garlic",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 171
+  },
+  {
+    "name": "Fish with Black Bean Sauce",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Fish",
+      "Black Bean Sauce",
+      "Bell Peppers",
+      "Onions"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 158
+  },
+  {
+    "name": "Pork with Sweet and Sour Sauce",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Pineapple",
+      "Bell Peppers",
+      "Sweet and Sour Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 516
+  },
+  {
+    "name": "Spaghetti Carbonara",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Spaghetti",
+      "Eggs",
+      "Pancetta",
+      "Parmesan",
+      "Black Pepper"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 316
+  },
+  {
+    "name": "Margherita Pizza",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pizza Dough",
+      "Tomato Sauce",
+      "Mozzarella",
+      "Basil",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 754
+  },
+  {
+    "name": "Pepperoni Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pizza Dough",
+      "Tomato Sauce",
+      "Mozzarella",
+      "Pepperoni"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 684
+  },
+  {
+    "name": "Meat Lovers Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pizza Dough",
+      "Tomato Sauce",
+      "Mozzarella",
+      "Pepperoni",
+      "Sausage",
+      "Ham"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 284
+  },
+  {
+    "name": "Veggie Pizza",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pizza Dough",
+      "Tomato Sauce",
+      "Mozzarella",
+      "Bell Peppers",
+      "Mushrooms",
+      "Olives"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 217
+  },
+  {
+    "name": "Lasagna",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pasta Sheets",
+      "Ground Beef",
+      "Tomato Sauce",
+      "Bechamel",
+      "Cheese"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 379
+  },
+  {
+    "name": "Vegetable Lasagna",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pasta Sheets",
+      "Mixed Vegetables",
+      "Tomato Sauce",
+      "Bechamel",
+      "Cheese"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 797
+  },
+  {
+    "name": "Mushroom Risotto",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Arborio Rice",
+      "Mushrooms",
+      "Vegetable Stock",
+      "White Wine",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 699
+  },
+  {
+    "name": "Seafood Risotto",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Arborio Rice",
+      "Mixed Seafood",
+      "Fish Stock",
+      "White Wine",
+      "Saffron"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 189
+  },
+  {
+    "name": "Fettuccine Alfredo",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Fettuccine",
+      "Butter",
+      "Heavy Cream",
+      "Parmesan",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 253
+  },
+  {
+    "name": "Chicken Parmigiana",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken Breast",
+      "Breadcrumbs",
+      "Marinara Sauce",
+      "Mozzarella"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 182
+  },
+  {
+    "name": "Eggplant Parmigiana",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Eggplant",
+      "Breadcrumbs",
+      "Marinara Sauce",
+      "Mozzarella"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 762
+  },
+  {
+    "name": "Osso Buco",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Veal Shanks",
+      "Tomatoes",
+      "White Wine",
+      "Carrots",
+      "Celery"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 200
+  },
+  {
+    "name": "Tiramisu",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Ladyfingers",
+      "Coffee",
+      "Mascarpone",
+      "Eggs",
+      "Cocoa Powder"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 267
+  },
+  {
+    "name": "Gelato",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Milk",
+      "Sugar",
+      "Eggs",
+      "Vanilla",
+      "Various Flavors"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 458
+  },
+  {
+    "name": "Panna Cotta",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Heavy Cream",
+      "Sugar",
+      "Gelatin",
+      "Vanilla"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 672
+  },
+  {
+    "name": "Potato Gnocchi",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Potatoes",
+      "Flour",
+      "Eggs",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 725
+  },
+  {
+    "name": "Ricotta Gnocchi",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Ricotta",
+      "Flour",
+      "Eggs",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 191
+  },
+  {
+    "name": "Minestrone Soup",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mixed Vegetables",
+      "Beans",
+      "Tomatoes",
+      "Pasta",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 357
+  },
+  {
+    "name": "Penne Arrabbiata",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Penne Pasta",
+      "Tomatoes",
+      "Red Chilies",
+      "Garlic",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 344
+  },
+  {
+    "name": "Penne alla Vodka",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Penne Pasta",
+      "Vodka",
+      "Tomatoes",
+      "Cream",
+      "Pancetta"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 553
+  },
+  {
+    "name": "Cheese Ravioli",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pasta Dough",
+      "Ricotta",
+      "Parmesan",
+      "Spinach",
+      "Nutmeg"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 518
+  },
+  {
+    "name": "Meat Ravioli",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pasta Dough",
+      "Ground Beef",
+      "Ricotta",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 670
+  },
+  {
+    "name": "Prosciutto Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pizza Dough",
+      "Prosciutto",
+      "Arugula",
+      "Mozzarella",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 428
+  },
+  {
+    "name": "Cannoli",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pastry Shells",
+      "Ricotta",
+      "Sugar",
+      "Vanilla",
+      "Chocolate Chips"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 773
+  },
+  {
+    "name": "Bruschetta",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Bread",
+      "Tomatoes",
+      "Basil",
+      "Garlic",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 420
+  },
+  {
+    "name": "Caprese Salad",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mozzarella",
+      "Tomatoes",
+      "Basil",
+      "Olive Oil",
+      "Balsamic"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 389
+  },
+  {
+    "name": "Antipasto Platter",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Cured Meats",
+      "Cheese",
+      "Olives",
+      "Vegetables"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 612
+  },
+  {
+    "name": "Tortellini in Brodo",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Tortellini",
+      "Chicken Broth",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 285
+  },
+  {
+    "name": "Pesto Pasta",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pasta",
+      "Basil",
+      "Pine Nuts",
+      "Parmesan",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 765
+  },
+  {
+    "name": "Pad Thai",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Rice Noodles",
+      "Shrimp",
+      "Bean Sprouts",
+      "Tamarind",
+      "Fish Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 384
+  },
+  {
+    "name": "Vegetable Pad Thai",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Rice Noodles",
+      "Tofu",
+      "Bean Sprouts",
+      "Tamarind",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 631
+  },
+  {
+    "name": "Green Curry Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Green Curry Paste",
+      "Coconut Milk",
+      "Chicken",
+      "Thai Basil",
+      "Eggplant"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 187
+  },
+  {
+    "name": "Green Curry Vegetables",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Green Curry Paste",
+      "Coconut Milk",
+      "Mixed Vegetables",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 474
+  },
+  {
+    "name": "Red Curry Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Red Curry Paste",
+      "Coconut Milk",
+      "Chicken",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 706
+  },
+  {
+    "name": "Red Curry Beef",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Red Curry Paste",
+      "Coconut Milk",
+      "Beef",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 721
+  },
+  {
+    "name": "Tom Yum Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Lemongrass",
+      "Lime Leaves",
+      "Galangal",
+      "Chili"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 311
+  },
+  {
+    "name": "Tom Kha Gai",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Coconut Milk",
+      "Galangal",
+      "Lime Leaves",
+      "Mushrooms"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 740
+  },
+  {
+    "name": "Massaman Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Massaman Paste",
+      "Beef",
+      "Potatoes",
+      "Coconut Milk",
+      "Peanuts"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 376
+  },
+  {
+    "name": "Som Tam",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Green Papaya",
+      "Tomatoes",
+      "Green Beans",
+      "Lime",
+      "Fish Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 768
+  },
+  {
+    "name": "Mango Sticky Rice",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Sticky Rice",
+      "Mango",
+      "Coconut Milk",
+      "Sugar"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 754
+  },
+  {
+    "name": "Thai Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Rice",
+      "Chicken",
+      "Pineapple",
+      "Cashews",
+      "Raisins"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 598
+  },
+  {
+    "name": "Larb",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Ground Pork",
+      "Mint",
+      "Cilantro",
+      "Lime",
+      "Fish Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 640
+  },
+  {
+    "name": "Thai Basil Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Thai Basil",
+      "Chilies",
+      "Garlic",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 315
+  },
+  {
+    "name": "Pad See Ew",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Wide Rice Noodles",
+      "Pork",
+      "Chinese Broccoli",
+      "Dark Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 456
+  },
+  {
+    "name": "Thai Spring Rolls",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Rice Paper",
+      "Vegetables",
+      "Herbs",
+      "Peanut Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 269
+  },
+  {
+    "name": "Thai Satay",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken Skewers",
+      "Turmeric",
+      "Coconut Milk",
+      "Peanut Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 578
+  },
+  {
+    "name": "Thai Fish Cakes",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Fish Paste",
+      "Red Curry Paste",
+      "Green Beans",
+      "Lime Leaves"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 214
+  },
+  {
+    "name": "Pad Kra Pao",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Ground Pork",
+      "Holy Basil",
+      "Chilies",
+      "Fish Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 541
+  },
+  {
+    "name": "Thai Coconut Soup",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Coconut Milk",
+      "Vegetables",
+      "Lemongrass",
+      "Galangal"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 618
+  },
+  {
+    "name": "Kimchi",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Napa Cabbage",
+      "Korean Chili Flakes",
+      "Garlic",
+      "Ginger",
+      "Fish Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 583
+  },
+  {
+    "name": "Bulgogi",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Sugar",
+      "Sesame Oil",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 648
+  },
+  {
+    "name": "Bibimbap",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Rice",
+      "Mixed Vegetables",
+      "Beef",
+      "Egg",
+      "Gochujang"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 456
+  },
+  {
+    "name": "Vegetable Bibimbap",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Rice",
+      "Mixed Vegetables",
+      "Egg",
+      "Gochujang"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 399
+  },
+  {
+    "name": "Korean Fried Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Korean Chili Sauce",
+      "Garlic",
+      "Ginger"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 579
+  },
+  {
+    "name": "Japchae",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Sweet Potato Noodles",
+      "Vegetables",
+      "Sesame Oil",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 687
+  },
+  {
+    "name": "Korean BBQ Pork",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Pork Belly",
+      "Gochujang",
+      "Garlic",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 749
+  },
+  {
+    "name": "Korean BBQ Beef",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef Short Ribs",
+      "Soy Sauce",
+      "Pear",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 558
+  },
+  {
+    "name": "Kimchi Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Rice",
+      "Kimchi",
+      "Pork",
+      "Egg",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 246
+  },
+  {
+    "name": "Korean Corn Dogs",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Hot Dogs",
+      "Mozzarella",
+      "Potato Cubes",
+      "Batter"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 394
+  },
+  {
+    "name": "Sundubu Jjigae",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Soft Tofu",
+      "Kimchi",
+      "Pork",
+      "Gochugaru",
+      "Scallions"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 281
+  },
+  {
+    "name": "Korean Pancakes",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Flour",
+      "Scallions",
+      "Kimchi",
+      "Vegetables"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 566
+  },
+  {
+    "name": "Tteokbokki",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Rice Cakes",
+      "Gochujang",
+      "Fish Cake",
+      "Scallions"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 636
+  },
+  {
+    "name": "Korean Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Radish",
+      "Scallions",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 576
+  },
+  {
+    "name": "Galbi",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef Short Ribs",
+      "Soy Sauce",
+      "Pear",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 538
+  },
+  {
+    "name": "Korean Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Ginseng",
+      "Rice",
+      "Garlic"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 636
+  },
+  {
+    "name": "Korean Tofu Soup",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Vegetables",
+      "Soy Sauce",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 382
+  },
+  {
+    "name": "Korean Fish Stew",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Fish",
+      "Vegetables",
+      "Gochujang",
+      "Tofu"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 414
+  },
+  {
+    "name": "Korean Spinach Salad",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Spinach",
+      "Sesame Oil",
+      "Garlic",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 276
+  },
+  {
+    "name": "Korean Bean Sprout Soup",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Bean Sprouts",
+      "Scallions",
+      "Garlic",
+      "Soy Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 589
+  },
+  {
+    "name": "Coq au Vin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Chicken",
+      "Red Wine",
+      "Mushrooms",
+      "Bacon",
+      "Pearl Onions"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 279
+  },
+  {
+    "name": "Bouillabaisse",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mixed Fish",
+      "Tomatoes",
+      "Saffron",
+      "Fennel",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 318
+  },
+  {
+    "name": "Ratatouille",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Eggplant",
+      "Zucchini",
+      "Tomatoes",
+      "Bell Peppers",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 584
+  },
+  {
+    "name": "French Onion Soup",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Onions",
+      "Beef Broth",
+      "Gruyere Cheese",
+      "Bread",
+      "Thyme"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 486
+  },
+  {
+    "name": "Beef Bourguignon",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Red Wine",
+      "Mushrooms",
+      "Carrots",
+      "Bacon"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 220
+  },
+  {
+    "name": "Croque Monsieur",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Ham",
+      "Gruyere Cheese",
+      "Bread",
+      "Bechamel Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 475
+  },
+  {
+    "name": "Croque Madame",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Ham",
+      "Gruyere Cheese",
+      "Bread",
+      "Bechamel Sauce",
+      "Fried Egg"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 250
+  },
+  {
+    "name": "Escargot",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Snails",
+      "Garlic",
+      "Parsley",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 510
+  },
+  {
+    "name": "Duck Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck Legs",
+      "Duck Fat",
+      "Garlic",
+      "Thyme"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 490
+  },
+  {
+    "name": "Quiche Lorraine",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Pastry",
+      "Bacon",
+      "Eggs",
+      "Cream",
+      "Gruyere"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 606
+  },
+  {
+    "name": "Vegetable Quiche",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Pastry",
+      "Mixed Vegetables",
+      "Eggs",
+      "Cream",
+      "Cheese"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 435
+  },
+  {
+    "name": "Cassoulet",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "White Beans",
+      "Duck",
+      "Sausage",
+      "Tomatoes"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 204
+  },
+  {
+    "name": "Crepes",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Butter",
+      "Sugar"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 503
+  },
+  {
+    "name": "Savory Crepes",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Ham",
+      "Cheese"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 455
+  },
+  {
+    "name": "Macarons",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Almond Flour",
+      "Egg Whites",
+      "Sugar",
+      "Food Coloring"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 283
+  },
+  {
+    "name": "Croissant",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Flour",
+      "Butter",
+      "Yeast",
+      "Sugar",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 286
+  },
+  {
+    "name": "Pain au Chocolat",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Pastry",
+      "Dark Chocolate",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 380
+  },
+  {
+    "name": "Nicoise Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Tuna",
+      "Olives",
+      "Tomatoes",
+      "Eggs",
+      "Anchovies"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 256
+  },
+  {
+    "name": "French Toast",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Bread",
+      "Eggs",
+      "Milk",
+      "Vanilla",
+      "Cinnamon"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 554
+  },
+  {
+    "name": "Tarte Tatin",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Apples",
+      "Pastry",
+      "Butter",
+      "Sugar"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 430
+  },
+  {
+    "name": "Caesar Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Romaine Lettuce",
+      "Parmesan",
+      "Croutons",
+      "Anchovies",
+      "Caesar Dressing"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 633
+  },
+  {
+    "name": "Greek Salad",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Tomatoes",
+      "Cucumbers",
+      "Olives",
+      "Feta Cheese",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 612
+  },
+  {
+    "name": "Club Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Bread",
+      "Turkey",
+      "Bacon",
+      "Lettuce",
+      "Tomato",
+      "Mayo"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 349
+  },
+  {
+    "name": "BLT Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Bread",
+      "Bacon",
+      "Lettuce",
+      "Tomato",
+      "Mayo"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 343
+  },
+  {
+    "name": "Grilled Cheese Sandwich",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Bread",
+      "Cheese",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 515
+  },
+  {
+    "name": "Fish and Chips",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Fish Fillet",
+      "Potatoes",
+      "Flour",
+      "Beer Batter"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 504
+  },
+  {
+    "name": "Beef Steak",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef Sirloin",
+      "Salt",
+      "Pepper",
+      "Garlic",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 312
+  },
+  {
+    "name": "Ribeye Steak",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Ribeye Beef",
+      "Salt",
+      "Pepper",
+      "Butter",
+      "Thyme"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 322
+  },
+  {
+    "name": "Grilled Chicken Breast",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken Breast",
+      "Herbs",
+      "Olive Oil",
+      "Lemon"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 391
+  },
+  {
+    "name": "Roasted Chicken",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Whole Chicken",
+      "Herbs",
+      "Vegetables",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 498
+  },
+  {
+    "name": "Shepherd's Pie",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Ground Lamb",
+      "Potatoes",
+      "Vegetables",
+      "Gravy"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 440
+  },
+  {
+    "name": "Cottage Pie",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Ground Beef",
+      "Potatoes",
+      "Vegetables",
+      "Gravy"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 152
+  },
+  {
+    "name": "Beef Wellington",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef Tenderloin",
+      "Puff Pastry",
+      "Mushroom Duxelles",
+      "Prosciutto"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 175
+  },
+  {
+    "name": "Chicken Cordon Bleu",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken Breast",
+      "Ham",
+      "Swiss Cheese",
+      "Breadcrumbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 404
+  },
+  {
+    "name": "Lamb Chops",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Lamb Rack",
+      "Herbs",
+      "Garlic",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 288
+  },
+  {
+    "name": "Stuffed Bell Peppers",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Bell Peppers",
+      "Ground Beef",
+      "Rice",
+      "Tomatoes"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 524
+  },
+  {
+    "name": "Chicken Kiev",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken Breast",
+      "Garlic Butter",
+      "Breadcrumbs",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 578
+  },
+  {
+    "name": "Beef Stroganoff",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef Strips",
+      "Mushrooms",
+      "Sour Cream",
+      "Onions"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 289
+  },
+  {
+    "name": "Pork Tenderloin",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork Tenderloin",
+      "Herbs",
+      "Garlic",
+      "Apple Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 654
+  },
+  {
+    "name": "Grilled Salmon",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon Fillet",
+      "Lemon",
+      "Dill",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 474
+  },
+  {
+    "name": "Baked Cod",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Cod Fillet",
+      "Breadcrumbs",
+      "Lemon",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 257
+  },
+  {
+    "name": "Chicken Wings",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken Wings",
+      "Buffalo Sauce",
+      "Celery",
+      "Blue Cheese"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 458
+  },
+  {
+    "name": "Meatloaf",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Ground Beef",
+      "Breadcrumbs",
+      "Eggs",
+      "Onions",
+      "Ketchup"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 243
+  },
+  {
+    "name": "Pot Roast",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef Chuck",
+      "Vegetables",
+      "Beef Broth",
+      "Herbs"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 296
+  },
+  {
+    "name": "Bangers and Mash",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Sausages",
+      "Mashed Potatoes",
+      "Onion Gravy"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 231
+  },
+  {
+    "name": "Full English Breakfast",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Eggs",
+      "Bacon",
+      "Sausages",
+      "Baked Beans",
+      "Toast"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 386
+  },
+  {
+    "name": "Eggs Benedict",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "English Muffins",
+      "Poached Eggs",
+      "Ham",
+      "Hollandaise Sauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 175
+  },
+  {
+    "name": "Pancakes",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Sugar",
+      "Baking Powder"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 307
+  },
+  {
+    "name": "Waffles",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Flour",
+      "Eggs",
+      "Milk",
+      "Sugar",
+      "Butter"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 501
+  },
+  {
+    "name": "French Fries",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Potatoes",
+      "Oil",
+      "Salt"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 547
+  },
+  {
+    "name": "Kimchi Vegetable Soup",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 352
+  },
+  {
+    "name": "Garlic Chicken Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 183
+  },
+  {
+    "name": "Spicy Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 631
+  },
+  {
+    "name": "Herbed Beef Roast",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 260
+  },
+  {
+    "name": "Country-Style Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 646
+  },
+  {
+    "name": "Herbes de Provence Vegetable Quiche",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 731
+  },
+  {
+    "name": "Cantonese Beef Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 226
+  },
+  {
+    "name": "Hunan Eggplant Noodles",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 307
+  },
+  {
+    "name": "Gochujang Tofu Rice Bowl",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 558
+  },
+  {
+    "name": "Kimchi Seafood Pancake",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 629
+  },
+  {
+    "name": "Creamy Chickpea Do Pyaza",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 386
+  },
+  {
+    "name": "Dijon Beef Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 752
+  },
+  {
+    "name": "Truffle Pancetta Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 653
+  },
+  {
+    "name": "Rustic Vegetable Panini",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Vegetable",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 496
+  },
+  {
+    "name": "Gochujang Seafood Rice Bowl",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 254
+  },
+  {
+    "name": "Spicy Vegetable Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 201
+  },
+  {
+    "name": "Rustic Chicken Gnocchi",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 347
+  },
+  {
+    "name": "Spicy Shrimp Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 196
+  },
+  {
+    "name": "Spicy Vegetable Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 551
+  },
+  {
+    "name": "Dhaba-Style Eggplant Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 290
+  },
+  {
+    "name": "Tomato-Basil Seafood Panini",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Seafood",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 348
+  },
+  {
+    "name": "Dhaba-Style Fish Biryani",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 376
+  },
+  {
+    "name": "Garlic Chicken Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 581
+  },
+  {
+    "name": "Green Pork Salad",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 563
+  },
+  {
+    "name": "Herbes de Provence Vegetable Gratin",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 629
+  },
+  {
+    "name": "Hunan Pork Dumplings",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 173
+  },
+  {
+    "name": "Kimchi Chicken Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 176
+  },
+  {
+    "name": "Home-Style Chickpea Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 693
+  },
+  {
+    "name": "Herbed Pork Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 721
+  },
+  {
+    "name": "Creamy Paneer Korma",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 627
+  },
+  {
+    "name": "Creamy Mushroom Stew",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 254
+  },
+  {
+    "name": "Home-Style Fish Korma",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 721
+  },
+  {
+    "name": "Cantonese Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 543
+  },
+  {
+    "name": "Gochujang Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 221
+  },
+  {
+    "name": "Cantonese Eggplant Hotpot",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 270
+  },
+  {
+    "name": "Dhaba-Style Paneer Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 544
+  },
+  {
+    "name": "Sesame Vegetable Pancake",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 207
+  },
+  {
+    "name": "Spicy Seafood Pancake",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 713
+  },
+  {
+    "name": "Spicy Chickpea Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 772
+  },
+  {
+    "name": "Citrus Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 383
+  },
+  {
+    "name": "Peppercorn Salmon Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 672
+  },
+  {
+    "name": "Home-Style Fish Masala",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 725
+  },
+  {
+    "name": "Herbes de Provence Duck Roast",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 610
+  },
+  {
+    "name": "Country-Style Mushroom Quiche",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 622
+  },
+  {
+    "name": "Four Cheese Mushroom Salad",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mushroom",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 574
+  },
+  {
+    "name": "Home-Style Chicken Bhuna",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 562
+  },
+  {
+    "name": "Green Beef Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 335
+  },
+  {
+    "name": "Herbes de Provence Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 235
+  },
+  {
+    "name": "Ginger Tofu Hotpot",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 695
+  },
+  {
+    "name": "Coconut Chicken Fry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Chicken",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 782
+  },
+  {
+    "name": "Dijon Seafood Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 415
+  },
+  {
+    "name": "Sichuan Tofu Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 532
+  },
+  {
+    "name": "Dhaba-Style Mutton Do Pyaza",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 224
+  },
+  {
+    "name": "Sichuan Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 308
+  },
+  {
+    "name": "Soy-Garlic Tofu Pancake",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 413
+  },
+  {
+    "name": "Green Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 742
+  },
+  {
+    "name": "Smoky Eggplant Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 151
+  },
+  {
+    "name": "Truffle Chicken Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 290
+  },
+  {
+    "name": "Spicy Prawn Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Prawn",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 232
+  },
+  {
+    "name": "Cantonese Shrimp Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 792
+  },
+  {
+    "name": "Spicy Tofu Dumplings",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 564
+  },
+  {
+    "name": "Herbes de Provence Seafood Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 545
+  },
+  {
+    "name": "Home-Style Eggplant Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 537
+  },
+  {
+    "name": "Kerala-Style Prawn Curry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Prawn",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 709
+  },
+  {
+    "name": "Citrus Salmon Stew",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 214
+  },
+  {
+    "name": "Chettinad Egg Kootu",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Egg",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 301
+  },
+  {
+    "name": "Garlic Shrimp Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 425
+  },
+  {
+    "name": "Red Tofu Noodles",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Tofu",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 309
+  },
+  {
+    "name": "Smoky Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 528
+  },
+  {
+    "name": "Tandoori Vegetable Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 409
+  },
+  {
+    "name": "Peppercorn Salmon Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 412
+  },
+  {
+    "name": "Red Beef Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 628
+  },
+  {
+    "name": "Herbed Chicken Roast",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 686
+  },
+  {
+    "name": "Garlic-Butter Mushroom Roast",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 239
+  },
+  {
+    "name": "Herbes de Provence Mushroom Roast",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 347
+  },
+  {
+    "name": "Peppercorn Mushroom Skillet",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 723
+  },
+  {
+    "name": "Herbes de Provence Beef Stew",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 650
+  },
+  {
+    "name": "Kimchi Beef Pancake",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 671
+  },
+  {
+    "name": "Smoky Paneer Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 401
+  },
+  {
+    "name": "Classic Duck Stew",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 572
+  },
+  {
+    "name": "Four Cheese Chicken Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 545
+  },
+  {
+    "name": "Four Cheese Pancetta Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 356
+  },
+  {
+    "name": "Peppercorn Salmon Stew",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 744
+  },
+  {
+    "name": "Creamy Eggplant Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 654
+  },
+  {
+    "name": "Home-Style Paneer Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 798
+  },
+  {
+    "name": "Rustic Seafood Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Seafood",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 332
+  },
+  {
+    "name": "Dhaba-Style Mutton Tikka",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 172
+  },
+  {
+    "name": "Smoky Mutton Do Pyaza",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 666
+  },
+  {
+    "name": "Herbed Beef Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 225
+  },
+  {
+    "name": "Classic Duck Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 551
+  },
+  {
+    "name": "Country-Style Seafood Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 230
+  },
+  {
+    "name": "Dhaba-Style Paneer Curry",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 194
+  },
+  {
+    "name": "Country-Style Beef Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 498
+  },
+  {
+    "name": "Smoky Chicken Do Pyaza",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 314
+  },
+  {
+    "name": "Tandoori Vegetable Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 270
+  },
+  {
+    "name": "Rustic Pancetta Risotto",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 794
+  },
+  {
+    "name": "Smoky Mutton Masala",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 257
+  },
+  {
+    "name": "Peppercorn Beef Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 734
+  },
+  {
+    "name": "Hunan Tofu Fried Rice",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 717
+  },
+  {
+    "name": "Classic Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 466
+  },
+  {
+    "name": "Red Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 667
+  },
+  {
+    "name": "Gochujang Chicken BBQ",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 333
+  },
+  {
+    "name": "Classic Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 279
+  },
+  {
+    "name": "Four Cheese Beef Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 172
+  },
+  {
+    "name": "Kerala-Style Fish Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 201
+  },
+  {
+    "name": "Home-Style Chicken Korma",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 213
+  },
+  {
+    "name": "Garlic-Butter Vegetable Roast",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 558
+  },
+  {
+    "name": "Home-Style Vegetable Biryani",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 419
+  },
+  {
+    "name": "Spicy Tofu Rice Bowl",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 561
+  },
+  {
+    "name": "Andhra-Style Fish Rasam",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 638
+  },
+  {
+    "name": "Tandoori Chickpea Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 334
+  },
+  {
+    "name": "Peppercorn Pork Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 631
+  },
+  {
+    "name": "Sichuan Eggplant Fried Rice",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 165
+  },
+  {
+    "name": "Gochujang Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 656
+  },
+  {
+    "name": "Creamy Mushroom Roast",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 428
+  },
+  {
+    "name": "Andhra-Style Chicken Kootu",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Chicken",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 761
+  },
+  {
+    "name": "Citrus Pork Stew",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 588
+  },
+  {
+    "name": "Spicy Shrimp Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 226
+  },
+  {
+    "name": "Peppercorn Vegetable Grill",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 471
+  },
+  {
+    "name": "Creamy Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 798
+  },
+  {
+    "name": "Dhaba-Style Eggplant Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 556
+  },
+  {
+    "name": "Spicy Chickpea Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 736
+  },
+  {
+    "name": "Ginger Beef Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 407
+  },
+  {
+    "name": "Truffle Mushroom Panini",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mushroom",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 199
+  },
+  {
+    "name": "Ginger Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 215
+  },
+  {
+    "name": "Rustic Beef Panini",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 541
+  },
+  {
+    "name": "Dhaba-Style Paneer Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 614
+  },
+  {
+    "name": "Spicy Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 504
+  },
+  {
+    "name": "Classic Beef Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 690
+  },
+  {
+    "name": "Sichuan Pork Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 203
+  },
+  {
+    "name": "Ginger Pork Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 250
+  },
+  {
+    "name": "Gochujang Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 695
+  },
+  {
+    "name": "Classic Duck Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 672
+  },
+  {
+    "name": "Massaman Pork Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 389
+  },
+  {
+    "name": "Coconut Fish Kootu",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 598
+  },
+  {
+    "name": "Andhra-Style Chicken Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Chicken",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 628
+  },
+  {
+    "name": "Lemongrass Shrimp Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 702
+  },
+  {
+    "name": "Andhra-Style Fish Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 614
+  },
+  {
+    "name": "Soy-Garlic Pork BBQ",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Pork",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 460
+  },
+  {
+    "name": "Garlic Eggplant Fried Rice",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 356
+  },
+  {
+    "name": "Garlic-Butter Pork Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 649
+  },
+  {
+    "name": "Sichuan Chicken Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 572
+  },
+  {
+    "name": "Classic Seafood Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 388
+  },
+  {
+    "name": "Citrus Mushroom Sandwich",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 170
+  },
+  {
+    "name": "Tandoori Eggplant Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 373
+  },
+  {
+    "name": "Massaman Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 797
+  },
+  {
+    "name": "Tandoori Eggplant Curry",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 150
+  },
+  {
+    "name": "Herbed Chicken Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 514
+  },
+  {
+    "name": "Rustic Pancetta Panini",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 439
+  },
+  {
+    "name": "Sesame Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 386
+  },
+  {
+    "name": "Hunan Eggplant Hotpot",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 764
+  },
+  {
+    "name": "Hunan Chicken Dumplings",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 429
+  },
+  {
+    "name": "Coconut Egg Rasam",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Egg",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 331
+  },
+  {
+    "name": "Dijon Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 252
+  },
+  {
+    "name": "Kimchi Tofu Rice Bowl",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 704
+  },
+  {
+    "name": "Creamy Chickpea Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 441
+  },
+  {
+    "name": "Sichuan Chicken Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 368
+  },
+  {
+    "name": "Dijon Seafood Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 759
+  },
+  {
+    "name": "Spicy Eggplant Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 233
+  },
+  {
+    "name": "Dijon Mushroom Gratin",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 751
+  },
+  {
+    "name": "Gochujang Seafood Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 732
+  },
+  {
+    "name": "Massaman Vegetable Curry",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Vegetable",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 533
+  },
+  {
+    "name": "Four Cheese Mushroom Risotto",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mushroom",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 674
+  },
+  {
+    "name": "Garlic Eggplant Hotpot",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 610
+  },
+  {
+    "name": "Kerala-Style Egg Kootu",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Egg",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 555
+  },
+  {
+    "name": "Tomato-Basil Chicken Gnocchi",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 443
+  },
+  {
+    "name": "Creamy Beef Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 302
+  },
+  {
+    "name": "Ginger Tofu Soup",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 332
+  },
+  {
+    "name": "Dhaba-Style Vegetable Curry",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 665
+  },
+  {
+    "name": "Ginger Beef Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 634
+  },
+  {
+    "name": "Kimchi Seafood Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 526
+  },
+  {
+    "name": "Kimchi Beef Stew",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 364
+  },
+  {
+    "name": "Red Shrimp Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 391
+  },
+  {
+    "name": "Garlic Shrimp Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 752
+  },
+  {
+    "name": "Garlic Beef Dumplings",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 607
+  },
+  {
+    "name": "Home-Style Vegetable Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 518
+  },
+  {
+    "name": "Four Cheese Pancetta Salad",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 798
+  },
+  {
+    "name": "Andhra-Style Tofu Biryani",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 558
+  },
+  {
+    "name": "Kerala-Style Fish Poriyal",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 316
+  },
+  {
+    "name": "Dhaba-Style Paneer Korma",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 358
+  },
+  {
+    "name": "Spicy Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Vegetable",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 304
+  },
+  {
+    "name": "Spicy Vegetable Rasam",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 426
+  },
+  {
+    "name": "Spicy Tofu Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Tofu",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 220
+  },
+  {
+    "name": "Massaman Chicken Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 243
+  },
+  {
+    "name": "Herbes de Provence Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 650
+  },
+  {
+    "name": "Country-Style Duck Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 213
+  },
+  {
+    "name": "Hunan Pork Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 650
+  },
+  {
+    "name": "Garlic Pork Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 191
+  },
+  {
+    "name": "Herbed Salmon Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 192
+  },
+  {
+    "name": "Spicy Chicken Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 793
+  },
+  {
+    "name": "Red Chicken Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 359
+  },
+  {
+    "name": "Creamy Mutton Bhuna",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Mutton",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 240
+  },
+  {
+    "name": "Smoky Mushroom Skillet",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 620
+  },
+  {
+    "name": "Sesame Tofu Stew",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 453
+  },
+  {
+    "name": "Citrus Vegetable Grill",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 690
+  },
+  {
+    "name": "Spicy Shrimp Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 456
+  },
+  {
+    "name": "Rustic Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Vegetable",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 459
+  },
+  {
+    "name": "Spicy Eggplant Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 574
+  },
+  {
+    "name": "Country-Style Chicken Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 238
+  },
+  {
+    "name": "Garlic-Butter Pork Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 201
+  },
+  {
+    "name": "Creamy Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 386
+  },
+  {
+    "name": "Spicy Chickpea Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 643
+  },
+  {
+    "name": "Country-Style Mushroom Confit",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 251
+  },
+  {
+    "name": "Creamy Paneer Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 376
+  },
+  {
+    "name": "Dhaba-Style Chicken Kebab",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 452
+  },
+  {
+    "name": "Classic Seafood Salad",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Seafood",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 646
+  },
+  {
+    "name": "Dijon Mushroom Quiche",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 751
+  },
+  {
+    "name": "Garlic-Butter Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 484
+  },
+  {
+    "name": "Kerala-Style Vegetable Curry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 602
+  },
+  {
+    "name": "Classic Seafood Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 158
+  },
+  {
+    "name": "Spicy Pork Salad",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 525
+  },
+  {
+    "name": "Spicy Vegetable Fry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 593
+  },
+  {
+    "name": "Lemongrass Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 360
+  },
+  {
+    "name": "Kerala-Style Chicken Curry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Chicken",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 204
+  },
+  {
+    "name": "Cantonese Pork Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 753
+  },
+  {
+    "name": "Peppercorn Pork Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 736
+  },
+  {
+    "name": "Ginger Tofu Noodles",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 346
+  },
+  {
+    "name": "Herbed Pork Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Pork",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 548
+  },
+  {
+    "name": "Spicy Shrimp Dumplings",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 520
+  },
+  {
+    "name": "Smoky Fish Tikka",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 165
+  },
+  {
+    "name": "Creamy Beef Stew",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 741
+  },
+  {
+    "name": "Kerala-Style Egg Curry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Egg",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 213
+  },
+  {
+    "name": "Garlic-Butter Salmon Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 773
+  },
+  {
+    "name": "Tandoori Chickpea Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chickpea",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 168
+  },
+  {
+    "name": "Soy-Garlic Chicken Stew",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 523
+  },
+  {
+    "name": "Soy-Garlic Vegetable BBQ",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 361
+  },
+  {
+    "name": "Lemongrass Chicken Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Chicken",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 501
+  },
+  {
+    "name": "Spicy Beef Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 237
+  },
+  {
+    "name": "Spicy Paneer Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 483
+  },
+  {
+    "name": "Sichuan Tofu Dumplings",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 682
+  },
+  {
+    "name": "Green Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Vegetable",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 370
+  },
+  {
+    "name": "Tomato-Basil Pancetta Gnocchi",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 703
+  },
+  {
+    "name": "Herbes de Provence Seafood Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 761
+  },
+  {
+    "name": "Gochujang Pork Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Pork",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 235
+  },
+  {
+    "name": "Smoky Salmon Stew",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Salmon",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 609
+  },
+  {
+    "name": "Red Tofu Curry",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Tofu",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 342
+  },
+  {
+    "name": "Gochujang Tofu Soup",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 399
+  },
+  {
+    "name": "Spicy Shrimp Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 156
+  },
+  {
+    "name": "Kerala-Style Prawn Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Prawn",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 469
+  },
+  {
+    "name": "Kerala-Style Tofu Curry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 504
+  },
+  {
+    "name": "Sesame Vegetable Rice Bowl",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 544
+  },
+  {
+    "name": "Massaman Pork Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 219
+  },
+  {
+    "name": "Herbed Chicken Gnocchi",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 545
+  },
+  {
+    "name": "Four Cheese Vegetable Panini",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Vegetable",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 541
+  },
+  {
+    "name": "Spicy Paneer Do Pyaza",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 539
+  },
+  {
+    "name": "Creamy Vegetable Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 195
+  },
+  {
+    "name": "Ginger Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 486
+  },
+  {
+    "name": "Tandoori Paneer Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Paneer",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 499
+  },
+  {
+    "name": "Classic Chicken Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 214
+  },
+  {
+    "name": "Basil Beef Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 605
+  },
+  {
+    "name": "Kimchi Chicken Rice Bowl",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Chicken",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 784
+  },
+  {
+    "name": "Andhra-Style Tofu Fry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 492
+  },
+  {
+    "name": "Garlic-Butter Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 649
+  },
+  {
+    "name": "Green Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 620
+  },
+  {
+    "name": "Country-Style Duck Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 214
+  },
+  {
+    "name": "Country-Style Mushroom Gratin",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 234
+  },
+  {
+    "name": "Massaman Pork Soup",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 554
+  },
+  {
+    "name": "Truffle Chicken Panini",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 695
+  },
+  {
+    "name": "Coconut Vegetable Biryani",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 319
+  },
+  {
+    "name": "Smoky Beef Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 731
+  },
+  {
+    "name": "Citrus Chicken Grill",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 530
+  },
+  {
+    "name": "Hunan Eggplant Fried Rice",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Eggplant",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 548
+  },
+  {
+    "name": "Herbed Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 207
+  },
+  {
+    "name": "Chettinad Tofu Curry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 659
+  },
+  {
+    "name": "Spicy Tofu Poriyal",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 462
+  },
+  {
+    "name": "Spicy Chicken Masala",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Chicken",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 370
+  },
+  {
+    "name": "Creamy Duck Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 329
+  },
+  {
+    "name": "Lemongrass Vegetable Noodles",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Vegetable",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 350
+  },
+  {
+    "name": "Spicy Vegetable Pancake",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 721
+  },
+  {
+    "name": "Spicy Vegetable Fried Rice",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Vegetable",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 646
+  },
+  {
+    "name": "Herbed Seafood Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Seafood",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 740
+  },
+  {
+    "name": "Herbed Chicken Risotto",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 618
+  },
+  {
+    "name": "Truffle Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 579
+  },
+  {
+    "name": "Ginger Chicken Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 634
+  },
+  {
+    "name": "Tomato-Basil Chicken Salad",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 545
+  },
+  {
+    "name": "Andhra-Style Vegetable Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 426
+  },
+  {
+    "name": "Smoky Beef Sandwich",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 327
+  },
+  {
+    "name": "Tandoori Fish Korma",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 352
+  },
+  {
+    "name": "Four Cheese Seafood Panini",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Seafood",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 357
+  },
+  {
+    "name": "Massaman Pork Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Pork",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 628
+  },
+  {
+    "name": "Kerala-Style Chicken Sambar",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Chicken",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 613
+  },
+  {
+    "name": "Creamy Seafood Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 198
+  },
+  {
+    "name": "Spicy Vegetable Kootu",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 624
+  },
+  {
+    "name": "Herbed Mushroom Gnocchi",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Mushroom",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=300&fit=crop",
+    "calories": 487
+  },
+  {
+    "name": "Ginger Chicken Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 609
+  },
+  {
+    "name": "Dhaba-Style Eggplant Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 597
+  },
+  {
+    "name": "Spicy Tofu Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 451
+  },
+  {
+    "name": "Spicy Eggplant Tikka",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 518
+  },
+  {
+    "name": "Garlic-Butter Chicken Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 549
+  },
+  {
+    "name": "Tandoori Vegetable Biryani",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Vegetable",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&h=300&fit=crop",
+    "calories": 583
+  },
+  {
+    "name": "Dijon Seafood Salad",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Seafood",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 425
+  },
+  {
+    "name": "Soy-Garlic Beef Soup",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Beef",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 558
+  },
+  {
+    "name": "Citrus Chicken Salad",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 435
+  },
+  {
+    "name": "Sichuan Beef Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 493
+  },
+  {
+    "name": "Tomato-Basil Pancetta Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 547
+  },
+  {
+    "name": "Rustic Vegetable Risotto",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Vegetable",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 350
+  },
+  {
+    "name": "Sesame Tofu BBQ",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Tofu",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 659
+  },
+  {
+    "name": "Chettinad Fish Rasam",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 783
+  },
+  {
+    "name": "Massaman Beef Noodles",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 446
+  },
+  {
+    "name": "Herbed Vegetable Sandwich",
+    "type": "Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 496
+  },
+  {
+    "name": "Creamy Eggplant Masala",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 404
+  },
+  {
+    "name": "Tomato-Basil Vegetable Salad",
+    "type": "Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Vegetable",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 592
+  },
+  {
+    "name": "Kerala-Style Vegetable Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 740
+  },
+  {
+    "name": "Spicy Egg Curry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Egg",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 643
+  },
+  {
+    "name": "Lemongrass Tofu Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Tofu",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 695
+  },
+  {
+    "name": "Ginger Shrimp Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 234
+  },
+  {
+    "name": "Truffle Beef Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 609
+  },
+  {
+    "name": "Classic Chicken Salad",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&h=300&fit=crop",
+    "calories": 472
+  },
+  {
+    "name": "Creamy Duck Quiche",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Duck",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 604
+  },
+  {
+    "name": "Tomato-Basil Beef Risotto",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Beef",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 685
+  },
+  {
+    "name": "Spicy Shrimp Salad",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Shrimp",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=300&fit=crop",
+    "calories": 417
+  },
+  {
+    "name": "Classic Chicken Confit",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 328
+  },
+  {
+    "name": "Smoky Eggplant Kebab",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 578
+  },
+  {
+    "name": "Garlic-Butter Chicken Stew",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=300&fit=crop",
+    "calories": 584
+  },
+  {
+    "name": "Kimchi Seafood Stew",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 693
+  },
+  {
+    "name": "Dijon Beef Gratin",
+    "type": "Non-Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Beef",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 275
+  },
+  {
+    "name": "Sichuan Pork Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 364
+  },
+  {
+    "name": "Spicy Tofu Noodles",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 297
+  },
+  {
+    "name": "Coconut Tofu Fry",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Tofu",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 618
+  },
+  {
+    "name": "Creamy Vegetable Confit",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&h=300&fit=crop",
+    "calories": 322
+  },
+  {
+    "name": "Classic Pancetta Pizza",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Pancetta",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 600
+  },
+  {
+    "name": "Coconut Vegetable Sambar",
+    "type": "Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Vegetable",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 714
+  },
+  {
+    "name": "Red Beef Salad",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 407
+  },
+  {
+    "name": "Lemongrass Beef Curry",
+    "type": "Non-Veg",
+    "cuisine": "Thai",
+    "ingredients": [
+      "Beef",
+      "Fish Sauce",
+      "Lime",
+      "Lemongrass",
+      "Chili",
+      "Thai Basil"
+    ],
+    "image": "https://images.unsplash.com/photo-1573821663912-6df460f9c684?w=500&h=300&fit=crop",
+    "calories": 265
+  },
+  {
+    "name": "Smoky Eggplant Bhuna",
+    "type": "Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Eggplant",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=300&fit=crop",
+    "calories": 313
+  },
+  {
+    "name": "Dijon Mushroom Stew",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Mushroom",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 344
+  },
+  {
+    "name": "Garlic Chicken Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 299
+  },
+  {
+    "name": "Sichuan Shrimp Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 434
+  },
+  {
+    "name": "Smoky Fish Korma",
+    "type": "Non-Veg",
+    "cuisine": "North Indian",
+    "ingredients": [
+      "Fish",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Garam Masala",
+      "Cumin"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 283
+  },
+  {
+    "name": "Spicy Shrimp Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Shrimp",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 475
+  },
+  {
+    "name": "Spicy Prawn Fry",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Prawn",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=300&fit=crop",
+    "calories": 195
+  },
+  {
+    "name": "Cantonese Tofu Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Tofu",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 293
+  },
+  {
+    "name": "Chettinad Fish Biryani",
+    "type": "Non-Veg",
+    "cuisine": "South Indian",
+    "ingredients": [
+      "Fish",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Coconut",
+      "Chili",
+      "Tamarind"
+    ],
+    "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&h=300&fit=crop",
+    "calories": 627
+  },
+  {
+    "name": "Country-Style Vegetable Stew",
+    "type": "Veg",
+    "cuisine": "French",
+    "ingredients": [
+      "Vegetable",
+      "Butter",
+      "Garlic",
+      "Thyme",
+      "White Wine",
+      "Cream"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=300&fit=crop",
+    "calories": 588
+  },
+  {
+    "name": "Kimchi Vegetable Stir-Fry",
+    "type": "Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Vegetable",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&h=300&fit=crop",
+    "calories": 455
+  },
+  {
+    "name": "Herbed Chicken Pasta",
+    "type": "Non-Veg",
+    "cuisine": "Italian",
+    "ingredients": [
+      "Chicken",
+      "Olive Oil",
+      "Garlic",
+      "Tomato",
+      "Basil",
+      "Parmesan"
+    ],
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
+    "calories": 372
+  },
+  {
+    "name": "Cantonese Chicken Hotpot",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 679
+  },
+  {
+    "name": "Ginger Beef Stir-Fry",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=300&fit=crop",
+    "calories": 214
+  },
+  {
+    "name": "Soy-Garlic Seafood Stew",
+    "type": "Non-Veg",
+    "cuisine": "Korean",
+    "ingredients": [
+      "Seafood",
+      "Gochujang",
+      "Soy Sauce",
+      "Garlic",
+      "Sesame Oil",
+      "Scallion"
+    ],
+    "image": "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba1?w=500&h=300&fit=crop",
+    "calories": 473
+  },
+  {
+    "name": "Smoky Chicken Skillet",
+    "type": "Non-Veg",
+    "cuisine": "Continental",
+    "ingredients": [
+      "Chicken",
+      "Butter",
+      "Garlic",
+      "Herbs",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop",
+    "calories": 554
+  },
+  {
+    "name": "Sichuan Pork Soup",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Pork",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1568096889942-6eedde686635?w=500&h=300&fit=crop",
+    "calories": 597
+  },
+  {
+    "name": "Hunan Beef Fried Rice",
+    "type": "Non-Veg",
+    "cuisine": "Chinese",
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Ginger",
+      "Garlic",
+      "Scallion",
+      "Sesame Oil"
+    ],
+    "image": "https://images.unsplash.com/photo-1563379091339-03246963d96a?w=500&h=300&fit=crop",
+    "calories": 299
+  }
+]

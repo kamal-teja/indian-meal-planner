@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "seed": "node scripts/seedDishes.js"
+    "seed": "node scripts/seedDishes.js",
+    "seed-many": "node scripts/seedManyDishes.js",
+    "gen-dishes-json": "node scripts/generateDishesJSON.js",
+    "import-dishes-json": "node scripts/importDishesFromJSON.js"
   },
   "engines": {
     "node": ">=16.0.0"
