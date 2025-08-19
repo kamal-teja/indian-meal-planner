@@ -1,0 +1,33 @@
+services:
+  # Backend API Service
+  - type: web
+    name: meal-planner-api
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: meal-planner-api
+          property: port
+      - key: MONGODB_URI
+        sync: false  # Set this manually in Render dashboard
+    
+  # Frontend Static Site Service  
+  - type: static
+    name: meal-planner-frontend
+    env: static
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: meal-planner-api
+          property: host
+        value: https://meal-planner-api.onrender.com/api
