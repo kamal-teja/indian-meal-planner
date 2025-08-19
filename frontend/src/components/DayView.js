@@ -53,6 +53,15 @@ const DayView = ({ dishes, onAddDish }) => {
     setShowDishSelector(true);
   };
 
+  const addMeal = async (mealData) => {
+    try {
+      await mealPlannerAPI.addMeal(mealData);
+      loadMealsForDate(); // Refresh meals after adding
+    } catch (error) {
+      console.error('Error adding meal:', error);
+    }
+  };
+
   const handleDishSelect = async (dish) => {
     try {
       const dateStr = format(selectedDate, 'yyyy-MM-dd');
