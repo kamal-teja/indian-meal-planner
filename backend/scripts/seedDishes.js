@@ -79,24 +79,33 @@ const defaultDishes = [
 
 const seedDishes = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/meal-planner');
-    console.log('Connected to MongoDB');
+    // Don't connect here if already connected (when called from server)
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/meal-planner');
+      console.log('🔌 Connected to MongoDB for seeding');
+    }
 
     // Check if dishes already exist
     const existingDishes = await Dish.countDocuments({ isDefault: true });
     
     if (existingDishes === 0) {
       await Dish.insertMany(defaultDishes);
-      console.log('Default dishes seeded successfully');
+      console.log('🌱 Default dishes seeded successfully');
     } else {
-      console.log('Default dishes already exist, skipping seed');
+      console.log('✅ Default dishes already exist, skipping seed');
     }
 
-    await mongoose.connection.close();
-    console.log('Database connection closed');
+    // Only close connection if we opened it (when running directly)
+    if (require.main === module) {
+      await mongoose.connection.close();
+      console.log('🔒 Database connection closed');
+    }
   } catch (error) {
-    console.error('Error seeding dishes:', error);
-    process.exit(1);
+    console.error('❌ Error seeding dishes:', error);
+    if (require.main === module) {
+      process.exit(1);
+    }
+    throw error; // Re-throw when called from server
   }
 };
 

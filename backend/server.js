@@ -10,11 +10,28 @@ const seedDishes = require('./scripts/seedDishes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-connectDB().then(() => {
-  // Seed default dishes if database is empty
-  seedDishes();
-});
+// Connect to MongoDB and start server only after successful connection
+const startServer = async () => {
+  try {
+    // Connect to database first
+    await connectDB();
+    console.log('✅ Database connected successfully');
+    
+    // Seed default dishes if database is empty
+    await seedDishes();
+    console.log('✅ Database seeded with default dishes');
+    
+    // Start the server only after database is ready
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`🌐 API Health Check: http://localhost:${PORT}/api/health`);
+    });
+    
+  } catch (error) {
+    console.error('❌ Failed to start server:', error.message);
+    process.exit(1);
+  }
+};
 
 // CORS configuration for production
 const corsOptions = {
@@ -198,9 +215,13 @@ app.delete('/api/meals/:id', async (req, res) => {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Meal Planner API is running' });
+  res.json({ 
+    status: 'OK', 
+    message: 'Meal Planner API is running',
+    database: 'Connected',
+    timestamp: new Date().toISOString()
+  });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Start the server
+startServer();
