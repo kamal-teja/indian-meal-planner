@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Calendar, CalendarDays, Utensils, User, LogOut, ChevronDown, Settings, Heart, BarChart3, ShoppingCart } from 'lucide-react';
+import { Calendar, CalendarDays, Utensils, User, LogOut, ChevronDown, Settings, Heart, BarChart3, ShoppingCart, Activity } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Header = ({ currentView, onViewChange }) => {
@@ -112,6 +112,13 @@ const Header = ({ currentView, onViewChange }) => {
                     >
                       <BarChart3 className="h-4 w-4" />
                       <span>Analytics</span>
+                    </button>
+                    <button
+                      onClick={() => handleNavigation('/nutrition')}
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      <Activity className="h-4 w-4" />
+                      <span>Nutrition</span>
                     </button>
                     <button
                       onClick={() => handleNavigation('/shopping-list')}

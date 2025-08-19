@@ -6,6 +6,7 @@ const connectDB = require('./config/database');
 const Dish = require('./models/Dish');
 const Meal = require('./models/Meal');
 const User = require('./models/User');
+const MealPlan = require('./models/MealPlan');
 const seedDishes = require('./scripts/seedDishes');
 const authRoutes = require('./routes/auth');
 const { auth, optionalAuth } = require('./middleware/auth');
@@ -241,10 +242,10 @@ app.delete('/api/meals/:id', auth, async (req, res) => {
   }
 });
 
-// Search dishes
+// Search dishes with advanced filters
 app.get('/api/dishes/search', optionalAuth, async (req, res) => {
   try {
-    const { q, cuisine, type, maxCalories } = req.query;
+    const { q, cuisine, type, maxCalories, dietaryTags, spiceLevel, maxPrepTime, difficulty } = req.query;
     let query = {};
 
     if (q) {
@@ -257,6 +258,15 @@ app.get('/api/dishes/search', optionalAuth, async (req, res) => {
     if (cuisine) query.cuisine = cuisine;
     if (type) query.type = type;
     if (maxCalories) query.calories = { $lte: parseInt(maxCalories) };
+
+    if (dietaryTags) {
+      const tags = Array.isArray(dietaryTags) ? dietaryTags : [dietaryTags];
+      query.dietaryTags = { $in: tags };
+    }
+
+    if (spiceLevel) query.spiceLevel = spiceLevel;
+    if (maxPrepTime) query.prepTime = { $lte: parseInt(maxPrepTime) };
+    if (difficulty) query.difficulty = difficulty;
 
     const dishes = await Dish.find(query).sort({ createdAt: -1 });
     const transformedDishes = dishes.map(dish => {
@@ -388,6 +398,195 @@ app.get('/api/shopping-list', auth, async (req, res) => {
   } catch (error) {
     console.error('Error generating shopping list:', error);
     res.status(500).json({ error: 'Failed to generate shopping list' });
+  }
+});
+
+// Get meal recommendations based on user preferences
+app.get('/api/recommendations', auth, async (req, res) => {
+  try {
+    const { mealType, date } = req.query;
+    const user = await User.findById(req.user._id);
+    
+    // Build recommendation query based on user preferences
+    let query = {};
+    
+    if (user.profile.dietaryPreferences.length > 0) {
+      query.dietaryTags = { $in: user.profile.dietaryPreferences };
+    }
+    
+    if (user.profile.spiceLevel) {
+      query.spiceLevel = { $lte: user.profile.spiceLevel };
+    }
+    
+    if (user.profile.favoriteRegions.length > 0) {
+      query.cuisine = { $in: user.profile.favoriteRegions };
+    }
+
+    // Get user's recent meals to avoid repetition
+    const recentMeals = await Meal.find({ 
+      user: req.user._id,
+      date: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] }
+    }).populate('dish');
+    
+    const recentDishIds = recentMeals.map(meal => meal.dish._id.toString());
+    if (recentDishIds.length > 0) {
+      query._id = { $nin: recentDishIds };
+    }
+
+    // Get dishes and score them
+    const dishes = await Dish.find(query).limit(50);
+    
+    // Simple scoring algorithm
+    const scoredDishes = dishes.map(dish => {
+      let score = 0;
+      
+      // Favorite cuisine bonus
+      if (user.profile.favoriteRegions.includes(dish.cuisine)) score += 3;
+      
+      // Dietary preference match
+      const matchingTags = dish.dietaryTags.filter(tag => 
+        user.profile.dietaryPreferences.includes(tag)
+      );
+      score += matchingTags.length * 2;
+      
+      // Favorite dish bonus
+      if (user.favoriteDishes.includes(dish._id)) score += 5;
+      
+      // Meal type appropriateness (simple heuristic)
+      if (mealType === 'breakfast' && dish.calories < 400) score += 1;
+      if (mealType === 'lunch' && dish.calories >= 300 && dish.calories <= 600) score += 1;
+      if (mealType === 'dinner' && dish.calories >= 400) score += 1;
+      if (mealType === 'snack' && dish.calories < 300) score += 1;
+      
+      return { dish: transformDish(dish), score };
+    });
+
+    // Sort by score and return top recommendations
+    const recommendations = scoredDishes
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10)
+      .map(item => ({
+        ...item.dish,
+        recommendationScore: item.score,
+        isFavorite: user.favoriteDishes.includes(item.dish.id)
+      }));
+
+    res.json({
+      mealType,
+      date,
+      recommendations,
+      totalFound: recommendations.length
+    });
+  } catch (error) {
+    console.error('Error getting recommendations:', error);
+    res.status(500).json({ error: 'Failed to get recommendations' });
+  }
+});
+
+// Get nutrition progress for a date range
+app.get('/api/nutrition/progress', auth, async (req, res) => {
+  try {
+    const { startDate, endDate } = req.query;
+    const user = await User.findById(req.user._id);
+    
+    const meals = await Meal.find({
+      user: req.user._id,
+      date: { $gte: startDate, $lte: endDate }
+    }).populate('dish');
+
+    // Calculate daily nutrition
+    const dailyNutrition = {};
+    
+    meals.forEach(meal => {
+      const date = meal.date;
+      if (!dailyNutrition[date]) {
+        dailyNutrition[date] = {
+          calories: 0,
+          protein: 0,
+          carbs: 0,
+          fat: 0,
+          fiber: 0,
+          sodium: 0,
+          meals: []
+        };
+      }
+      
+      const dish = meal.dish;
+      dailyNutrition[date].calories += dish.calories;
+      dailyNutrition[date].protein += dish.nutrition?.protein || 0;
+      dailyNutrition[date].carbs += dish.nutrition?.carbs || 0;
+      dailyNutrition[date].fat += dish.nutrition?.fat || 0;
+      dailyNutrition[date].fiber += dish.nutrition?.fiber || 0;
+      dailyNutrition[date].sodium += dish.nutrition?.sodium || 0;
+      dailyNutrition[date].meals.push({
+        mealType: meal.mealType,
+        dish: transformDish(dish),
+        rating: meal.rating
+      });
+    });
+
+    // Calculate progress against goals
+    const goals = user.profile.nutritionGoals;
+    const progressData = Object.entries(dailyNutrition).map(([date, nutrition]) => ({
+      date,
+      nutrition,
+      progress: {
+        calories: (nutrition.calories / goals.dailyCalories) * 100,
+        protein: (nutrition.protein / goals.protein) * 100,
+        carbs: (nutrition.carbs / goals.carbs) * 100,
+        fat: (nutrition.fat / goals.fat) * 100,
+        fiber: (nutrition.fiber / goals.fiber) * 100,
+        sodium: Math.min((nutrition.sodium / goals.sodium) * 100, 100) // Cap at 100% for sodium
+      },
+      goalsStatus: {
+        caloriesOnTrack: Math.abs(nutrition.calories - goals.dailyCalories) <= goals.dailyCalories * 0.1,
+        proteinMet: nutrition.protein >= goals.protein * 0.9,
+        sodiumOk: nutrition.sodium <= goals.sodium
+      }
+    }));
+
+    res.json({
+      period: { startDate, endDate },
+      goals,
+      dailyData: progressData,
+      summary: {
+        avgCalories: progressData.reduce((sum, day) => sum + day.nutrition.calories, 0) / progressData.length,
+        avgProtein: progressData.reduce((sum, day) => sum + day.nutrition.protein, 0) / progressData.length,
+        daysOnTrack: progressData.filter(day => day.goalsStatus.caloriesOnTrack).length
+      }
+    });
+  } catch (error) {
+    console.error('Error getting nutrition progress:', error);
+    res.status(500).json({ error: 'Failed to get nutrition progress' });
+  }
+});
+
+// Update user nutrition goals
+app.put('/api/profile/nutrition-goals', auth, async (req, res) => {
+  try {
+    const { dailyCalories, protein, carbs, fat, fiber, sodium } = req.body;
+    
+    const updateData = {};
+    if (dailyCalories) updateData['profile.nutritionGoals.dailyCalories'] = dailyCalories;
+    if (protein) updateData['profile.nutritionGoals.protein'] = protein;
+    if (carbs) updateData['profile.nutritionGoals.carbs'] = carbs;
+    if (fat) updateData['profile.nutritionGoals.fat'] = fat;
+    if (fiber) updateData['profile.nutritionGoals.fiber'] = fiber;
+    if (sodium) updateData['profile.nutritionGoals.sodium'] = sodium;
+
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: updateData },
+      { new: true }
+    ).select('-password');
+
+    res.json({
+      message: 'Nutrition goals updated successfully',
+      nutritionGoals: user.profile.nutritionGoals
+    });
+  } catch (error) {
+    console.error('Error updating nutrition goals:', error);
+    res.status(500).json({ error: 'Failed to update nutrition goals' });
   }
 });
 

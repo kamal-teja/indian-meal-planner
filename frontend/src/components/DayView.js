@@ -5,6 +5,7 @@ import { mealPlannerAPI } from '../services/api';
 import MealCard from './MealCard';
 import DishSelector from './DishSelector';
 import IngredientsList from './IngredientsList';
+import MealRecommendations from './MealRecommendations';
 
 const MEAL_TYPES = [
   { id: 'breakfast', name: 'Breakfast', icon: '🌅', color: 'from-orange-400 to-yellow-400' },
@@ -21,6 +22,7 @@ const DayView = ({ dishes, onAddDish }) => {
   const [selectedMealType, setSelectedMealType] = useState(null);
   const [editingMeal, setEditingMeal] = useState(null);
   const [showIngredientsPanel, setShowIngredientsPanel] = useState(false);
+  const [showRecommendations, setShowRecommendations] = useState(false);
 
   useEffect(() => {
     loadMealsForDate();
@@ -133,6 +135,18 @@ const DayView = ({ dishes, onAddDish }) => {
               
               <div className="flex items-center space-x-2">
                 <button
+                  onClick={() => setShowRecommendations(!showRecommendations)}
+                  className={`p-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                    showRecommendations 
+                      ? 'bg-purple-100 text-purple-600 hover:bg-purple-200' 
+                      : 'hover:bg-gray-100 text-gray-600'
+                  }`}
+                  title="Toggle Meal Recommendations"
+                >
+                  ✨
+                  <span className="hidden sm:inline text-sm">Recommendations</span>
+                </button>
+                <button
                   onClick={() => setShowIngredientsPanel(!showIngredientsPanel)}
                   className={`p-2 rounded-lg transition-colors flex items-center space-x-2 ${
                     showIngredientsPanel 
@@ -234,6 +248,19 @@ const DayView = ({ dishes, onAddDish }) => {
             </div>
           )}
         </div>
+
+        {/* Recommendations Panel */}
+        {showRecommendations && (
+          <div className="lg:col-span-1">
+            <div className="sticky top-6">
+              <MealRecommendations
+                onAddMeal={addMeal}
+                selectedDate={format(selectedDate, 'yyyy-MM-dd')}
+                mealType="lunch"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Ingredients Panel */}
         {showIngredientsPanel && (

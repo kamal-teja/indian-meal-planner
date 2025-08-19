@@ -11,6 +11,7 @@ import Favorites from './components/Favorites';
 import Analytics from './components/Analytics';
 import ShoppingList from './components/ShoppingList';
 import UserProfile from './components/UserProfile';
+import NutritionDashboard from './components/NutritionDashboard';
 import { mealPlannerAPI } from './services/api';
 
 function App() {
@@ -102,6 +103,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Analytics />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/nutrition" 
+                element={
+                  <ProtectedRoute>
+                    <NutritionDashboard />
                   </ProtectedRoute>
                 } 
               />

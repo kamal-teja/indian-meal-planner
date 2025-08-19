@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   profile: {
     dietaryPreferences: {
       type: [String],
-      enum: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'low-carb', 'high-protein'],
+      enum: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'keto', 'paleo', 'low-carb', 'high-protein', 'low-sodium', 'sugar-free'],
       default: []
     },
     spiceLevel: {
@@ -34,12 +34,30 @@ const userSchema = new mongoose.Schema({
     },
     favoriteRegions: {
       type: [String],
-      enum: ['North Indian', 'South Indian', 'Bengali', 'Gujarati', 'Punjabi', 'Rajasthani', 'Maharashtrian'],
+      enum: ['North Indian', 'South Indian', 'Bengali', 'Gujarati', 'Punjabi', 'Rajasthani', 'Maharashtrian', 'Italian', 'Chinese', 'Thai', 'French', 'Korean', 'Continental'],
       default: []
     },
     avatar: {
       type: String,
       default: null
+    },
+    nutritionGoals: {
+      dailyCalories: { type: Number, default: 2000, min: 1000, max: 5000 },
+      protein: { type: Number, default: 150, min: 0 }, // grams
+      carbs: { type: Number, default: 250, min: 0 }, // grams
+      fat: { type: Number, default: 65, min: 0 }, // grams
+      fiber: { type: Number, default: 25, min: 0 }, // grams
+      sodium: { type: Number, default: 2300, min: 0 } // milligrams
+    },
+    activityLevel: {
+      type: String,
+      enum: ['sedentary', 'lightly-active', 'moderately-active', 'very-active', 'extremely-active'],
+      default: 'moderately-active'
+    },
+    healthGoals: {
+      type: [String],
+      enum: ['weight-loss', 'weight-gain', 'muscle-building', 'maintenance', 'heart-healthy', 'diabetes-friendly'],
+      default: ['maintenance']
     }
   },
   favoriteDishes: [{

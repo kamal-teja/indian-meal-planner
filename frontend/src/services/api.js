@@ -73,6 +73,13 @@ export const mealPlannerAPI = {
   // Shopping list
   getShoppingList: (startDate, endDate) => api.get(`/shopping-list?startDate=${startDate}&endDate=${endDate}`),
   
+  // Recommendations
+  getRecommendations: (mealType, date) => api.get(`/recommendations?mealType=${mealType}&date=${date}`),
+  
+  // Nutrition tracking
+  getNutritionProgress: (startDate, endDate) => api.get(`/nutrition/progress?startDate=${startDate}&endDate=${endDate}`),
+  updateNutritionGoals: (goals) => api.put('/profile/nutrition-goals', goals),
+  
   // Health check
   healthCheck: () => api.get('/health'),
 };
