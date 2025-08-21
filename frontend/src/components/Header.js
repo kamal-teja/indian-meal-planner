@@ -28,19 +28,19 @@ const Header = ({ currentView, onViewChange }) => {
   };
 
   return (
-    <header className="glass-effect border-b border-white/30 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+    <header className="glass-header border-b border-neutral-200 sticky top-0 z-50">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl shadow-lg">
+            <div className="p-2 bg-secondary-600 rounded-lg shadow-sm">
               <Utensils className="h-8 w-8 text-white" />
             </div>
             <div>
               <h1 className="text-2xl font-display font-bold gradient-text">
                 Indian Meal Planner
               </h1>
-              <p className="text-sm text-gray-600 hidden sm:block">
+              <p className="text-sm text-accent-600 hidden sm:block">
                 Plan your delicious Indian meals
               </p>
             </div>
@@ -49,13 +49,11 @@ const Header = ({ currentView, onViewChange }) => {
           <div className="flex items-center space-x-4">
             {/* Navigation Tabs (only if authenticated) */}
             {isAuthenticated && (
-              <div className="flex items-center space-x-2 bg-white/50 rounded-xl p-1 backdrop-blur-sm">
+              <div className="flex items-center space-x-2 bg-neutral-100 rounded-lg p-1">
                 <button
                   onClick={() => handleViewChange('day')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    isActive('day')
-                      ? 'bg-white text-primary-700 shadow-md'
-                      : 'text-gray-600 hover:text-primary-600 hover:bg-white/50'
+                  className={`nav-tab ${
+                    isActive('day') ? 'nav-tab-active' : 'nav-tab-inactive'
                   }`}
                 >
                   <Calendar className="h-4 w-4" />
@@ -64,10 +62,8 @@ const Header = ({ currentView, onViewChange }) => {
                 
                 <button
                   onClick={() => handleViewChange('month')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    isActive('month')
-                      ? 'bg-white text-primary-700 shadow-md'
-                      : 'text-gray-600 hover:text-primary-600 hover:bg-white/50'
+                  className={`nav-tab ${
+                    isActive('month') ? 'nav-tab-active' : 'nav-tab-inactive'
                   }`}
                 >
                   <CalendarDays className="h-4 w-4" />
@@ -81,9 +77,9 @@ const Header = ({ currentView, onViewChange }) => {
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center space-x-2 bg-white/50 rounded-xl px-3 py-2 text-gray-700 hover:bg-white/70 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-neutral-100 rounded-lg px-3 py-2 text-accent-700 hover:bg-neutral-200 transition-all duration-200"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-sage-500 rounded-lg flex items-center justify-center">
                     <User className="h-4 w-4 text-white" />
                   </div>
                   <span className="hidden sm:inline font-medium">{user?.name}</span>
@@ -91,46 +87,46 @@ const Header = ({ currentView, onViewChange }) => {
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50 border border-gray-200">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 border border-neutral-200">
                     <button
                       onClick={() => handleNavigation('/profile')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-neutral-50 rounded-lg mx-2 transition-colors"
                     >
                       <Settings className="h-4 w-4" />
                       <span>Profile Settings</span>
                     </button>
                     <button
                       onClick={() => handleNavigation('/favorites')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-sage-50 rounded-lg mx-2 transition-colors"
                     >
                       <Heart className="h-4 w-4" />
                       <span>Favorite Dishes</span>
                     </button>
                     <button
                       onClick={() => handleNavigation('/analytics')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-lavender-50 rounded-lg mx-2 transition-colors"
                     >
                       <BarChart3 className="h-4 w-4" />
                       <span>Analytics</span>
                     </button>
                     <button
                       onClick={() => handleNavigation('/nutrition')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-secondary-50 rounded-lg mx-2 transition-colors"
                     >
                       <Activity className="h-4 w-4" />
                       <span>Nutrition</span>
                     </button>
                     <button
                       onClick={() => handleNavigation('/shopping-list')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-warm-50 rounded-lg mx-2 transition-colors"
                     >
                       <ShoppingCart className="h-4 w-4" />
                       <span>Shopping List</span>
                     </button>
-                    <div className="border-t border-gray-100 my-1"></div>
+                    <div className="border-t border-neutral-200 my-2 mx-2"></div>
                     <button
                       onClick={handleLogout}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-warm-600 hover:bg-warm-50 rounded-lg mx-2 transition-colors"
                     >
                       <LogOut className="h-4 w-4" />
                       <span>Sign Out</span>
@@ -139,16 +135,16 @@ const Header = ({ currentView, onViewChange }) => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3">
                 <button
                   onClick={() => navigate('/login')}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-accent-700 hover:text-secondary-600 transition-colors bg-neutral-100 rounded-lg hover:bg-neutral-200"
                 >
                   Sign In
                 </button>
                 <button
                   onClick={() => navigate('/register')}
-                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200"
+                  className="btn-primary text-sm"
                 >
                   Sign Up
                 </button>

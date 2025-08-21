@@ -41,10 +41,10 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 bg-spice-pattern">
+        <div className="min-h-screen bg-neutral-50">
           <Header currentView={currentView} onViewChange={setCurrentView} />
           
-          <main className="container mx-auto px-4 py-8">
+          <main className="container mx-auto px-6 py-8">
             <Routes>
               {/* Authentication Routes */}
               <Route path="/login" element={<Login />} />

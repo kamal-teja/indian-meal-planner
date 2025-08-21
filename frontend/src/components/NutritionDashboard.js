@@ -42,7 +42,19 @@ const NutritionDashboard = () => {
       console.log('Processed Goals Data:', goalsData);
       
       setNutritionData(progressData);
-      setGoals(goalsData);
+      
+      // Ensure goalsData has all required fields with defaults
+      const completeGoals = {
+        dailyCalories: goalsData?.dailyCalories || 2000,
+        protein: goalsData?.protein || 150,
+        carbs: goalsData?.carbs || 250,
+        fat: goalsData?.fat || 65,
+        fiber: goalsData?.fiber || 25,
+        sodium: goalsData?.sodium || 2300
+      };
+      
+      console.log('Setting goals to:', completeGoals);
+      setGoals(completeGoals);
     } catch (error) {
       console.error('Error fetching nutrition data:', error);
       // Log more details about the error
@@ -58,13 +70,25 @@ const NutritionDashboard = () => {
 
   const updateGoals = async () => {
     try {
+      console.log('Updating goals with data:', goals);
       const response = await mealPlannerAPI.updateNutritionGoals(goals);
+      console.log('Update response:', response.data);
+      
       // Handle the response format from backend: { success: true, data: goals }
-      setGoals(response.data.data);
+      const updatedGoals = response.data.data;
+      console.log('Updated goals received:', updatedGoals);
+      
+      setGoals(updatedGoals);
       setIsEditing(false);
+      
+      // Reload data to see the changes
       fetchNutritionData();
     } catch (error) {
       console.error('Error updating goals:', error);
+      if (error.response) {
+        console.error('Error response:', error.response.data);
+        console.error('Error status:', error.response.status);
+      }
     }
   };
 
@@ -188,12 +212,12 @@ const NutritionDashboard = () => {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { name: 'calories', value: todayData.calories, goal: nutritionData.goals.dailyCalories, unit: '' },
-              { name: 'protein', value: todayData.protein, goal: nutritionData.goals.protein, unit: 'g' },
-              { name: 'carbs', value: todayData.carbs, goal: nutritionData.goals.carbs, unit: 'g' },
-              { name: 'fat', value: todayData.fat, goal: nutritionData.goals.fat, unit: 'g' },
-              { name: 'fiber', value: todayData.fiber, goal: nutritionData.goals.fiber, unit: 'g' },
-              { name: 'sodium', value: todayData.sodium, goal: nutritionData.goals.sodium, unit: 'mg' }
+              { name: 'calories', value: todayData.calories, goal: goals.dailyCalories, unit: '' },
+              { name: 'protein', value: todayData.protein, goal: goals.protein, unit: 'g' },
+              { name: 'carbs', value: todayData.carbs, goal: goals.carbs, unit: 'g' },
+              { name: 'fat', value: todayData.fat, goal: goals.fat, unit: 'g' },
+              { name: 'fiber', value: todayData.fiber, goal: goals.fiber, unit: 'g' },
+              { name: 'sodium', value: todayData.sodium, goal: goals.sodium, unit: 'mg' }
             ].map(({ name, value, goal, unit }) => {
               const percentage = goal > 0 ? (value / goal) * 100 : 0;
               return (
@@ -320,17 +344,17 @@ const NutritionDashboard = () => {
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-medium text-gray-900">{new Date(day.date).toLocaleDateString()}</h4>
                 <div className="flex space-x-2">
-                  {day.calories >= nutritionData.goals.dailyCalories && 
+                  {day.calories >= goals.dailyCalories && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
                       Calories ✓
                     </span>
                   }
-                  {day.protein >= nutritionData.goals.protein && 
+                  {day.protein >= goals.protein && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
                       Protein ✓
                     </span>
                   }
-                  {day.sodium <= nutritionData.goals.sodium && 
+                  {day.sodium <= goals.sodium && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
                       Sodium ✓
                     </span>

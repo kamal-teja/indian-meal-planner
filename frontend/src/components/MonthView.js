@@ -117,35 +117,35 @@ const MonthView = ({ loadDishes, onAddDish }) => {
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       {/* Month Navigation */}
-      <div className="card p-6">
+      <div className="card-elevated p-6">
         <div className="flex items-center justify-between">
           <button
             onClick={() => navigateMonth('prev')}
-            className="p-3 rounded-xl hover:bg-gray-100 transition-colors"
+            className="p-3 rounded-lg hover:bg-neutral-100 transition-colors"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-600" />
+            <ChevronLeft className="h-6 w-6 text-neutral-600" />
           </button>
           
           <div className="text-center">
-            <h2 className="text-4xl font-display font-bold gradient-text">
+            <h2 className="text-4xl font-display font-bold text-neutral-800">
               {format(selectedDate, 'MMMM yyyy')}
             </h2>
-            <p className="text-gray-600 mt-1">
+            <p className="text-neutral-600 mt-1">
               Plan your monthly meals
             </p>
           </div>
           
           <button
             onClick={() => navigateMonth('next')}
-            className="p-3 rounded-xl hover:bg-gray-100 transition-colors"
+            className="p-3 rounded-lg hover:bg-neutral-100 transition-colors"
           >
-            <ChevronRight className="h-6 w-6 text-gray-600" />
+            <ChevronRight className="h-6 w-6 text-neutral-600" />
           </button>
         </div>
       </div>
 
       {/* Calendar Grid */}
-      <div className="card p-6">
+      <div className="card-elevated p-6">
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary-200 border-t-primary-600"></div>

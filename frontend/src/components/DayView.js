@@ -8,10 +8,10 @@ import IngredientsList from './IngredientsList';
 import MealRecommendations from './MealRecommendations';
 
 const MEAL_TYPES = [
-  { id: 'breakfast', name: 'Breakfast', icon: '🌅', color: 'from-orange-400 to-yellow-400' },
-  { id: 'lunch', name: 'Lunch', icon: '☀️', color: 'from-green-400 to-blue-400' },
-  { id: 'dinner', name: 'Dinner', icon: '🌙', color: 'from-purple-400 to-pink-400' },
-  { id: 'snack', name: 'Snacks', icon: '🍿', color: 'from-pink-400 to-red-400' }
+  { id: 'breakfast', name: 'Breakfast', icon: '🌅', color: 'bg-warm-100 border-warm-200', bgColor: 'bg-warm-50', textColor: 'text-warm-700' },
+  { id: 'lunch', name: 'Lunch', icon: '☀️', color: 'bg-sage-100 border-sage-200', bgColor: 'bg-sage-50', textColor: 'text-sage-700' },
+  { id: 'dinner', name: 'Dinner', icon: '🌙', color: 'bg-lavender-100 border-lavender-200', bgColor: 'bg-lavender-50', textColor: 'text-lavender-700' },
+  { id: 'snack', name: 'Snacks', icon: '🍿', color: 'bg-secondary-100 border-secondary-200', bgColor: 'bg-secondary-50', textColor: 'text-secondary-700' }
 ];
 
 const DayView = ({ loadDishes, onAddDish }) => {
@@ -126,30 +126,30 @@ const DayView = ({ loadDishes, onAddDish }) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto p-6">
       <div className={`grid transition-all duration-300 gap-6 ${showIngredientsPanel ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'}`}>
         {/* Main Content */}
         <div className={`space-y-6 ${showIngredientsPanel ? 'lg:col-span-2' : ''}`}>
           {/* Date Navigation */}
-          <div className="card p-6">
+          <div className="card-elevated p-6">
             <div className="flex items-center justify-between">
               <button
                 onClick={() => navigateDate('prev')}
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                className="p-3 rounded-lg hover:bg-accent-50 transition-all duration-200 hover:shadow-md"
               >
-                <ChevronLeft className="h-6 w-6 text-gray-600" />
+                <ChevronLeft className="h-6 w-6 text-accent-600" />
               </button>
               
               <div className="text-center">
-                <h2 className="text-3xl font-display font-bold gradient-text">
+                <h2 className="text-3xl font-display font-bold text-neutral-800">
                   {format(selectedDate, 'EEEE')}
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-accent-600">
                   {format(selectedDate, 'MMMM d, yyyy')}
                 </p>
-                <div className="mt-2 px-4 py-2 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full inline-block">
-                  <span className="text-sm font-medium text-gray-700">
-                    Total Calories: <span className="font-bold text-primary-600">{getTotalCalories()}</span>
+                <div className="mt-3 px-6 py-2 bg-accent-100 rounded-full inline-block border border-accent-200">
+                  <span className="text-sm font-medium text-accent-700">
+                    {getTotalCalories()} calories today
                   </span>
                 </div>
               </div>
@@ -157,37 +157,37 @@ const DayView = ({ loadDishes, onAddDish }) => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setShowRecommendations(!showRecommendations)}
-                  className={`p-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                  className={`p-3 rounded-lg transition-all duration-200 flex items-center space-x-2 ${
                     showRecommendations 
-                      ? 'bg-purple-100 text-purple-600 hover:bg-purple-200' 
-                      : 'hover:bg-gray-100 text-gray-600'
+                      ? 'bg-lavender-100 text-lavender-700 hover:bg-lavender-200 shadow-md' 
+                      : 'hover:bg-accent-50 text-accent-600 hover:shadow-md'
                   }`}
                   title="Toggle Meal Recommendations"
                 >
                   ✨
-                  <span className="hidden sm:inline text-sm">Recommendations</span>
+                  <span className="hidden sm:inline text-sm font-medium">Recommendations</span>
                 </button>
                 <button
                   onClick={() => setShowIngredientsPanel(!showIngredientsPanel)}
-                  className={`p-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                  className={`p-3 rounded-lg transition-all duration-200 flex items-center space-x-2 ${
                     showIngredientsPanel 
-                      ? 'bg-green-100 text-green-600 hover:bg-green-200' 
-                      : 'hover:bg-gray-100 text-gray-600'
+                      ? 'bg-sage-100 text-sage-700 hover:bg-sage-200 shadow-md' 
+                      : 'hover:bg-accent-50 text-accent-600 hover:shadow-md'
                   }`}
                   title="Toggle Shopping List"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   {meals.length > 0 && (
-                    <span className="bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    <span className="bg-accent-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
                       {meals.reduce((count, meal) => count + (meal.dish?.ingredients?.length || 0), 0)}
                     </span>
                   )}
                 </button>
                 <button
                   onClick={() => navigateDate('next')}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="p-3 rounded-lg hover:bg-accent-50 transition-all duration-200 hover:shadow-md"
                 >
-                  <ChevronRight className="h-6 w-6 text-gray-600" />
+                  <ChevronRight className="h-6 w-6 text-accent-600" />
                 </button>
               </div>
             </div>
@@ -204,17 +204,17 @@ const DayView = ({ loadDishes, onAddDish }) => {
                 const mealTypemeals = getMealsForType(mealType.id);
                 
                 return (
-                  <div key={mealType.id} className="card p-6">
-                    <div className="flex items-center justify-between mb-4">
+                  <div key={mealType.id} className="card-elevated p-6">
+                    <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-3">
-                        <div className={`p-3 bg-gradient-to-r ${mealType.color} rounded-xl shadow-lg`}>
+                        <div className={`p-3 ${mealType.color} rounded-lg border`}>
                           <span className="text-2xl">{mealType.icon}</span>
                         </div>
                         <div>
-                          <h3 className="text-xl font-display font-semibold text-gray-800">
+                          <h3 className={`text-xl font-display font-semibold ${mealType.textColor}`}>
                             {mealType.name}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-accent-600">
                             {mealTypemeals.length} meal{mealTypemeals.length !== 1 ? 's' : ''}
                           </p>
                         </div>
@@ -222,19 +222,22 @@ const DayView = ({ loadDishes, onAddDish }) => {
                       
                       <button
                         onClick={() => handleAddMeal(mealType.id)}
-                        className="p-2 bg-primary-100 hover:bg-primary-200 text-primary-600 rounded-lg transition-colors"
+                        className={`p-3 ${mealType.bgColor} hover:shadow-md text-accent-600 rounded-lg transition-all duration-200 hover:scale-105`}
                       >
                         <Plus className="h-5 w-5" />
                       </button>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {mealTypemeals.length === 0 ? (
-                        <div className="text-center py-8 text-gray-500">
-                          <p>No meals planned</p>
+                        <div className="text-center py-8 text-accent-500">
+                          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-100 flex items-center justify-center">
+                            <span className="text-2xl">{mealType.icon}</span>
+                          </div>
+                          <p className="text-sm mb-3">No meals planned</p>
                           <button
                             onClick={() => handleAddMeal(mealType.id)}
-                            className="mt-2 text-primary-600 hover:text-primary-700 font-medium"
+                            className="btn-secondary text-sm"
                           >
                             Add your first meal
                           </button>
@@ -243,19 +246,19 @@ const DayView = ({ loadDishes, onAddDish }) => {
                         mealTypemeals.map((meal) => (
                           <div key={meal.id} className="relative group">
                             <MealCard meal={meal} />
-                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <div className="flex space-x-1">
+                            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <div className="flex space-x-2">
                                 <button
                                   onClick={() => handleEditMeal(meal)}
-                                  className="p-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition-colors"
+                                  className="p-2 bg-secondary-500 hover:bg-secondary-600 text-white rounded-lg shadow-md transition-colors"
                                 >
-                                  <Edit3 className="h-3 w-3" />
+                                  <Edit3 className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteMeal(meal.id)}
-                                  className="p-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors"
+                                  className="p-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg shadow-md transition-colors"
                                 >
-                                  <Trash2 className="h-3 w-3" />
+                                  <Trash2 className="h-4 w-4" />
                                 </button>
                               </div>
                             </div>

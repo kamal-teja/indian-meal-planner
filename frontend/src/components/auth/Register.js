@@ -104,19 +104,19 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-neutral-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
           <div className="flex justify-center">
-            <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-secondary-600 rounded-lg shadow-sm">
               <Utensils className="h-12 w-12 text-white" />
             </div>
           </div>
           <h2 className="mt-6 text-3xl font-display font-bold gradient-text">
             Join us today!
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-accent-600">
             Create your account to start planning amazing Indian meals
           </p>
         </div>
@@ -124,7 +124,7 @@ const Register = () => {
         {/* Register Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {errors.submit && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-warm-50 border border-warm-200 text-warm-700 px-4 py-3 rounded-lg">
               {errors.submit}
             </div>
           )}
@@ -132,12 +132,12 @@ const Register = () => {
           <div className="space-y-4">
             {/* Name Field */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-accent-700 mb-2">
                 Full Name
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
+                  <User className="h-5 w-5 text-accent-400" />
                 </div>
                 <input
                   id="name"
@@ -146,25 +146,25 @@ const Register = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-3 border ${
-                    errors.name ? 'border-red-300' : 'border-gray-300'
-                  } rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors`}
+                  className={`input-field pl-10 ${
+                    errors.name ? 'border-warm-300 focus:border-warm-400 focus:ring-warm-200' : ''
+                  }`}
                   placeholder="Enter your full name"
                 />
               </div>
               {errors.name && (
-                <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                <p className="mt-1 text-sm text-warm-600">{errors.name}</p>
               )}
             </div>
 
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-accent-700 mb-2">
                 Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-accent-400" />
                 </div>
                 <input
                   id="email"
@@ -173,26 +173,26 @@ const Register = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-3 border ${
-                    errors.email ? 'border-red-300' : 'border-gray-300'
-                  } rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors`}
+                  className={`input-field pl-10 ${
+                    errors.email ? 'border-warm-300 focus:border-warm-400 focus:ring-warm-200' : ''
+                  }`}
                   placeholder="Enter your email"
                 />
               </div>
               {errors.email && (
-                <div className={`mt-1 p-2 rounded-md ${
+                <div className={`mt-1 p-3 rounded-lg ${
                   errors.email.includes('already exists') 
-                    ? 'bg-red-50 border border-red-200' 
+                    ? 'bg-warm-50 border border-warm-200' 
                     : ''
                 }`}>
-                  <p className="text-sm text-red-600 flex items-start">
+                  <p className="text-sm text-warm-600 flex items-start">
                     {errors.email.includes('already exists') && (
-                      <span className="text-red-500 mr-1">⚠️</span>
+                      <span className="text-warm-500 mr-1">⚠️</span>
                     )}
                     {errors.email}
                   </p>
                   {errors.email.includes('already exists') && (
-                    <p className="text-xs text-red-500 mt-1">
+                    <p className="text-xs text-warm-500 mt-1">
                       Try logging in instead or use a different email address.
                     </p>
                   )}
@@ -281,7 +281,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-primary w-full flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />

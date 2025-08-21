@@ -20,28 +20,123 @@
   }
 }
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+    min-height: 100vh;
+    color: #334155;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #1e293b;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fafafa;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(158,158,158,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+    min-height: 100vh;
+    color: #2d3748;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #1a202c;
+  }
+}
+
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
+    @apply bg-secondary-600 hover:bg-secondary-700 text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-secondary-500;
   }
   
   .btn-secondary {
-    @apply bg-white border-2 border-primary-200 hover:border-primary-300 text-primary-700 font-medium px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5;
+    @apply bg-neutral-50 border border-neutral-200 hover:border-neutral-300 text-accent-700 font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-neutral-100;
+  }
+  
+  .btn-accent {
+    @apply bg-sage-500 hover:bg-sage-600 text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
   }
   
   .card {
-    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50;
+    @apply bg-neutral-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-neutral-200;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-neutral-200;
   }
   
   .meal-card {
-    @apply card p-4 hover:scale-105 cursor-pointer;
+    @apply card p-5 hover:shadow-md cursor-pointer;
   }
   
   .glass-effect {
-    @apply bg-white/20 backdrop-blur-lg border border-white/30;
+    @apply bg-white/80 backdrop-blur-sm border border-neutral-200 shadow-sm;
+  }
+  
+  .glass-header {
+    @apply bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-sm;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent;
+    @apply text-accent-800 font-semibold;
+  }
+  
+  .gradient-accent {
+    @apply text-sage-700 font-medium;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:border-secondary-400 focus:ring-2 focus:ring-secondary-200 transition-all duration-200 placeholder-neutral-400;
+  }
+  
+  .nav-tab {
+    @apply flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+  
+  .nav-tab-active {
+    @apply bg-white text-secondary-700 shadow-sm border border-neutral-200;
+  }
+  
+  .nav-tab-inactive {
+    @apply text-accent-600 hover:text-secondary-600 hover:bg-neutral-100;
+  }
+  
+  .badge-veg {
+    @apply bg-sage-100 text-sage-800 border border-sage-200 px-2 py-1 text-xs font-medium rounded-md;
+  }
+  
+  .badge-non-veg {
+    @apply bg-warm-100 text-warm-800 border border-warm-200 px-2 py-1 text-xs font-medium rounded-md;
+  }
+  
+  .surface-primary {
+    @apply bg-secondary-50 border border-secondary-100;
+  }
+  
+  .surface-secondary {
+    @apply bg-sage-50 border border-sage-100;
+  }
+  
+  .surface-accent {
+    @apply bg-lavender-50 border border-lavender-100;
+  }
+  
+  .surface-warm {
+    @apply bg-warm-50 border border-warm-100;
   }
 }
