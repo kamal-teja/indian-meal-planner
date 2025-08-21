@@ -25,13 +25,13 @@ type DishService interface {
 
 // DishFilter represents filters for dish queries
 type DishFilter struct {
-	Type         string
-	Cuisine      string
-	DietaryTags  []string
-	SpiceLevel   string
-	MaxCalories  int
-	MinCalories  int
-	Ingredients  []string
+	Type        string
+	Cuisine     string
+	DietaryTags []string
+	SpiceLevel  string
+	MaxCalories int
+	MinCalories int
+	Ingredients []string
 }
 
 // dishService implements DishService interface

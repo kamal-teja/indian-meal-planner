@@ -14,7 +14,7 @@ type Logger struct {
 // New creates a new logger instance
 func New(level, format string) *Logger {
 	var handler slog.Handler
-	
+
 	// Parse log level
 	var logLevel slog.Level
 	switch strings.ToLower(level) {
@@ -29,12 +29,12 @@ func New(level, format string) *Logger {
 	default:
 		logLevel = slog.LevelInfo
 	}
-	
+
 	// Create handler based on format
 	opts := &slog.HandlerOptions{
 		Level: logLevel,
 	}
-	
+
 	switch strings.ToLower(format) {
 	case "json":
 		handler = slog.NewJSONHandler(os.Stdout, opts)
@@ -43,7 +43,7 @@ func New(level, format string) *Logger {
 	default:
 		handler = slog.NewJSONHandler(os.Stdout, opts)
 	}
-	
+
 	return &Logger{
 		Logger: slog.New(handler),
 	}

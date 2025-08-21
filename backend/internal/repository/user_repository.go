@@ -33,17 +33,17 @@ type userRepository struct {
 // NewUserRepository creates a new user repository
 func NewUserRepository(db *mongo.Database) UserRepository {
 	collection := db.Collection("users")
-	
+
 	// Create indexes
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	
+
 	// Email index (unique)
 	collection.Indexes().CreateOne(ctx, mongo.IndexModel{
 		Keys:    bson.D{{"email", 1}},
 		Options: options.Index().SetUnique(true),
 	})
-	
+
 	return &userRepository{
 		collection: collection,
 	}
@@ -53,12 +53,12 @@ func NewUserRepository(db *mongo.Database) UserRepository {
 func (r *userRepository) Create(ctx context.Context, user *models.User) error {
 	user.CreatedAt = time.Now()
 	user.UpdatedAt = time.Now()
-	
+
 	result, err := r.collection.InsertOne(ctx, user)
 	if err != nil {
 		return err
 	}
-	
+
 	user.ID = result.InsertedID.(primitive.ObjectID)
 	return nil
 }
@@ -86,7 +86,7 @@ func (r *userRepository) GetByEmail(ctx context.Context, email string) (*models.
 // Update updates a user
 func (r *userRepository) Update(ctx context.Context, id primitive.ObjectID, user *models.User) error {
 	user.UpdatedAt = time.Now()
-	
+
 	update := bson.M{
 		"$set": bson.M{
 			"name":      user.Name,
@@ -95,7 +95,7 @@ func (r *userRepository) Update(ctx context.Context, id primitive.ObjectID, user
 			"updatedAt": user.UpdatedAt,
 		},
 	}
-	
+
 	_, err := r.collection.UpdateOne(ctx, bson.M{"_id": id}, update)
 	return err
 }
@@ -109,7 +109,7 @@ func (r *userRepository) UpdateLastLogin(ctx context.Context, id primitive.Objec
 			"updatedAt":   now,
 		},
 	}
-	
+
 	_, err := r.collection.UpdateOne(ctx, bson.M{"_id": id}, update)
 	return err
 }
@@ -120,7 +120,7 @@ func (r *userRepository) AddToFavorites(ctx context.Context, userID, dishID prim
 		"$addToSet": bson.M{"favorites": dishID},
 		"$set":      bson.M{"updatedAt": time.Now()},
 	}
-	
+
 	_, err := r.collection.UpdateOne(ctx, bson.M{"_id": userID}, update)
 	return err
 }
@@ -131,7 +131,7 @@ func (r *userRepository) RemoveFromFavorites(ctx context.Context, userID, dishID
 		"$pull": bson.M{"favorites": dishID},
 		"$set":  bson.M{"updatedAt": time.Now()},
 	}
-	
+
 	_, err := r.collection.UpdateOne(ctx, bson.M{"_id": userID}, update)
 	return err
 }
@@ -141,17 +141,17 @@ func (r *userRepository) GetFavorites(ctx context.Context, userID primitive.Obje
 	var user struct {
 		Favorites []primitive.ObjectID `bson:"favorites"`
 	}
-	
+
 	err := r.collection.FindOne(
 		ctx,
 		bson.M{"_id": userID},
 		options.FindOne().SetProjection(bson.M{"favorites": 1}),
 	).Decode(&user)
-	
+
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return user.Favorites, nil
 }
 

@@ -4,10 +4,10 @@ package models
 
 // PaginationResponse represents pagination metadata
 type PaginationResponse struct {
-	Page       int `json:"page"`
-	Limit      int `json:"limit"`
-	Total      int `json:"total"`
-	TotalPages int `json:"totalPages"`
+	Page       int  `json:"page"`
+	Limit      int  `json:"limit"`
+	Total      int  `json:"total"`
+	TotalPages int  `json:"totalPages"`
 	HasNext    bool `json:"hasNext"`
 	HasPrev    bool `json:"hasPrev"`
 }
