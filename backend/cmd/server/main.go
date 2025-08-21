@@ -66,7 +66,7 @@ func main() {
 	go func() {
 		logger.Info("Starting server", "port", cfg.Port)
 		logger.Info("API Health Check", "url", "http://localhost:"+cfg.Port+"/api/health")
-		
+
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			logger.Fatal("Failed to start server", "error", err)
 		}

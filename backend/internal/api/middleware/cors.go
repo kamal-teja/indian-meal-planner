@@ -34,7 +34,7 @@ func CORSMiddleware(cfg *config.Config) gin.HandlerFunc {
 			"Content-Type",
 		},
 		AllowCredentials: true,
-		MaxAge:          12 * 60 * 60, // 12 hours
+		MaxAge:           12 * 60 * 60, // 12 hours
 	}
 
 	// Allow all origins in development

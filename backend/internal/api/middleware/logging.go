@@ -41,7 +41,7 @@ func RequestResponseLogger(log *logger.Logger) gin.HandlerFunc {
 		// Capture response
 		w := &responseWriter{
 			ResponseWriter: c.Writer,
-			body:          &bytes.Buffer{},
+			body:           &bytes.Buffer{},
 		}
 		c.Writer = w
 
@@ -50,7 +50,7 @@ func RequestResponseLogger(log *logger.Logger) gin.HandlerFunc {
 
 		// Log response
 		latency := time.Since(start)
-		
+
 		log.Info("Request completed",
 			"method", c.Request.Method,
 			"path", c.Request.URL.Path,

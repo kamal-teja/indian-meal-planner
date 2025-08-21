@@ -43,21 +43,21 @@ type mealRepository struct {
 // NewMealRepository creates a new meal repository
 func NewMealRepository(db *mongo.Database) MealRepository {
 	collection := db.Collection("meals")
-	
+
 	// Create indexes
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	
+
 	// Compound index for user queries
 	collection.Indexes().CreateOne(ctx, mongo.IndexModel{
 		Keys: bson.D{{"userId", 1}, {"date", -1}},
 	})
-	
+
 	// Index for date range queries
 	collection.Indexes().CreateOne(ctx, mongo.IndexModel{
 		Keys: bson.D{{"date", 1}},
 	})
-	
+
 	return &mealRepository{
 		collection: collection,
 	}
@@ -67,12 +67,12 @@ func NewMealRepository(db *mongo.Database) MealRepository {
 func (r *mealRepository) Create(ctx context.Context, meal *models.Meal) error {
 	meal.CreatedAt = time.Now()
 	meal.UpdatedAt = time.Now()
-	
+
 	result, err := r.collection.InsertOne(ctx, meal)
 	if err != nil {
 		return err
 	}
-	
+
 	meal.ID = result.InsertedID.(primitive.ObjectID)
 	return nil
 }
@@ -90,33 +90,33 @@ func (r *mealRepository) GetByID(ctx context.Context, id primitive.ObjectID) (*m
 // GetByUserID retrieves meals for a user with pagination
 func (r *mealRepository) GetByUserID(ctx context.Context, userID primitive.ObjectID, page, limit int) ([]*models.Meal, int64, error) {
 	query := bson.M{"userId": userID}
-	
+
 	// Count total documents
 	total, err := r.collection.CountDocuments(ctx, query)
 	if err != nil {
 		return nil, 0, err
 	}
-	
+
 	// Calculate pagination
 	skip := (page - 1) * limit
-	
+
 	// Find options
 	opts := options.Find().
 		SetSkip(int64(skip)).
 		SetLimit(int64(limit)).
 		SetSort(bson.D{{"date", -1}})
-	
+
 	cursor, err := r.collection.Find(ctx, query, opts)
 	if err != nil {
 		return nil, 0, err
 	}
 	defer cursor.Close(ctx)
-	
+
 	var meals []*models.Meal
 	if err = cursor.All(ctx, &meals); err != nil {
 		return nil, 0, err
 	}
-	
+
 	return meals, total, nil
 }
 
@@ -129,27 +129,27 @@ func (r *mealRepository) GetByUserAndDateRange(ctx context.Context, userID primi
 			"$lte": endDate,
 		},
 	}
-	
+
 	opts := options.Find().SetSort(bson.D{{"date", 1}, {"mealType", 1}})
-	
+
 	cursor, err := r.collection.Find(ctx, query, opts)
 	if err != nil {
 		return nil, err
 	}
 	defer cursor.Close(ctx)
-	
+
 	var meals []*models.Meal
 	if err = cursor.All(ctx, &meals); err != nil {
 		return nil, err
 	}
-	
+
 	return meals, nil
 }
 
 // Update updates a meal
 func (r *mealRepository) Update(ctx context.Context, id primitive.ObjectID, meal *models.Meal) error {
 	meal.UpdatedAt = time.Now()
-	
+
 	update := bson.M{"$set": meal}
 	_, err := r.collection.UpdateOne(ctx, bson.M{"_id": id}, update)
 	return err
@@ -205,17 +205,17 @@ func (r *mealRepository) GetNutritionByDateRange(ctx context.Context, userID pri
 			"$sort": bson.M{"_id": 1},
 		},
 	}
-	
+
 	cursor, err := r.collection.Aggregate(ctx, pipeline)
 	if err != nil {
 		return nil, err
 	}
 	defer cursor.Close(ctx)
-	
+
 	var results []NutritionSummary
 	if err = cursor.All(ctx, &results); err != nil {
 		return nil, err
 	}
-	
+
 	return results, nil
 }
