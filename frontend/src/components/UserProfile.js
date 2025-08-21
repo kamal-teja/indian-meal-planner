@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Mail, Settings, Save, AlertCircle, CheckCircle, Circle, Dot, Flame, Zap } from 'lucide-react';
+import { User, Mail, Settings, Save, AlertCircle, CheckCircle, CircleDot, Flame, Zap, Thermometer } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const UserProfile = () => {
@@ -80,10 +80,10 @@ const UserProfile = () => {
   ];
 
   const spiceLevels = [
-    { value: 'mild', label: 'Mild', icon: <Circle className="h-4 w-4 text-sage-500" /> },
-    { value: 'medium', label: 'Medium', icon: <Dot className="h-4 w-4 text-warm-500" /> },
-    { value: 'hot', label: 'Hot', icon: <Flame className="h-4 w-4 text-secondary-500" /> },
-    { value: 'extra-hot', label: 'Extra Hot', icon: <Zap className="h-4 w-4 text-lavender-500" /> }
+    { value: 'mild', label: 'Mild', icon: <CircleDot className="h-4 w-4 text-sage-500" /> },
+    { value: 'medium', label: 'Medium', icon: <Thermometer className="h-4 w-4 text-warm-500" /> },
+    { value: 'hot', label: 'Hot', icon: <Flame className="h-4 w-4 text-orange-500" /> },
+    { value: 'extra-hot', label: 'Extra Hot', icon: <Zap className="h-4 w-4 text-red-500" /> }
   ];
 
   const regionOptions = [
@@ -255,12 +255,12 @@ const UserProfile = () => {
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
             ) : (
-              <Save className="h-5 w-5" />
+              <Save className="h-5 w-5 mr-2" />
             )}
             <span>{loading ? 'Saving...' : 'Save Changes'}</span>
           </button>

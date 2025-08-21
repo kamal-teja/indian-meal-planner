@@ -181,7 +181,7 @@ const Login = () => {
               Don't have an account?{' '}
               <Link
                 to="/register"
-                className="font-medium text-primary-600 hover:text-primary-500 transition-colors"
+                className="font-semibold text-secondary-600 hover:text-secondary-700 transition-colors underline underline-offset-2 hover:underline-offset-4"
               >
                 Create one here
               </Link>
