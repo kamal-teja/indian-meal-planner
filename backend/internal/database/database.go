@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"meal-planner-backend/internal/config"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/config"
+	"nourish-backend/pkg/logger"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

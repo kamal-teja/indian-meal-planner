@@ -1,4 +1,4 @@
-module meal-planner-backend
+module nourish-backend
 
 go 1.21
 

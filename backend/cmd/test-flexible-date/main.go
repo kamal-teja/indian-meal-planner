@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"meal-planner-backend/internal/models"
+	"nourish-backend/internal/models"
 )
 
 func main() {

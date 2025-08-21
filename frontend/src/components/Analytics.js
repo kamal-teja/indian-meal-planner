@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, TrendingUp, Calendar, Utensils, Star, Clock } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
+import CustomDropdown from './ui/CustomDropdown';
 
 const Analytics = () => {
   const [analytics, setAnalytics] = useState(null);
@@ -170,15 +171,17 @@ const Analytics = () => {
           {/* Period Selector */}
           <div className="flex items-center space-x-2">
             <label className="text-sm font-medium text-neutral-700">Period:</label>
-            <select
+            <CustomDropdown
               value={period}
-              onChange={(e) => setPeriod(Number(e.target.value))}
-              className="px-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white"
-            >
-              <option value={7}>Last 7 days</option>
-              <option value={30}>Last 30 days</option>
-              <option value={90}>Last 90 days</option>
-            </select>
+              onChange={setPeriod}
+              options={[
+                { value: 7, label: 'Last 7 days' },
+                { value: 30, label: 'Last 30 days' },
+                { value: 90, label: 'Last 90 days' }
+              ]}
+              placeholder="Select Period"
+              className="min-w-36"
+            />
           </div>
         </div>
       </div>

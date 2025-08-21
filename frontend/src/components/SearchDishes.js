@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Search, Filter, X, Heart, Star } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import CustomDropdown from './ui/CustomDropdown';
 
 const SearchDishes = ({ onSelectDish, selectedDish, mealType = 'lunch' }) => {
   const { user, toggleFavorite } = useAuth();
@@ -128,34 +129,32 @@ const SearchDishes = ({ onSelectDish, selectedDish, mealType = 'lunch' }) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Cuisine
               </label>
-              <select
+              <CustomDropdown
                 value={filters.cuisine}
-                onChange={(e) => handleFilterChange('cuisine', e.target.value)}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="">All Cuisines</option>
-                {cuisineOptions.map(cuisine => (
-                  <option key={cuisine} value={cuisine}>{cuisine}</option>
-                ))}
-              </select>
+                onChange={(value) => handleFilterChange('cuisine', value)}
+                options={[
+                  { value: '', label: 'All Cuisines' },
+                  ...cuisineOptions.map(cuisine => ({ value: cuisine, label: cuisine }))
+                ]}
+                placeholder="Select Cuisine"
+                className="w-full"
+              />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Meal Type
               </label>
-              <select
+              <CustomDropdown
                 value={filters.type}
-                onChange={(e) => handleFilterChange('type', e.target.value)}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="">All Types</option>
-                {typeOptions.map(type => (
-                  <option key={type} value={type}>
-                    {type.charAt(0).toUpperCase() + type.slice(1)}
-                  </option>
-                ))}
-              </select>
+                onChange={(value) => handleFilterChange('type', value)}
+                options={[
+                  { value: '', label: 'All Types' },
+                  ...typeOptions.map(type => ({ value: type, label: type.charAt(0).toUpperCase() + type.slice(1) }))
+                ]}
+                placeholder="Select Type"
+                className="w-full"
+              />
             </div>
 
             <div>

@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"meal-planner-backend/internal/models"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/models"
+	"nourish-backend/pkg/logger"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"

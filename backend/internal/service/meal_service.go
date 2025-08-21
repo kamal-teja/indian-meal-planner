@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"meal-planner-backend/internal/models"
-	"meal-planner-backend/internal/repository"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/models"
+	"nourish-backend/internal/repository"
+	"nourish-backend/pkg/logger"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

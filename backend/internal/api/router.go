@@ -1,11 +1,11 @@
 package api
 
 import (
-	"meal-planner-backend/internal/api/handlers"
-	"meal-planner-backend/internal/api/middleware"
-	"meal-planner-backend/internal/config"
-	"meal-planner-backend/internal/service"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/api/handlers"
+	"nourish-backend/internal/api/middleware"
+	"nourish-backend/internal/config"
+	"nourish-backend/internal/service"
+	"nourish-backend/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 )

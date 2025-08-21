@@ -124,7 +124,7 @@ const AdvancedDishFilter = ({ onFilterChange, onClose }) => {
           <select
             value={filters.cuisine}
             onChange={(e) => handleInputChange('cuisine', e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="dropdown-elegant w-full"
           >
             <option value="">All cuisines</option>
             {cuisineOptions.map(cuisine => (
@@ -138,7 +138,7 @@ const AdvancedDishFilter = ({ onFilterChange, onClose }) => {
           <select
             value={filters.type}
             onChange={(e) => handleInputChange('type', e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="dropdown-elegant w-full"
           >
             <option value="">All types</option>
             <option value="Veg">Vegetarian</option>
@@ -204,7 +204,7 @@ const AdvancedDishFilter = ({ onFilterChange, onClose }) => {
               <select
                 value={filters.spiceLevel}
                 onChange={(e) => handleInputChange('spiceLevel', e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                className="dropdown-elegant w-full"
               >
                 <option value="">Any spice level</option>
                 {spiceLevels.map(level => (
@@ -235,7 +235,7 @@ const AdvancedDishFilter = ({ onFilterChange, onClose }) => {
               <select
                 value={filters.difficulty}
                 onChange={(e) => handleInputChange('difficulty', e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                className="dropdown-elegant w-full"
               >
                 <option value="">Any difficulty</option>
                 {difficulties.map(diff => (

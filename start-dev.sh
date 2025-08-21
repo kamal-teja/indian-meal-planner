@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Development startup script for Meal Planner App
-echo "🍽️  Starting Meal Planner Development Environment..."
+# Development startup script for Nourish App
+echo "🍽️  Starting Nourish Development Environment..."
 
 # Check if .env file exists in backend
 if [ ! -f "backend/.env" ]; then

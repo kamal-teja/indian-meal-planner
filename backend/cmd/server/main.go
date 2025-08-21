@@ -9,12 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"meal-planner-backend/internal/api"
-	"meal-planner-backend/internal/config"
-	"meal-planner-backend/internal/database"
-	"meal-planner-backend/internal/repository"
-	"meal-planner-backend/internal/service"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/api"
+	"nourish-backend/internal/config"
+	"nourish-backend/internal/database"
+	"nourish-backend/internal/repository"
+	"nourish-backend/internal/service"
+	"nourish-backend/pkg/logger"
 
 	"github.com/joho/godotenv"
 )

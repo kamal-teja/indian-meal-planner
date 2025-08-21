@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 )

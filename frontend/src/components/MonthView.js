@@ -3,6 +3,7 @@ import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isTod
 import { ChevronLeft, ChevronRight, Plus, Calendar } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import DishSelector from './DishSelector';
+import CustomDropdown from './ui/CustomDropdown';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -106,10 +107,10 @@ const MonthView = ({ loadDishes, onAddDish }) => {
   };
 
   const getMealTypeColors = () => ({
-    breakfast: 'bg-orange-100 border-orange-300',
-    lunch: 'bg-green-100 border-green-300',
-    dinner: 'bg-purple-100 border-purple-300',
-    snack: 'bg-pink-100 border-pink-300'
+    breakfast: 'bg-warm-100 border-warm-300 text-warm-700',
+    lunch: 'bg-sage-100 border-sage-300 text-sage-700',
+    dinner: 'bg-lavender-100 border-lavender-300 text-lavender-700',
+    snack: 'bg-secondary-100 border-secondary-300 text-secondary-700'
   });
 
   const calendarDays = getCalendarDays();
@@ -177,11 +178,11 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                     className={`
                       min-h-[120px] p-2 rounded-xl border-2 transition-all duration-200 cursor-pointer
                       ${isCurrentMonth 
-                        ? 'bg-white hover:bg-gray-50 border-gray-200 hover:border-primary-300 hover:shadow-md' 
-                        : 'bg-gray-50 border-gray-100 text-gray-400'
+                        ? 'bg-white hover:bg-accent-50 border-accent-200 hover:border-accent-300 hover:shadow-md' 
+                        : 'bg-neutral-50 border-neutral-100 text-neutral-400'
                       }
                       ${isCurrentDay 
-                        ? 'ring-2 ring-primary-500 border-primary-500 bg-primary-50' 
+                        ? 'ring-2 ring-accent-500 border-accent-500 bg-accent-50' 
                         : ''
                       }
                     `}
@@ -191,10 +192,10 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                       <span className={`
                         text-sm font-medium
                         ${isCurrentDay 
-                          ? 'text-primary-700 font-bold' 
+                          ? 'text-accent-700 font-bold' 
                           : isCurrentMonth 
-                            ? 'text-gray-900' 
-                            : 'text-gray-400'
+                            ? 'text-neutral-900' 
+                            : 'text-neutral-400'
                         }
                       `}>
                         {format(date, 'd')}
@@ -206,7 +207,7 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                             e.stopPropagation();
                             handleDayClick(date);
                           }}
-                          className="p-1 rounded-md hover:bg-primary-100 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="p-1 rounded-md hover:bg-accent-100 text-accent-600 opacity-0 group-hover:opacity-100 transition-opacity"
                         >
                           <Plus className="h-3 w-3" />
                         </button>
@@ -221,7 +222,7 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                             key={mealIndex}
                             className={`
                               px-2 py-1 rounded-md text-xs font-medium border
-                              ${mealColors[meal.mealType] || 'bg-gray-100 border-gray-300'}
+                              ${mealColors[meal.mealType] || 'bg-neutral-100 border-neutral-300 text-neutral-600'}
                             `}
                           >
                             <div className="truncate">
@@ -231,14 +232,14 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                         ))}
                         
                         {dayMeals.length > 3 && (
-                          <div className="text-xs text-gray-500 px-2">
+                          <div className="text-xs text-neutral-500 px-2">
                             +{dayMeals.length - 3} more
                           </div>
                         )}
                         
                         {/* Total calories */}
                         {totalCalories > 0 && (
-                          <div className="text-xs text-gray-600 px-2 mt-2 border-t border-gray-200 pt-1">
+                          <div className="text-xs text-neutral-600 px-2 mt-2 border-t border-neutral-200 pt-1">
                             {totalCalories} cal
                           </div>
                         )}
@@ -246,8 +247,8 @@ const MonthView = ({ loadDishes, onAddDish }) => {
                         {/* Empty state */}
                         {dayMeals.length === 0 && (
                           <div className="text-center py-4">
-                            <Calendar className="h-6 w-6 text-gray-300 mx-auto mb-1" />
-                            <p className="text-xs text-gray-500">No meals</p>
+                            <Calendar className="h-6 w-6 text-neutral-300 mx-auto mb-1" />
+                            <p className="text-xs text-neutral-500">No meals</p>
                           </div>
                         )}
                       </div>
@@ -263,42 +264,44 @@ const MonthView = ({ loadDishes, onAddDish }) => {
       {/* Month Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="card p-6 text-center">
-          <div className="text-3xl font-bold text-primary-600 mb-2">
+          <div className="text-3xl font-bold text-accent-600 mb-2">
             {monthMeals.length}
           </div>
-          <p className="text-gray-600">Total Planned Meals</p>
+          <p className="text-neutral-600">Total Planned Meals</p>
         </div>
         
         <div className="card p-6 text-center">
-          <div className="text-3xl font-bold text-secondary-600 mb-2">
+          <div className="text-3xl font-bold text-sage-600 mb-2">
             {monthMeals.reduce((total, meal) => total + (meal.dish.calories || 0), 0)}
           </div>
-          <p className="text-gray-600">Total Calories</p>
+          <p className="text-neutral-600">Total Calories</p>
         </div>
         
         <div className="card p-6 text-center">
-          <div className="text-3xl font-bold text-purple-600 mb-2">
+          <div className="text-3xl font-bold text-lavender-600 mb-2">
             {new Set(monthMeals.map(meal => meal.date)).size}
           </div>
-          <p className="text-gray-600">Days with Meals</p>
+          <p className="text-neutral-600">Days with Meals</p>
         </div>
       </div>
 
       {/* Quick Add Section */}
       <div className="card p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Add Meal</h3>
-        <div className="flex flex-wrap gap-3">
-          <select
+        <h3 className="text-lg font-semibold text-neutral-900 mb-4">Quick Add Meal</h3>
+        <div className="flex flex-wrap gap-3 items-center">
+          <CustomDropdown
             value={selectedMealType}
-            onChange={(e) => setSelectedMealType(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-          >
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snack">Snack</option>
-          </select>
-          <p className="text-gray-600 py-2">
+            onChange={setSelectedMealType}
+            options={[
+              { value: 'breakfast', label: 'Breakfast' },
+              { value: 'lunch', label: 'Lunch' },
+              { value: 'dinner', label: 'Dinner' },
+              { value: 'snack', label: 'Snack' }
+            ]}
+            placeholder="Select Meal Type"
+            className="min-w-48"
+          />
+          <p className="text-neutral-600 py-2">
             Click on any day in the calendar to add a {selectedMealType} meal
           </p>
         </div>

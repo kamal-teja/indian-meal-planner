@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"meal-planner-backend/internal/api/middleware"
-	"meal-planner-backend/internal/models"
-	"meal-planner-backend/internal/service"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/api/middleware"
+	"nourish-backend/internal/models"
+	"nourish-backend/internal/service"
+	"nourish-backend/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,6 +1,6 @@
-# 🍽️ Indian Meal Planner App
+# 🍽️ Nourish - Meal Planner App
 
-A beautiful, modern meal planning application focused on Indian cuisine with shopping list functionality and MongoDB persistence.
+A beautiful, modern meal planning application focused on healthy cuisine with shopping list functionality and MongoDB persistence.
 
 ## 🆕 What's New - Backend Migration to Go!
 

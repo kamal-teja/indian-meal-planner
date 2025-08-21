@@ -1,9 +1,9 @@
 package service
 
 import (
-	"meal-planner-backend/internal/config"
-	"meal-planner-backend/internal/repository"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/config"
+	"nourish-backend/internal/repository"
+	"nourish-backend/pkg/logger"
 )
 
 // Services holds all service instances

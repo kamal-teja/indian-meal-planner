@@ -1,6 +1,6 @@
-# Development startup script for Meal Planner App (Windows PowerShell)
+# Development startup script for Nourish App (Windows PowerShell)
 
-Write-Host "🍽️  Starting Meal Planner Development Environment..." -ForegroundColor Green
+Write-Host "🍽️  Starting Nourish Development Environment..." -ForegroundColor Green
 
 # Check if .env file exists in backend
 if (-not (Test-Path "backend\.env")) {

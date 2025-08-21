@@ -38,10 +38,10 @@ const Header = ({ currentView, onViewChange }) => {
             </div>
             <div>
               <h1 className="text-2xl font-display font-bold gradient-text">
-                Indian Meal Planner
+                Nourish
               </h1>
               <p className="text-sm text-accent-600 hidden sm:block">
-                Plan your delicious Indian meals
+                Plan your healthy, delicious meals
               </p>
             </div>
           </div>

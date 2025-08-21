@@ -1,4 +1,4 @@
-# Indian Meal Planner - Complete Setup Guide
+# Nourish - Complete Setup Guide
 
 ## Features Added
 

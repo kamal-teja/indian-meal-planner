@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Mail, Settings, Save, AlertCircle, CheckCircle } from 'lucide-react';
+import { User, Mail, Settings, Save, AlertCircle, CheckCircle, Circle, Dot, Flame, Zap } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const UserProfile = () => {
@@ -80,10 +80,10 @@ const UserProfile = () => {
   ];
 
   const spiceLevels = [
-    { value: 'mild', label: 'Mild', emoji: '🟢' },
-    { value: 'medium', label: 'Medium', emoji: '🟡' },
-    { value: 'hot', label: 'Hot', emoji: '🔥' },
-    { value: 'extra-hot', label: 'Extra Hot', emoji: '🌶️' }
+    { value: 'mild', label: 'Mild', icon: <Circle className="h-4 w-4 text-sage-500" /> },
+    { value: 'medium', label: 'Medium', icon: <Dot className="h-4 w-4 text-warm-500" /> },
+    { value: 'hot', label: 'Hot', icon: <Flame className="h-4 w-4 text-secondary-500" /> },
+    { value: 'extra-hot', label: 'Extra Hot', icon: <Zap className="h-4 w-4 text-lavender-500" /> }
   ];
 
   const regionOptions = [
@@ -206,7 +206,7 @@ const UserProfile = () => {
                     ? 'border-primary-500 bg-primary-50'
                     : 'border-gray-200 hover:border-gray-300'
                 }`}>
-                  <div className="text-2xl mb-1">{level.emoji}</div>
+                  <div className="flex justify-center mb-1">{level.icon}</div>
                   <div className="text-sm font-medium text-gray-700">{level.label}</div>
                 </div>
               </label>

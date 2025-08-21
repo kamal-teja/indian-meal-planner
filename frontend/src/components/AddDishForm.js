@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Plus, Minus, Upload, Image } from 'lucide-react';
+import CustomDropdown from './ui/CustomDropdown';
 
 const AddDishForm = ({ onSubmit, onClose }) => {
   const [formData, setFormData] = useState({
@@ -40,6 +41,21 @@ const AddDishForm = ({ onSubmit, onClose }) => {
     }));
     
     // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const handleDropdownChange = (name, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user selects
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -124,13 +140,13 @@ const AddDishForm = ({ onSubmit, onClose }) => {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-6 border-b border-neutral-200">
           <h2 className="text-2xl font-bold gradient-text">Add New Dish</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-neutral-100 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 text-accent-600" />
           </button>
         </div>
 
@@ -160,34 +176,33 @@ const AddDishForm = ({ onSubmit, onClose }) => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Type *
               </label>
-              <select
-                name="type"
+              <CustomDropdown
                 value={formData.type}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="Veg">Vegetarian</option>
-                <option value="Non-Veg">Non-Vegetarian</option>
-              </select>
+                onChange={(value) => handleDropdownChange('type', value)}
+                options={[
+                  { value: 'Veg', label: 'Vegetarian' },
+                  { value: 'Non-Veg', label: 'Non-Vegetarian' }
+                ]}
+                placeholder="Select Type"
+                className="w-full"
+              />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Cuisine *
               </label>
-              <select
-                name="cuisine"
+              <CustomDropdown
                 value={formData.cuisine}
-                onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                  errors.cuisine ? 'border-red-300' : 'border-gray-300'
-                }`}
-              >
-                <option value="">Select cuisine</option>
-                {cuisineOptions.map(cuisine => (
-                  <option key={cuisine} value={cuisine}>{cuisine}</option>
-                ))}
-              </select>
+                onChange={(value) => handleDropdownChange('cuisine', value)}
+                options={[
+                  { value: '', label: 'Select cuisine' },
+                  ...cuisineOptions.map(cuisine => ({ value: cuisine, label: cuisine }))
+                ]}
+                placeholder="Select Cuisine"
+                className="w-full"
+                error={!!errors.cuisine}
+              />
               {errors.cuisine && <p className="text-red-500 text-sm mt-1">{errors.cuisine}</p>}
             </div>
           </div>
@@ -211,7 +226,7 @@ const AddDishForm = ({ onSubmit, onClose }) => {
                     <button
                       type="button"
                       onClick={() => removeIngredient(index)}
-                      className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-2 text-warm-600 hover:bg-warm-50 rounded-lg transition-colors"
                     >
                       <Minus className="w-5 h-5" />
                     </button>
@@ -221,7 +236,7 @@ const AddDishForm = ({ onSubmit, onClose }) => {
               <button
                 type="button"
                 onClick={addIngredient}
-                className="flex items-center space-x-2 px-4 py-2 text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 text-secondary-600 hover:bg-secondary-50 rounded-lg transition-colors"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add Ingredient</span>
@@ -264,10 +279,10 @@ const AddDishForm = ({ onSubmit, onClose }) => {
                   className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="https://example.com/image.jpg"
                 />
-                <Image className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Image className="w-5 h-5 text-sage-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
               </div>
             </div>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-accent-500 mt-1">
               Leave empty to use default image
             </p>
           </div>

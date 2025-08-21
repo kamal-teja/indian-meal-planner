@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"meal-planner-backend/internal/models"
+	"nourish-backend/internal/models"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

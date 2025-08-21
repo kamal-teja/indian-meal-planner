@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ShoppingCart, Check, X, ChefHat, Utensils } from 'lucide-react';
+import { ShoppingCart, Check, X, ChefHat, Utensils, Sun, Sunset, Moon, Coffee } from 'lucide-react';
 
 const IngredientsList = ({ meals, selectedDate, onClose }) => {
   const [checkedIngredients, setCheckedIngredients] = useState(new Set());
@@ -47,23 +47,23 @@ const IngredientsList = ({ meals, selectedDate, onClose }) => {
   };
 
   const getMealTypeIcon = (mealType) => {
-    const icons = {
-      breakfast: '🌅',
-      lunch: '☀️',
-      dinner: '🌙',
-      snack: '🍿'
+    const iconMap = {
+      breakfast: <Coffee className="h-4 w-4 text-accent-600" />,
+      lunch: <Sun className="h-4 w-4 text-accent-600" />,
+      dinner: <Moon className="h-4 w-4 text-accent-600" />,
+      snack: <Sunset className="h-4 w-4 text-accent-600" />
     };
-    return icons[mealType] || '🍽️';
+    return iconMap[mealType] || <Coffee className="h-4 w-4 text-accent-600" />;
   };
 
   const getMealTypeColor = (mealType) => {
     const colors = {
-      breakfast: 'bg-orange-100 text-orange-700',
-      lunch: 'bg-green-100 text-green-700',
-      dinner: 'bg-purple-100 text-purple-700',
-      snack: 'bg-pink-100 text-pink-700'
+      breakfast: 'bg-warm-100 text-warm-700 border border-warm-200',
+      lunch: 'bg-secondary-100 text-secondary-700 border border-secondary-200',
+      dinner: 'bg-lavender-100 text-lavender-700 border border-lavender-200',
+      snack: 'bg-sage-100 text-sage-700 border border-sage-200'
     };
-    return colors[mealType] || 'bg-gray-100 text-gray-700';
+    return colors[mealType] || 'bg-neutral-100 text-accent-700 border border-neutral-200';
   };
 
   const formatDate = (date) => {

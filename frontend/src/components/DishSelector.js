@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { X, Search, Filter, Flame, Clock, Plus, Heart, Loader } from 'lucide-react';
+import { X, Search, Filter, Flame, Clock, Plus, Heart, Loader, Sun, Sunset, Moon, Coffee } from 'lucide-react';
 import AddDishForm from './AddDishForm';
+import CustomDropdown from './ui/CustomDropdown';
 import { useAuth } from '../contexts/AuthContext';
 
 const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAddDish }) => {
@@ -120,13 +121,13 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
   }, [searchTerm, selectedType, selectedCuisine, resetAndLoadDishes]);
 
   const getMealTypeIcon = (mealType) => {
-    const icons = {
-      breakfast: '🌅',
-      lunch: '☀️',
-      dinner: '🌙',
-      snack: '🍿'
+    const iconMap = {
+      breakfast: <Coffee className="h-6 w-6 text-white/80" />,
+      lunch: <Sun className="h-6 w-6 text-white/80" />,
+      dinner: <Moon className="h-6 w-6 text-white/80" />,
+      snack: <Sunset className="h-6 w-6 text-white/80" />
     };
-    return icons[mealType] || '🍽️';
+    return iconMap[mealType] || <Coffee className="h-6 w-6 text-white/80" />;
   };
 
   const getTypeColor = (type) => {
@@ -189,7 +190,7 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
         <div className="bg-secondary-600 p-6 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <span className="text-3xl">{getMealTypeIcon(mealType)}</span>
+              <span className="flex items-center justify-center">{getMealTypeIcon(mealType)}</span>
               <div>
                 <h2 className="text-2xl font-display font-bold">
                   {isEditing ? 'Change' : 'Select'} {mealType.charAt(0).toUpperCase() + mealType.slice(1)}
@@ -231,27 +232,29 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
             </div>
 
             {/* Type Filter */}
-            <select
+            <CustomDropdown
               value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white"
-            >
-              <option value="all">All Types</option>
-              <option value="Veg">Vegetarian</option>
-              <option value="Non-Veg">Non-Vegetarian</option>
-            </select>
+              onChange={setSelectedType}
+              options={[
+                { value: 'all', label: 'All Types' },
+                { value: 'Veg', label: 'Vegetarian' },
+                { value: 'Non-Veg', label: 'Non-Vegetarian' }
+              ]}
+              placeholder="Select Type"
+              className="w-full"
+            />
 
             {/* Cuisine Filter */}
-            <select
+            <CustomDropdown
               value={selectedCuisine}
-              onChange={(e) => setSelectedCuisine(e.target.value)}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white"
-            >
-              <option value="all">All Cuisines</option>
-              {cuisines.map(cuisine => (
-                <option key={cuisine} value={cuisine}>{cuisine}</option>
-              ))}
-            </select>
+              onChange={setSelectedCuisine}
+              options={[
+                { value: 'all', label: 'All Cuisines' },
+                ...cuisines.map(cuisine => ({ value: cuisine, label: cuisine }))
+              ]}
+              placeholder="Select Cuisine"
+              className="w-full"
+            />
           </div>
 
           <div className="flex items-center justify-between mt-4">

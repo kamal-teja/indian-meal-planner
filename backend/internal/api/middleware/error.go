@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"meal-planner-backend/internal/models"
+	"nourish-backend/internal/models"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { format, addDays, subDays } from 'date-fns';
-import { ChevronLeft, ChevronRight, Plus, X, Edit3, Trash2, ShoppingCart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, X, Pencil, Trash, ShoppingCart, Coffee, Sun, Moon, Sunset, Sparkles } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import MealCard from './MealCard';
 import DishSelector from './DishSelector';
@@ -8,10 +8,10 @@ import IngredientsList from './IngredientsList';
 import MealRecommendations from './MealRecommendations';
 
 const MEAL_TYPES = [
-  { id: 'breakfast', name: 'Breakfast', icon: '🌅', color: 'bg-warm-100 border-warm-200', bgColor: 'bg-warm-50', textColor: 'text-warm-700' },
-  { id: 'lunch', name: 'Lunch', icon: '☀️', color: 'bg-sage-100 border-sage-200', bgColor: 'bg-sage-50', textColor: 'text-sage-700' },
-  { id: 'dinner', name: 'Dinner', icon: '🌙', color: 'bg-lavender-100 border-lavender-200', bgColor: 'bg-lavender-50', textColor: 'text-lavender-700' },
-  { id: 'snack', name: 'Snacks', icon: '🍿', color: 'bg-secondary-100 border-secondary-200', bgColor: 'bg-secondary-50', textColor: 'text-secondary-700' }
+  { id: 'breakfast', name: 'Breakfast', icon: <Coffee className="h-5 w-5" />, color: 'bg-warm-100 border-warm-200', bgColor: 'bg-warm-50', textColor: 'text-warm-700' },
+  { id: 'lunch', name: 'Lunch', icon: <Sun className="h-5 w-5" />, color: 'bg-sage-100 border-sage-200', bgColor: 'bg-sage-50', textColor: 'text-sage-700' },
+  { id: 'dinner', name: 'Dinner', icon: <Moon className="h-5 w-5" />, color: 'bg-lavender-100 border-lavender-200', bgColor: 'bg-lavender-50', textColor: 'text-lavender-700' },
+  { id: 'snack', name: 'Snacks', icon: <Sunset className="h-5 w-5" />, color: 'bg-secondary-100 border-secondary-200', bgColor: 'bg-secondary-50', textColor: 'text-secondary-700' }
 ];
 
 const DayView = ({ loadDishes, onAddDish }) => {
@@ -157,28 +157,29 @@ const DayView = ({ loadDishes, onAddDish }) => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setShowRecommendations(!showRecommendations)}
-                  className={`p-3 rounded-lg transition-all duration-200 flex items-center space-x-2 ${
+                  className={`px-4 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 font-medium ${
                     showRecommendations 
-                      ? 'bg-lavender-100 text-lavender-700 hover:bg-lavender-200 shadow-md' 
-                      : 'hover:bg-accent-50 text-accent-600 hover:shadow-md'
+                      ? 'bg-lavender-100 text-lavender-700 hover:bg-lavender-200 shadow-md border border-lavender-200' 
+                      : 'bg-white hover:bg-accent-50 text-accent-600 hover:shadow-md border border-accent-200 shadow-sm'
                   }`}
                   title="Toggle Meal Recommendations"
                 >
-                  ✨
-                  <span className="hidden sm:inline text-sm font-medium">Recommendations</span>
+                  <Sparkles className="h-4 w-4" />
+                  <span className="hidden sm:inline text-sm">Recommendations</span>
                 </button>
                 <button
                   onClick={() => setShowIngredientsPanel(!showIngredientsPanel)}
-                  className={`p-3 rounded-lg transition-all duration-200 flex items-center space-x-2 ${
+                  className={`px-4 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 font-medium relative ${
                     showIngredientsPanel 
-                      ? 'bg-sage-100 text-sage-700 hover:bg-sage-200 shadow-md' 
-                      : 'hover:bg-accent-50 text-accent-600 hover:shadow-md'
+                      ? 'bg-sage-100 text-sage-700 hover:bg-sage-200 shadow-md border border-sage-200' 
+                      : 'bg-white hover:bg-accent-50 text-accent-600 hover:shadow-md border border-accent-200 shadow-sm'
                   }`}
                   title="Toggle Shopping List"
                 >
-                  <ShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="h-4 w-4" />
+                  <span className="hidden sm:inline text-sm">Shopping List</span>
                   {meals.length > 0 && (
-                    <span className="bg-accent-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
+                    <span className="absolute -top-1 -right-1 bg-accent-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
                       {meals.reduce((count, meal) => count + (meal.dish?.ingredients?.length || 0), 0)}
                     </span>
                   )}
@@ -208,7 +209,7 @@ const DayView = ({ loadDishes, onAddDish }) => {
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-3">
                         <div className={`p-3 ${mealType.color} rounded-lg border`}>
-                          <span className="text-2xl">{mealType.icon}</span>
+                          <span className="flex items-center justify-center">{mealType.icon}</span>
                         </div>
                         <div>
                           <h3 className={`text-xl font-display font-semibold ${mealType.textColor}`}>
@@ -232,7 +233,7 @@ const DayView = ({ loadDishes, onAddDish }) => {
                       {mealTypemeals.length === 0 ? (
                         <div className="text-center py-8 text-accent-500">
                           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-100 flex items-center justify-center">
-                            <span className="text-2xl">{mealType.icon}</span>
+                            <span className="flex items-center justify-center">{mealType.icon}</span>
                           </div>
                           <p className="text-sm mb-3">No meals planned</p>
                           <button
@@ -252,13 +253,13 @@ const DayView = ({ loadDishes, onAddDish }) => {
                                   onClick={() => handleEditMeal(meal)}
                                   className="p-2 bg-secondary-500 hover:bg-secondary-600 text-white rounded-lg shadow-md transition-colors"
                                 >
-                                  <Edit3 className="h-4 w-4" />
+                                  <Pencil className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteMeal(meal.id)}
                                   className="p-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg shadow-md transition-colors"
                                 >
-                                  <Trash2 className="h-4 w-4" />
+                                  <Trash className="h-4 w-4" />
                                 </button>
                               </div>
                             </div>

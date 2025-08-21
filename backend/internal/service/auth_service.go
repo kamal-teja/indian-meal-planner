@@ -5,10 +5,10 @@ import (
 	"errors"
 	"time"
 
-	"meal-planner-backend/internal/config"
-	"meal-planner-backend/internal/models"
-	"meal-planner-backend/internal/repository"
-	"meal-planner-backend/pkg/logger"
+	"nourish-backend/internal/config"
+	"nourish-backend/internal/models"
+	"nourish-backend/internal/repository"
+	"nourish-backend/pkg/logger"
 
 	"github.com/golang-jwt/jwt/v5"
 	"go.mongodb.org/mongo-driver/bson/primitive"

@@ -139,4 +139,26 @@
   .surface-warm {
     @apply bg-warm-50 border border-warm-100;
   }
+
+  /* Elegant Dropdown Styling */
+  .dropdown-elegant {
+    @apply appearance-none bg-white border border-neutral-300 rounded-xl px-4 py-2.5 pr-10 text-neutral-700 font-medium shadow-sm transition-all duration-200 hover:shadow-md hover:border-accent-400 focus:ring-2 focus:ring-accent-500 focus:border-accent-500 focus:outline-none cursor-pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+  }
+
+  .dropdown-elegant:hover {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  }
+
+  .dropdown-elegant:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  }
+
+  /* Style dropdown options for browsers that support it */
+  .dropdown-elegant option {
+    @apply py-2 px-4 bg-white text-neutral-700 hover:bg-accent-50;
+  }
 }

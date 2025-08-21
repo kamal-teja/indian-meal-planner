@@ -117,7 +117,7 @@ const Register = () => {
             Join us today!
           </h2>
           <p className="mt-2 text-sm text-accent-600">
-            Create your account to start planning amazing Indian meals
+            Create your account to start planning healthy, delicious meals
           </p>
         </div>
 

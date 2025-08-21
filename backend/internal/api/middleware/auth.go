@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"meal-planner-backend/internal/models"
-	"meal-planner-backend/internal/service"
+	"nourish-backend/internal/models"
+	"nourish-backend/internal/service"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"

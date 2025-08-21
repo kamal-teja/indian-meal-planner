@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Clock, Users, Flame, ChefHat, Star, Plus } from 'lucide-react';
+import { Lightbulb, Clock, Users, Flame, ChefHat, Star, Plus } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import CustomDropdown from './ui/CustomDropdown';
 
 const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -49,10 +50,10 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'easy': return 'text-green-600 bg-green-100';
-      case 'medium': return 'text-yellow-600 bg-yellow-100';
-      case 'hard': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case 'easy': return 'text-sage-600 bg-sage-100';
+      case 'medium': return 'text-warm-600 bg-warm-100';
+      case 'hard': return 'text-secondary-600 bg-secondary-100';
+      default: return 'text-neutral-600 bg-neutral-100';
     }
   };
 
@@ -70,19 +71,20 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
     <div className="bg-white rounded-lg shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold flex items-center">
-          <Sparkles className="h-6 w-6 text-purple-600 mr-2" />
+          <Lightbulb className="h-6 w-6 text-secondary-600 mr-2" />
           Meal Recommendations
         </h3>
-        <select
+        <CustomDropdown
           value={selectedMealType}
-          onChange={(e) => setSelectedMealType(e.target.value)}
-          className="border border-gray-300 rounded-md px-3 py-2"
-        >
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
+          onChange={setSelectedMealType}
+          options={[
+            { value: 'breakfast', label: 'Breakfast' },
+            { value: 'lunch', label: 'Lunch' },
+            { value: 'dinner', label: 'Dinner' },
+            { value: 'snack', label: 'Snack' }
+          ]}
+          placeholder="Select Meal Type"
+        />
       </div>
 
       {loading ? (
@@ -95,29 +97,29 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
         </div>
       ) : recommendations.length === 0 ? (
         <div className="text-center py-8">
-          <ChefHat className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600">No recommendations available.</p>
-          <p className="text-sm text-gray-500 mt-2">
+          <ChefHat className="h-12 w-12 text-neutral-400 mx-auto mb-4" />
+          <p className="text-neutral-600">No recommendations available.</p>
+          <p className="text-sm text-neutral-500 mt-2">
             Update your preferences in your profile to get personalized suggestions!
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {recommendations.map((dish, index) => (
-            <div key={dish.dishId || dish.id || index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div key={dish.dishId || dish.id || index} className="border border-accent-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 mb-1">{dish.dishName || dish.name}</h4>
-                  <p className="text-sm text-gray-600 mb-2">{dish.cuisine} • {dish.type || 'Main Course'}</p>
+                  <h4 className="font-medium text-neutral-900 mb-1">{dish.dishName || dish.name}</h4>
+                  <p className="text-sm text-neutral-600 mb-2">{dish.cuisine} • {dish.type || 'Main Course'}</p>
                   
                   {/* Recommendation Score */}
                   <div className="flex items-center space-x-2 mb-2">
-                    <Star className="h-4 w-4 text-yellow-500" />
-                    <span className="text-sm text-gray-600">
+                    <Star className="h-4 w-4 text-warm-500" />
+                    <span className="text-sm text-neutral-600">
                       Score: {Math.round((dish.score || dish.recommendationScore || 0) * 10) / 10}/10
                     </span>
                     {index < 3 && (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-100 text-purple-800">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-accent-100 text-accent-800">
                         Top Pick
                       </span>
                     )}
@@ -134,17 +136,17 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
               </div>
 
               {/* Nutrition & Details */}
-              <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
+              <div className="grid grid-cols-2 gap-4 text-sm text-neutral-600 mb-3">
                 <div className="flex items-center">
-                  <Flame className="h-4 w-4 text-orange-500 mr-1" />
+                  <Flame className="h-4 w-4 text-warm-500 mr-1" />
                   {dish.calories || 'N/A'} cal
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-4 w-4 text-blue-500 mr-1" />
+                  <Clock className="h-4 w-4 text-sage-500 mr-1" />
                   {dish.prepTime || 30} min
                 </div>
                 <div className="flex items-center">
-                  <Users className="h-4 w-4 text-green-500 mr-1" />
+                  <Users className="h-4 w-4 text-secondary-500 mr-1" />
                   {dish.servings || 2} servings
                 </div>
                 <div className="flex items-center">
@@ -162,13 +164,13 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
                     {dish.dietaryTags.slice(0, 3).map(tag => (
                       <span 
                         key={tag}
-                        className="inline-flex items-center px-2 py-0.5 rounded-md text-xs bg-blue-100 text-blue-800"
+                        className="inline-flex items-center px-2 py-0.5 rounded-md text-xs bg-lavender-100 text-lavender-800"
                       >
                         {tag}
                       </span>
                     ))}
                     {dish.dietaryTags.length > 3 && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-neutral-500">
                         +{dish.dietaryTags.length - 3} more
                       </span>
                     )}
@@ -203,7 +205,7 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
                 </div>
                 <button
                   onClick={() => handleAddMeal(dish)}
-                  className="flex items-center px-3 py-1.5 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm"
+                  className="flex items-center px-3 py-1.5 bg-accent-600 text-white rounded-md hover:bg-accent-700 transition-colors text-sm shadow-sm"
                 >
                   <Plus className="h-4 w-4 mr-1" />
                   Add to {selectedMealType}
@@ -216,9 +218,9 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
 
       {/* Why These Recommendations? */}
       {recommendations.length > 0 && user && (
-        <div className="mt-6 p-4 bg-purple-50 rounded-lg">
-          <h4 className="font-medium text-purple-900 mb-2">Why these recommendations?</h4>
-          <div className="text-sm text-purple-700 space-y-1">
+        <div className="mt-6 p-4 bg-accent-50 rounded-lg border border-accent-200">
+          <h4 className="font-medium text-accent-900 mb-2">Why these recommendations?</h4>
+          <div className="text-sm text-accent-700 space-y-1">
             {user.profile.dietaryPreferences.length > 0 && (
               <p>• Matches your dietary preferences: {user.profile.dietaryPreferences.join(', ')}</p>
             )}

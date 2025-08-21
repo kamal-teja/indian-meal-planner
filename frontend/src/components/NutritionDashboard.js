@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Target, TrendingUp, Award, AlertCircle, Calendar, Activity } from 'lucide-react';
+import { Target, TrendingUp, Award, AlertCircle, Calendar, Activity, BarChart3, Settings, Star } from 'lucide-react';
 import mealPlannerAPI from '../services/api';
 
 const NutritionDashboard = () => {
@@ -163,11 +163,17 @@ const NutritionDashboard = () => {
               <p>Use the Day View to add meals to your daily plan</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
-              <h4 className="font-medium text-green-800 mb-2">📊 Track Progress</h4>
+              <div className="flex items-center space-x-2 mb-2">
+                <BarChart3 className="h-5 w-5 text-secondary-600" />
+                <h4 className="font-medium text-secondary-800">Track Progress</h4>
+              </div>
               <p>Monitor calories, protein, carbs, and other nutrients</p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
-              <h4 className="font-medium text-purple-800 mb-2">🎯 Set Goals</h4>
+              <div className="flex items-center space-x-2 mb-2">
+                <Target className="h-5 w-5 text-sage-600" />
+                <h4 className="font-medium text-sage-800">Set Goals</h4>
+              </div>
               <p>Customize your daily nutrition targets</p>
             </div>
           </div>
@@ -188,7 +194,7 @@ const NutritionDashboard = () => {
           <select 
             value={period} 
             onChange={(e) => setPeriod(parseInt(e.target.value))}
-            className="border border-gray-300 rounded-md px-3 py-2"
+            className="dropdown-elegant"
           >
             <option value={7}>Last 7 days</option>
             <option value={14}>Last 14 days</option>
@@ -196,9 +202,10 @@ const NutritionDashboard = () => {
           </select>
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="btn-secondary flex items-center space-x-2"
           >
-            {isEditing ? 'Cancel' : 'Edit Goals'}
+            <Settings className="h-4 w-4" />
+            <span>{isEditing ? 'Cancel' : 'Edit Goals'}</span>
           </button>
         </div>
       </div>
@@ -394,7 +401,12 @@ const NutritionDashboard = () => {
                     {day.meals.map((meal, idx) => (
                       <span key={idx} className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
                         {meal.mealType}: {meal.dish?.name || 'Unknown dish'}
-                        {meal.rating && <span className="ml-1">⭐{meal.rating}</span>}
+                        {meal.rating && (
+                          <span className="ml-1 flex items-center">
+                            <Star className="h-3 w-3 text-warm-500 mr-1" />
+                            {meal.rating}
+                          </span>
+                        )}
                       </span>
                     ))}
                   </div>

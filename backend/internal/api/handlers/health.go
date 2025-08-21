@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"meal-planner-backend/internal/models"
+	"nourish-backend/internal/models"
 
 	"github.com/gin-gonic/gin"
 )
