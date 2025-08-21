@@ -40,8 +40,8 @@ export const mealPlannerAPI = {
   updateProfile: (profileData) => api.put('/auth/profile', profileData),
   toggleFavorite: (dishId) => api.post(`/auth/favorites/${dishId}`),
   
-  // Get all available dishes
-  getDishes: () => api.get('/dishes'),
+  // Get all available dishes with pagination
+  getDishes: (params = {}) => api.get('/dishes', { params }),
   
   // Search dishes
   searchDishes: (params) => api.get('/dishes/search', { params }),

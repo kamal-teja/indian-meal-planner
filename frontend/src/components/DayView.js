@@ -14,7 +14,7 @@ const MEAL_TYPES = [
   { id: 'snack', name: 'Snacks', icon: '🍿', color: 'from-pink-400 to-red-400' }
 ];
 
-const DayView = ({ dishes, onAddDish }) => {
+const DayView = ({ loadDishes, onAddDish }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -288,7 +288,7 @@ const DayView = ({ dishes, onAddDish }) => {
       {/* Dish Selector Modal */}
       {showDishSelector && (
         <DishSelector
-          dishes={dishes}
+          loadDishes={loadDishes}
           onSelect={handleDishSelect}
           onClose={() => setShowDishSelector(false)}
           mealType={selectedMealType}

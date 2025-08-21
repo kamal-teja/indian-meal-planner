@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const connectDB = require('./config/database');
 const Dish = require('./models/Dish');
 const Meal = require('./models/Meal');
@@ -39,15 +40,20 @@ const startServer = async () => {
 
 // CORS configuration for production
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, /\.onrender\.com$/, /\.vercel\.app$/, /\.netlify\.app$/]
-    : 'http://localhost:3000',
+  origin: true, // Allow all origins for development
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  preflightContinue: false
 };
 
 // Middleware
 app.use(cors(corsOptions));
+
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
+
 app.use(bodyParser.json());
 
 // Helper function to transform MongoDB document to include id field
@@ -77,10 +83,43 @@ const transformMeal = (meal) => ({
 // Auth routes
 app.use('/api/auth', authRoutes);
 
-// Get all dishes (with optional user context for favorites)
+// Get all dishes with pagination (with optional user context for favorites)
 app.get('/api/dishes', optionalAuth, async (req, res) => {
   try {
-    const dishes = await Dish.find().sort({ createdAt: -1 });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+    const skip = (page - 1) * limit;
+    
+    // Get search and filter parameters
+    const { search, type, cuisine } = req.query;
+    
+    // Build query object
+    let query = {};
+    
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { cuisine: { $regex: search, $options: 'i' } },
+        { ingredients: { $in: [new RegExp(search, 'i')] } }
+      ];
+    }
+    
+    if (type && type !== 'all') {
+      query.type = type;
+    }
+    
+    if (cuisine && cuisine !== 'all') {
+      query.cuisine = cuisine;
+    }
+    
+    const [dishes, totalCount] = await Promise.all([
+      Dish.find(query)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit),
+      Dish.countDocuments(query)
+    ]);
+    
     const transformedDishes = dishes.map(dish => {
       const dishData = transformDish(dish);
       if (req.user) {
@@ -88,7 +127,16 @@ app.get('/api/dishes', optionalAuth, async (req, res) => {
       }
       return dishData;
     });
-    res.json(transformedDishes);
+    
+    res.json({
+      dishes: transformedDishes,
+      pagination: {
+        currentPage: page,
+        totalPages: Math.ceil(totalCount / limit),
+        totalCount,
+        hasMore: page < Math.ceil(totalCount / limit)
+      }
+    });
   } catch (error) {
     console.error('Error fetching dishes:', error);
     res.status(500).json({ error: 'Failed to fetch dishes' });
@@ -404,59 +452,97 @@ app.get('/api/shopping-list', auth, async (req, res) => {
 // Get meal recommendations based on user preferences
 app.get('/api/recommendations', auth, async (req, res) => {
   try {
-    const { mealType, date } = req.query;
+    const { mealType = 'lunch', date } = req.query;
     const user = await User.findById(req.user._id);
     
-    // Build recommendation query based on user preferences
-    let query = {};
-    
-    if (user.profile.dietaryPreferences.length > 0) {
-      query.dietaryTags = { $in: user.profile.dietaryPreferences };
-    }
-    
-    if (user.profile.spiceLevel) {
-      query.spiceLevel = { $lte: user.profile.spiceLevel };
-    }
-    
-    if (user.profile.favoriteRegions.length > 0) {
-      query.cuisine = { $in: user.profile.favoriteRegions };
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
 
+    // Build base query - start with all dishes and filter progressively
+    let query = {};
+    
+    // If user has favorite regions, prefer those cuisines but don't make it exclusive
+    const favoriteRegions = user.profile?.favoriteRegions || [];
+    
     // Get user's recent meals to avoid repetition
     const recentMeals = await Meal.find({ 
       user: req.user._id,
       date: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] }
     }).populate('dish');
     
-    const recentDishIds = recentMeals.map(meal => meal.dish._id.toString());
+    const recentDishIds = recentMeals.map(meal => meal.dish?._id?.toString()).filter(Boolean);
     if (recentDishIds.length > 0) {
       query._id = { $nin: recentDishIds };
     }
 
     // Get dishes and score them
-    const dishes = await Dish.find(query).limit(50);
+    const dishes = await Dish.find(query).limit(100);
     
-    // Simple scoring algorithm
+    if (dishes.length === 0) {
+      // If no dishes found, get some basic dishes without the recent exclusion
+      const fallbackDishes = await Dish.find({}).limit(20);
+      return res.json({
+        mealType,
+        date,
+        recommendations: fallbackDishes.map(dish => ({
+          ...transformDish(dish),
+          recommendationScore: 1,
+          isFavorite: user.favoriteDishes?.includes(dish._id) || false
+        })),
+        totalFound: fallbackDishes.length
+      });
+    }
+
+    // Enhanced scoring algorithm
     const scoredDishes = dishes.map(dish => {
-      let score = 0;
+      let score = 1; // Base score for all dishes
       
-      // Favorite cuisine bonus
-      if (user.profile.favoriteRegions.includes(dish.cuisine)) score += 3;
+      // Favorite cuisine bonus (higher weight)
+      if (favoriteRegions.length > 0 && favoriteRegions.includes(dish.cuisine)) {
+        score += 5;
+      }
       
-      // Dietary preference match
-      const matchingTags = dish.dietaryTags.filter(tag => 
-        user.profile.dietaryPreferences.includes(tag)
-      );
-      score += matchingTags.length * 2;
+      // Dietary preference match (only if dish has dietary tags)
+      if (dish.dietaryTags && Array.isArray(dish.dietaryTags) && dish.dietaryTags.length > 0) {
+        const userPreferences = user.profile?.dietaryPreferences || [];
+        const matchingTags = dish.dietaryTags.filter(tag => 
+          userPreferences.includes(tag)
+        );
+        score += matchingTags.length * 3;
+      }
+      
+      // Vegetarian preference handling
+      const userPreferences = user.profile?.dietaryPreferences || [];
+      if (userPreferences.includes('vegetarian') && dish.type === 'Veg') {
+        score += 3;
+      }
       
       // Favorite dish bonus
-      if (user.favoriteDishes.includes(dish._id)) score += 5;
+      if (user.favoriteDishes && user.favoriteDishes.includes(dish._id)) {
+        score += 10;
+      }
       
-      // Meal type appropriateness (simple heuristic)
-      if (mealType === 'breakfast' && dish.calories < 400) score += 1;
-      if (mealType === 'lunch' && dish.calories >= 300 && dish.calories <= 600) score += 1;
-      if (mealType === 'dinner' && dish.calories >= 400) score += 1;
-      if (mealType === 'snack' && dish.calories < 300) score += 1;
+      // Meal type appropriateness based on calories
+      const calories = dish.calories || 0;
+      if (mealType === 'breakfast' && calories >= 200 && calories <= 500) score += 2;
+      else if (mealType === 'lunch' && calories >= 300 && calories <= 700) score += 2;
+      else if (mealType === 'dinner' && calories >= 400 && calories <= 800) score += 2;
+      else if (mealType === 'snack' && calories >= 100 && calories <= 400) score += 2;
+      
+      // Spice level match (only if both user and dish have spice level)
+      if (user.profile?.spiceLevel && dish.spiceLevel) {
+        const spiceLevels = ['mild', 'medium', 'hot', 'extra-hot'];
+        const userSpiceIndex = spiceLevels.indexOf(user.profile.spiceLevel);
+        const dishSpiceIndex = spiceLevels.indexOf(dish.spiceLevel);
+        
+        if (dishSpiceIndex <= userSpiceIndex) {
+          score += 2;
+        }
+      }
+      
+      // Random factor to add variety
+      score += Math.random() * 0.5;
       
       return { dish: transformDish(dish), score };
     });
@@ -464,18 +550,23 @@ app.get('/api/recommendations', auth, async (req, res) => {
     // Sort by score and return top recommendations
     const recommendations = scoredDishes
       .sort((a, b) => b.score - a.score)
-      .slice(0, 10)
+      .slice(0, 12)
       .map(item => ({
         ...item.dish,
-        recommendationScore: item.score,
-        isFavorite: user.favoriteDishes.includes(item.dish.id)
+        recommendationScore: Math.round(item.score * 10) / 10,
+        isFavorite: user.favoriteDishes?.includes(item.dish.id) || false
       }));
 
     res.json({
       mealType,
       date,
       recommendations,
-      totalFound: recommendations.length
+      totalFound: recommendations.length,
+      userPreferences: {
+        dietaryPreferences: user.profile?.dietaryPreferences || [],
+        favoriteRegions: user.profile?.favoriteRegions || [],
+        spiceLevel: user.profile?.spiceLevel || 'medium'
+      }
     });
   } catch (error) {
     console.error('Error getting recommendations:', error);

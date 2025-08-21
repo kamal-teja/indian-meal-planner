@@ -1,15 +1,123 @@
-import React, { useState } from 'react';
-import { X, Search, Filter, Flame, Clock, Users, Plus, Heart } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { X, Search, Filter, Flame, Clock, Plus, Heart, Loader } from 'lucide-react';
 import AddDishForm from './AddDishForm';
 import { useAuth } from '../contexts/AuthContext';
 
-const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDish }) => {
+const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAddDish }) => {
   const { user, toggleFavorite } = useAuth();
+  const [dishes, setDishes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCuisine, setSelectedCuisine] = useState('all');
   const [showAddDishForm, setShowAddDishForm] = useState(false);
   const [dishFavorites, setDishFavorites] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const [cuisines, setCuisines] = useState([]);
+  
+  const observer = useRef();
+  
+  const loadMoreDishes = useCallback(async () => {
+    if (loading || !hasMore) return;
+    
+    try {
+      setLoading(true);
+      const nextPage = currentPage + 1;
+      
+      const params = {
+        page: nextPage,
+        limit: 20,
+        ...(searchTerm && { search: searchTerm }),
+        ...(selectedType !== 'all' && { type: selectedType }),
+        ...(selectedCuisine !== 'all' && { cuisine: selectedCuisine })
+      };
+      
+      const response = await loadDishes(params);
+      setDishes(prev => [...prev, ...(response.dishes || [])]);
+      setCurrentPage(nextPage);
+      setHasMore(response.pagination?.hasMore || false);
+    } catch (error) {
+      console.error('Error loading more dishes:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [loadDishes, loading, hasMore, currentPage, searchTerm, selectedType, selectedCuisine]);
+
+  const lastDishElementRef = useCallback(node => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        loadMoreDishes();
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore, loadMoreDishes]);
+
+  const loadInitialDishes = useCallback(async () => {
+    try {
+      setLoading(true);
+      const params = {
+        page: 1,
+        limit: 20
+      };
+      
+      const response = await loadDishes(params);
+      setDishes(response.dishes || []);
+      setCurrentPage(1);
+      setHasMore(response.pagination?.hasMore || false);
+      setTotalCount(response.pagination?.totalCount || 0);
+      
+      // Extract unique cuisines for filter dropdown
+      const uniqueCuisines = [...new Set((response.dishes || []).map(dish => dish.cuisine))];
+      setCuisines(uniqueCuisines.sort());
+    } catch (error) {
+      console.error('Error loading dishes:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [loadDishes]);
+
+  const resetAndLoadDishes = useCallback(async () => {
+    try {
+      setLoading(true);
+      setDishes([]);
+      setCurrentPage(1);
+      
+      const params = {
+        page: 1,
+        limit: 20,
+        ...(searchTerm && { search: searchTerm }),
+        ...(selectedType !== 'all' && { type: selectedType }),
+        ...(selectedCuisine !== 'all' && { cuisine: selectedCuisine })
+      };
+      
+      const response = await loadDishes(params);
+      setDishes(response.dishes || []);
+      setHasMore(response.pagination?.hasMore || false);
+      setTotalCount(response.pagination?.totalCount || 0);
+    } catch (error) {
+      console.error('Error loading dishes:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [loadDishes, searchTerm, selectedType, selectedCuisine]);
+
+  useEffect(() => {
+    // Load initial dishes when component mounts
+    loadInitialDishes();
+  }, [loadInitialDishes]);
+
+  useEffect(() => {
+    // Reset and reload dishes when filters change (debounce if needed)
+    const timer = setTimeout(() => {
+      resetAndLoadDishes();
+    }, 300);
+    
+    return () => clearTimeout(timer);
+  }, [searchTerm, selectedType, selectedCuisine, resetAndLoadDishes]);
 
   const getMealTypeIcon = (mealType) => {
     const icons = {
@@ -19,11 +127,6 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
       snack: '🍿'
     };
     return icons[mealType] || '🍽️';
-  };
-
-  const getCuisines = () => {
-    const cuisines = [...new Set(dishes.map(dish => dish.cuisine))];
-    return cuisines.sort();
   };
 
   const getTypeColor = (type) => {
@@ -48,13 +151,14 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
     try {
       const newDish = await onAddDish(dishData);
       setShowAddDishForm(false);
-      // Optionally select the newly added dish
+      // Add the new dish to the beginning of the list
       if (newDish) {
+        setDishes(prev => [newDish, ...prev]);
         onSelect(newDish);
       }
     } catch (error) {
       console.error('Error adding dish:', error);
-      throw error; // Re-throw to let AddDishForm handle the error display
+      throw error;
     }
   };
 
@@ -77,17 +181,6 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
     }
     return dish.isFavorite || false;
   };
-
-  const filteredDishes = dishes.filter(dish => {
-    const matchesSearch = dish.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         dish.cuisine.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         dish.ingredients.some(ing => ing.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    const matchesType = selectedType === 'all' || dish.type === selectedType;
-    const matchesCuisine = selectedCuisine === 'all' || dish.cuisine === selectedCuisine;
-    
-    return matchesSearch && matchesType && matchesCuisine;
-  });
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
@@ -155,7 +248,7 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">All Cuisines</option>
-              {getCuisines().map(cuisine => (
+              {cuisines.map(cuisine => (
                 <option key={cuisine} value={cuisine}>{cuisine}</option>
               ))}
             </select>
@@ -163,7 +256,7 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
 
           <div className="flex items-center justify-between mt-4">
             <span className="text-sm text-gray-600">
-              {filteredDishes.length} dish{filteredDishes.length !== 1 ? 'es' : ''} found
+              {totalCount > 0 ? `${dishes.length} of ${totalCount} dish${totalCount !== 1 ? 'es' : ''}` : 'No dishes found'}
             </span>
             <button
               onClick={() => {
@@ -180,7 +273,7 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
 
         {/* Dishes Grid */}
         <div className="p-6 overflow-y-auto max-h-96">
-          {filteredDishes.length === 0 ? (
+          {dishes.length === 0 && !loading ? (
             <div className="text-center py-12">
               <Filter className="h-16 w-16 text-gray-300 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">No dishes found</h3>
@@ -188,9 +281,10 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {filteredDishes.map(dish => (
+              {dishes.map((dish, index) => (
                 <div
                   key={dish.id}
+                  ref={index === dishes.length - 1 ? lastDishElementRef : null}
                   onClick={() => onSelect(dish)}
                   className="p-4 border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md cursor-pointer transition-all duration-200 group"
                 >
@@ -265,6 +359,21 @@ const DishSelector = ({ dishes, onSelect, onClose, mealType, isEditing, onAddDis
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+          
+          {/* Loading indicator */}
+          {loading && (
+            <div className="flex justify-center items-center py-8">
+              <Loader className="h-6 w-6 animate-spin text-primary-600" />
+              <span className="ml-2 text-gray-600">Loading more dishes...</span>
+            </div>
+          )}
+          
+          {/* End of results indicator */}
+          {!hasMore && dishes.length > 0 && (
+            <div className="text-center py-4 text-gray-500 text-sm">
+              You've reached the end of the list
             </div>
           )}
         </div>

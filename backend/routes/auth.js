@@ -35,7 +35,10 @@ router.post('/register', [
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ error: 'User with this email already exists' });
+      return res.status(400).json({ 
+        error: 'An account with this email address already exists. Please use a different email or try logging in instead.',
+        code: 'EMAIL_EXISTS'
+      });
     }
 
     // Create new user

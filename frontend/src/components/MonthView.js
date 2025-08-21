@@ -6,7 +6,7 @@ import DishSelector from './DishSelector';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const MonthView = ({ dishes, onAddDish }) => {
+const MonthView = ({ loadDishes, onAddDish }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [monthMeals, setMonthMeals] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -291,7 +291,7 @@ const MonthView = ({ dishes, onAddDish }) => {
       {/* Dish Selector Modal */}
       {showDishSelector && selectedDay && (
         <DishSelector
-          dishes={dishes}
+          loadDishes={loadDishes}
           onSelect={handleDishSelect}
           onClose={() => {
             setShowDishSelector(false);

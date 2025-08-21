@@ -70,16 +70,35 @@ const Register = () => {
     if (!validateForm()) return;
 
     setLoading(true);
+    // Clear previous errors
+    setErrors({});
+    
     const result = await register({
       name: formData.name.trim(),
-      email: formData.email,
+      email: formData.email.toLowerCase().trim(),
       password: formData.password
     });
     
     if (result.success) {
       navigate('/', { replace: true });
     } else {
-      setErrors({ submit: result.error });
+      // Handle different types of errors
+      let errorMessage = result.error;
+      let errorType = 'submit';
+      
+      // Check if it's an email already exists error
+      if (result.error && result.error.includes('email address already exists')) {
+        errorMessage = result.error;
+        errorType = 'email';
+      } else if (result.error && result.error.includes('email')) {
+        errorType = 'email';
+      } else if (result.error && result.error.includes('password')) {
+        errorType = 'password';
+      } else if (result.error && result.error.includes('name')) {
+        errorType = 'name';
+      }
+      
+      setErrors({ [errorType]: errorMessage });
     }
     setLoading(false);
   };
@@ -161,7 +180,23 @@ const Register = () => {
                 />
               </div>
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                <div className={`mt-1 p-2 rounded-md ${
+                  errors.email.includes('already exists') 
+                    ? 'bg-red-50 border border-red-200' 
+                    : ''
+                }`}>
+                  <p className="text-sm text-red-600 flex items-start">
+                    {errors.email.includes('already exists') && (
+                      <span className="text-red-500 mr-1">⚠️</span>
+                    )}
+                    {errors.email}
+                  </p>
+                  {errors.email.includes('already exists') && (
+                    <p className="text-xs text-red-500 mt-1">
+                      Try logging in instead or use a different email address.
+                    </p>
+                  )}
+                </div>
               )}
             </div>
 
