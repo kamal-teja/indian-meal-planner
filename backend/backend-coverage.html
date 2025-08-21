@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>models: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">nourish-backend/internal/models/dish.go (100.0%)</option>
+				
+				<option value="file1">nourish-backend/internal/models/flexible_date.go (100.0%)</option>
+				
+				<option value="file2">nourish-backend/internal/models/meal.go (100.0%)</option>
+				
+				<option value="file3">nourish-backend/internal/models/user.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package models
+
+import (
+        "time"
+
+        "go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+// Dish represents a dish/recipe in the system
+type Dish struct {
+        ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+        Name        string             `bson:"name" json:"name" validate:"required"`
+        Type        string             `bson:"type" json:"type" validate:"required,oneof=Veg Non-Veg"`
+        Cuisine     string             `bson:"cuisine" json:"cuisine" validate:"required"`
+        Image       string             `bson:"image" json:"image"`
+        Ingredients []string           `bson:"ingredients" json:"ingredients" validate:"required,min=1"`
+        Calories    int                `bson:"calories" json:"calories" validate:"min=0"`
+
+        // Nutritional information
+        Nutrition Nutrition `bson:"nutrition" json:"nutrition"`
+
+        // Tags and metadata
+        DietaryTags []string `bson:"dietaryTags" json:"dietaryTags"`
+        SpiceLevel  string   `bson:"spiceLevel" json:"spiceLevel" validate:"oneof=mild medium hot extra-hot"`
+
+        // Cooking information
+        PrepTime   int    `bson:"prepTime" json:"prepTime" validate:"min=0"` // minutes
+        CookTime   int    `bson:"cookTime" json:"cookTime" validate:"min=0"` // minutes
+        Servings   int    `bson:"servings" json:"servings" validate:"min=1"`
+        Difficulty string `bson:"difficulty" json:"difficulty" validate:"oneof=easy medium hard"`
+
+        // Additional information
+        Description string `bson:"description" json:"description"`
+
+        // Metadata
+        CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
+        UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
+}
+
+// Nutrition represents nutritional information for a dish
+type Nutrition struct {
+        Protein int `bson:"protein" json:"protein" validate:"min=0"` // grams
+        Carbs   int `bson:"carbs" json:"carbs" validate:"min=0"`     // grams
+        Fat     int `bson:"fat" json:"fat" validate:"min=0"`         // grams
+        Fiber   int `bson:"fiber" json:"fiber" validate:"min=0"`     // grams
+        Sugar   int `bson:"sugar" json:"sugar" validate:"min=0"`     // grams
+        Sodium  int `bson:"sodium" json:"sodium" validate:"min=0"`   // milligrams
+}
+
+// DishResponse represents the dish data returned in API responses with favorites info
+type DishResponse struct {
+        ID          string    `json:"id"`
+        Name        string    `json:"name"`
+        Type        string    `json:"type"`
+        Cuisine     string    `json:"cuisine"`
+        Image       string    `json:"image"`
+        Ingredients []string  `json:"ingredients"`
+        Calories    int       `json:"calories"`
+        Nutrition   Nutrition `json:"nutrition"`
+        DietaryTags []string  `json:"dietaryTags"`
+        SpiceLevel  string    `json:"spiceLevel"`
+        PrepTime    int       `json:"prepTime"`
+        CookTime    int       `json:"cookTime"`
+        Servings    int       `json:"servings"`
+        Difficulty  string    `json:"difficulty"`
+        Description string    `json:"description"`
+        IsFavorite  bool      `json:"isFavorite,omitempty"`
+}
+
+// DishCreateRequest represents the request for creating a dish
+type DishCreateRequest struct {
+        Name        string    `json:"name" validate:"required,min=2,max=100"`
+        Type        string    `json:"type" validate:"required,oneof=Veg Non-Veg"`
+        Cuisine     string    `json:"cuisine" validate:"required"`
+        Image       string    `json:"image"`
+        Ingredients []string  `json:"ingredients" validate:"required,min=1"`
+        Calories    int       `json:"calories" validate:"omitempty,min=0"`
+        Nutrition   Nutrition `json:"nutrition"`
+        DietaryTags []string  `json:"dietaryTags"`
+        SpiceLevel  string    `json:"spiceLevel" validate:"omitempty,oneof=mild medium hot extra-hot"`
+        PrepTime    int       `json:"prepTime" validate:"omitempty,min=0"`
+        CookTime    int       `json:"cookTime" validate:"omitempty,min=0"`
+        Servings    int       `json:"servings" validate:"omitempty,min=1"`
+        Difficulty  string    `json:"difficulty" validate:"omitempty,oneof=easy medium hard"`
+        Description string    `json:"description"`
+}
+
+// ToResponse converts Dish model to DishResponse
+func (d *Dish) ToResponse() DishResponse <span class="cov8" title="1">{
+        return DishResponse{
+                ID:          d.ID.Hex(),
+                Name:        d.Name,
+                Type:        d.Type,
+                Cuisine:     d.Cuisine,
+                Image:       d.Image,
+                Ingredients: d.Ingredients,
+                Calories:    d.Calories,
+                Nutrition:   d.Nutrition,
+                DietaryTags: d.DietaryTags,
+                SpiceLevel:  d.SpiceLevel,
+                PrepTime:    d.PrepTime,
+                CookTime:    d.CookTime,
+                Servings:    d.Servings,
+                Difficulty:  d.Difficulty,
+                Description: d.Description,
+                IsFavorite:  false, // Will be set by service layer
+        }
+}</span>
+
+// GetValidDietaryTags returns the list of valid dietary tags
+func GetValidDietaryTags() []string <span class="cov8" title="1">{
+        return []string{
+                "vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free",
+                "keto", "paleo", "low-carb", "high-protein", "low-sodium", "sugar-free",
+        }
+}</span>
+
+// GetValidCuisines returns the list of valid cuisines
+func GetValidCuisines() []string <span class="cov8" title="1">{
+        return []string{
+                "North Indian", "South Indian", "Bengali", "Gujarati", "Punjabi",
+                "Rajasthani", "Maharashtrian", "Italian", "Chinese", "Thai",
+                "French", "Korean", "Continental", "Mughlai", "Kashmiri",
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package models
+
+import (
+        "encoding/json"
+        "fmt"
+        "strings"
+        "time"
+)
+
+// FlexibleDate is a custom time type that can parse multiple date formats
+type FlexibleDate struct {
+        time.Time
+}
+
+// UnmarshalJSON implements json.Unmarshaler interface
+func (fd *FlexibleDate) UnmarshalJSON(data []byte) error <span class="cov8" title="1">{
+        // Remove quotes from JSON string
+        str := strings.Trim(string(data), "\"")
+
+        // List of supported date formats
+        formats := []string{
+                "2006-01-02T15:04:05Z07:00", // RFC3339 with timezone
+                "2006-01-02T15:04:05Z",      // RFC3339 UTC
+                "2006-01-02T15:04:05",       // ISO8601 without timezone
+                "2006-01-02 15:04:05",       // SQL datetime format
+                "2006-01-02",                // Date only (YYYY-MM-DD)
+        }
+
+        var err error
+        for _, format := range formats </span><span class="cov8" title="1">{
+                fd.Time, err = time.Parse(format, str)
+                if err == nil </span><span class="cov8" title="1">{
+                        return nil
+                }</span>
+        }
+
+        <span class="cov8" title="1">return fmt.Errorf("unable to parse date '%s', supported formats: YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS, or RFC3339", str)</span>
+}
+
+// MarshalJSON implements json.Marshaler interface
+func (fd FlexibleDate) MarshalJSON() ([]byte, error) <span class="cov8" title="1">{
+        return json.Marshal(fd.Time.Format(time.RFC3339))
+}</span>
+
+// String returns the string representation
+func (fd FlexibleDate) String() string <span class="cov8" title="1">{
+        return fd.Time.Format("2006-01-02T15:04:05Z07:00")
+}</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package models
+
+import (
+        "time"
+
+        "go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+// Meal represents a meal entry in the system
+type Meal struct {
+        ID       primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+        Date     time.Time          `bson:"date" json:"date" validate:"required"`
+        MealType string             `bson:"mealType" json:"mealType" validate:"required,oneof=breakfast lunch dinner snack"`
+        DishID   primitive.ObjectID `bson:"dishId" json:"dishId" validate:"required"`
+        UserID   primitive.ObjectID `bson:"userId" json:"userId" validate:"required"`
+
+        // Optional fields
+        Notes  string `bson:"notes" json:"notes"`
+        Rating int    `bson:"rating" json:"rating" validate:"min=0,max=5"` // 0 means no rating
+
+        // Metadata
+        CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
+        UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
+}
+
+// MealWithDish represents a meal with populated dish information
+type MealWithDish struct {
+        ID        string       `json:"id"`
+        Date      time.Time    `json:"date"`
+        MealType  string       `json:"mealType"`
+        Dish      DishResponse `json:"dish"`
+        User      string       `json:"user"`
+        Notes     string       `json:"notes"`
+        Rating    int          `json:"rating"`
+        CreatedAt time.Time    `json:"createdAt"`
+}
+
+// MealRequest represents the request for creating/updating a meal
+type MealRequest struct {
+        Date     FlexibleDate `json:"date" validate:"required"`
+        MealType string       `json:"mealType" validate:"required,oneof=breakfast lunch dinner snack"`
+        DishID   string       `json:"dishId" validate:"required"`
+        Notes    string       `json:"notes"`
+        Rating   int          `json:"rating" validate:"min=0,max=5"` // 0 means no rating
+}
+
+// MealPlan represents a meal plan for a user
+type MealPlan struct {
+        ID     primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+        UserID primitive.ObjectID `bson:"userId" json:"userId" validate:"required"`
+        Name   string             `bson:"name" json:"name" validate:"required"`
+
+        // Plan details
+        StartDate   time.Time `bson:"startDate" json:"startDate" validate:"required"`
+        EndDate     time.Time `bson:"endDate" json:"endDate" validate:"required"`
+        Description string    `bson:"description" json:"description"`
+
+        // Meals in the plan
+        Meals []MealPlanMeal `bson:"meals" json:"meals"`
+
+        // Metadata
+        CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
+        UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
+}
+
+// MealPlanMeal represents a meal within a meal plan
+type MealPlanMeal struct {
+        Date     time.Time          `bson:"date" json:"date"`
+        MealType string             `bson:"mealType" json:"mealType"`
+        DishID   primitive.ObjectID `bson:"dishId" json:"dishId"`
+        Notes    string             `bson:"notes" json:"notes"`
+}
+
+// MealPlanRequest represents the request for creating/updating a meal plan
+type MealPlanRequest struct {
+        Name        string    `json:"name" validate:"required"`
+        StartDate   time.Time `json:"startDate" validate:"required"`
+        EndDate     time.Time `json:"endDate" validate:"required"`
+        Description string    `json:"description"`
+}
+
+// GetValidMealTypes returns the list of valid meal types
+func GetValidMealTypes() []string <span class="cov8" title="1">{
+        return []string{"breakfast", "lunch", "dinner", "snack"}
+}</span>
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package models
+
+import (
+        "time"
+
+        "go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+// User represents a user in the system
+type User struct {
+        ID       primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+        Name     string             `bson:"name" json:"name" validate:"required,min=2,max=50"`
+        Email    string             `bson:"email" json:"email" validate:"required,email"`
+        Password string             `bson:"password" json:"-" validate:"required,min=6"`
+        Profile  UserProfile        `bson:"profile" json:"profile"`
+
+        // User metadata
+        Favorites   []primitive.ObjectID `bson:"favorites" json:"favorites"`
+        LastLoginAt *time.Time           `bson:"lastLoginAt" json:"lastLoginAt"`
+        CreatedAt   time.Time            `bson:"createdAt" json:"createdAt"`
+        UpdatedAt   time.Time            `bson:"updatedAt" json:"updatedAt"`
+}
+
+// UserProfile contains user's dietary preferences and nutrition goals
+type UserProfile struct {
+        DietaryPreferences []string       `bson:"dietaryPreferences" json:"dietaryPreferences"`
+        SpiceLevel         string         `bson:"spiceLevel" json:"spiceLevel" validate:"omitempty,oneof=mild medium hot extra-hot"`
+        FavoriteRegions    []string       `bson:"favoriteRegions" json:"favoriteRegions"`
+        Avatar             string         `bson:"avatar" json:"avatar"`
+        NutritionGoals     NutritionGoals `bson:"nutritionGoals" json:"nutritionGoals"`
+}
+
+// NutritionGoals represents daily nutrition targets
+type NutritionGoals struct {
+        DailyCalories int `bson:"dailyCalories" json:"dailyCalories" validate:"omitempty,min=0,max=10000"`
+        Protein       int `bson:"protein" json:"protein" validate:"min=0"` // grams
+        Carbs         int `bson:"carbs" json:"carbs" validate:"min=0"`     // grams
+        Fat           int `bson:"fat" json:"fat" validate:"min=0"`         // grams
+        Fiber         int `bson:"fiber" json:"fiber" validate:"min=0"`     // grams
+        Sodium        int `bson:"sodium" json:"sodium" validate:"min=0"`   // milligrams
+}
+
+// UserRegistrationRequest represents the request for user registration
+type UserRegistrationRequest struct {
+        Name     string `json:"name" validate:"required,min=2,max=50"`
+        Email    string `json:"email" validate:"required,email"`
+        Password string `json:"password" validate:"required,min=6"`
+}
+
+// UserLoginRequest represents the request for user login
+type UserLoginRequest struct {
+        Email    string `json:"email" validate:"required,email"`
+        Password string `json:"password" validate:"required"`
+}
+
+// UserResponse represents the user data returned in API responses
+type UserResponse struct {
+        ID      string      `json:"id"`
+        Name    string      `json:"name"`
+        Email   string      `json:"email"`
+        Profile UserProfile `json:"profile"`
+}
+
+// ProfileUpdateRequest represents the request for updating user profile
+type ProfileUpdateRequest struct {
+        Name    string      `json:"name,omitempty" validate:"omitempty,min=2,max=50"`
+        Profile UserProfile `json:"profile"`
+}
+
+// ToResponse converts User model to UserResponse
+func (u *User) ToResponse() UserResponse <span class="cov8" title="1">{
+        return UserResponse{
+                ID:      u.ID.Hex(),
+                Name:    u.Name,
+                Email:   u.Email,
+                Profile: u.Profile,
+        }
+}</span>
+
+// GetDietaryPreferences returns the list of valid dietary preferences
+func GetDietaryPreferences() []string <span class="cov8" title="1">{
+        return []string{
+                "vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free",
+                "keto", "paleo", "low-carb", "high-protein", "low-sodium", "sugar-free",
+        }
+}</span>
+
+// GetFavoriteRegions returns the list of valid favorite regions
+func GetFavoriteRegions() []string <span class="cov8" title="1">{
+        return []string{
+                "North Indian", "South Indian", "Bengali", "Gujarati", "Punjabi",
+                "Rajasthani", "Maharashtrian", "Italian", "Chinese", "Thai",
+                "French", "Korean", "Continental",
+        }
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

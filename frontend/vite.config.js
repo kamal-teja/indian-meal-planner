@@ -23,5 +23,22 @@ export default defineConfig({
   },
   build: {
     outDir: 'build'
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.js'],
+    coverage: {
+      reporter: ['text', 'html', 'lcov'],
+      exclude: [
+        'node_modules/',
+        'src/test/',
+        '**/*.test.js',
+        '**/*.test.jsx',
+        'vite.config.js',
+        'tailwind.config.js',
+        'postcss.config.js'
+      ]
+    }
   }
 })
