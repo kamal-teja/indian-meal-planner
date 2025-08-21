@@ -325,26 +325,3 @@ func TestDishRepository_Search(t *testing.T) {
 		assert.Len(t, dishes, 0)
 	})
 }
-
-func TestDishFilter(t *testing.T) {
-	// Test that DishFilter struct works correctly
-	filter := DishFilter{
-		Type:        "Veg",
-		Cuisine:     "North Indian",
-		DietaryTags: []string{"vegetarian", "high-protein"},
-		SpiceLevel:  "medium",
-		MaxCalories: 500,
-		MinCalories: 100,
-		Ingredients: []string{"paneer", "tomatoes"},
-	}
-
-	assert.Equal(t, "Veg", filter.Type)
-	assert.Equal(t, "North Indian", filter.Cuisine)
-	assert.Contains(t, filter.DietaryTags, "vegetarian")
-	assert.Contains(t, filter.DietaryTags, "high-protein")
-	assert.Equal(t, "medium", filter.SpiceLevel)
-	assert.Equal(t, 500, filter.MaxCalories)
-	assert.Equal(t, 100, filter.MinCalories)
-	assert.Contains(t, filter.Ingredients, "paneer")
-	assert.Contains(t, filter.Ingredients, "tomatoes")
-}

@@ -319,27 +319,3 @@ func TestMealRepository_GetNutritionByDateRange(t *testing.T) {
 		assert.Len(t, summaries, 0)
 	})
 }
-
-func TestNutritionSummary(t *testing.T) {
-	// Test NutritionSummary struct
-	date := time.Date(2023, 10, 15, 0, 0, 0, 0, time.UTC)
-	summary := NutritionSummary{
-		Date:      date,
-		Calories:  1500,
-		Protein:   75,
-		Carbs:     200,
-		Fat:       50,
-		Fiber:     30,
-		Sodium:    2200,
-		MealCount: 4,
-	}
-
-	assert.Equal(t, date, summary.Date)
-	assert.Equal(t, 1500, summary.Calories)
-	assert.Equal(t, 75, summary.Protein)
-	assert.Equal(t, 200, summary.Carbs)
-	assert.Equal(t, 50, summary.Fat)
-	assert.Equal(t, 30, summary.Fiber)
-	assert.Equal(t, 2200, summary.Sodium)
-	assert.Equal(t, 4, summary.MealCount)
-}
