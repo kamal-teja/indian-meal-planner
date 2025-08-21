@@ -24,9 +24,13 @@ const MonthView = ({ loadDishes, onAddDish }) => {
       const year = selectedDate.getFullYear();
       const month = selectedDate.getMonth() + 1;
       const response = await mealPlannerAPI.getMealsByMonth(year, month);
-      setMonthMeals(response.data);
+      // Backend returns { success: true, data: [meals] }, so we need response.data.data
+      const meals = response.data.data || [];
+      console.log(`Loaded ${meals.length} meals for ${year}-${month}:`, meals);
+      setMonthMeals(meals);
     } catch (error) {
       console.error('Error loading month meals:', error);
+      setMonthMeals([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
@@ -42,7 +46,19 @@ const MonthView = ({ loadDishes, onAddDish }) => {
 
   const getMealsForDate = (date) => {
     const dateStr = format(date, 'yyyy-MM-dd');
-    return monthMeals.filter(meal => meal.date === dateStr);
+    const filteredMeals = monthMeals.filter(meal => {
+      // Handle both date string formats: "2025-08-21" and "2025-08-21T10:30:00Z"
+      const mealDate = meal.date instanceof Date ? meal.date : new Date(meal.date);
+      const mealDateStr = format(mealDate, 'yyyy-MM-dd');
+      return mealDateStr === dateStr;
+    });
+    
+    // Debug logging (can be removed later)
+    if (filteredMeals.length > 0) {
+      console.log(`Found ${filteredMeals.length} meals for ${dateStr}:`, filteredMeals);
+    }
+    
+    return filteredMeals;
   };
 
   const getCalendarDays = () => {

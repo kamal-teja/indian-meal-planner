@@ -24,12 +24,26 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('authToken');
       if (token) {
+        console.log('Checking auth status with token:', token.substring(0, 20) + '...');
         const response = await mealPlannerAPI.getCurrentUser();
-        setUser(response.data.user);
-        setIsAuthenticated(true);
+        console.log('getCurrentUser response:', response.data);
+        // Handle the response format from backend: { success: true, data: user }
+        if (response.data && response.data.success && response.data.data) {
+          setUser(response.data.data);
+          setIsAuthenticated(true);
+          console.log('User authenticated successfully:', response.data.data);
+        } else {
+          console.error('Invalid response format:', response.data);
+          logout();
+        }
+      } else {
+        console.log('No auth token found');
       }
     } catch (error) {
       console.error('Auth check failed:', error);
+      if (error.response?.status === 401) {
+        console.log('Token expired or invalid, logging out');
+      }
       logout();
     } finally {
       setLoading(false);
@@ -39,6 +53,8 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await mealPlannerAPI.login(credentials);
+      console.log('Login response:', response.data);
+      // Backend returns AuthResponse: { success, message, token, user }
       const { token, user: userData } = response.data;
       
       localStorage.setItem('authToken', token);
@@ -60,6 +76,8 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const response = await mealPlannerAPI.register(userData);
+      console.log('Register response:', response.data);
+      // Backend returns AuthResponse: { success, message, token, user }
       const { token, user: newUser } = response.data;
       
       localStorage.setItem('authToken', token);
@@ -94,7 +112,8 @@ export const AuthProvider = ({ children }) => {
   const updateUserProfile = async (profileData) => {
     try {
       const response = await mealPlannerAPI.updateProfile(profileData);
-      const updatedUser = response.data.user;
+      // Handle the response format from backend: { success: true, message: "...", data: user }
+      const updatedUser = response.data.data;
       
       setUser(prev => ({ ...prev, ...updatedUser }));
       localStorage.setItem('user', JSON.stringify({ ...user, ...updatedUser }));
@@ -109,23 +128,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const toggleFavorite = async (dishId) => {
-    try {
-      const response = await mealPlannerAPI.toggleFavorite(dishId);
-      const { isFavorite, favoriteDishes } = response.data;
-      
-      setUser(prev => ({
-        ...prev,
-        favoriteDishes
-      }));
-      
-      return { success: true, isFavorite };
-    } catch (error) {
-      console.error('Toggle favorite failed:', error);
-      return { success: false, error: error.response?.data?.error };
-    }
-  };
-
   const value = {
     user,
     loading,
@@ -134,7 +136,6 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     updateUserProfile,
-    toggleFavorite,
     checkAuthStatus
   };
 

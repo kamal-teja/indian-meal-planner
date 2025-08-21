@@ -1,6 +1,18 @@
 # 🚀 Meal Planner App - Free Deployment Guide
 
-This guide will help you deploy your Indian Meal Planner app for **FREE** using MongoDB Atlas and various hosting providers.
+This3. Configure:
+   - **Name**: `meal-planner-api`
+   - **Root Directory**: `backend`
+   - **Environment**: `Go`
+   - **Build Command**: `go build -o main cmd/server/main.go`
+   - **Start Command**: `./main`
+   - **Instance Type**: Free
+
+5. **Environment Variables** (click "Advanced"):
+   - `ENVIRONMENT`: `production`
+   - `MONGODB_URI`: `[Your MongoDB connection string from Step 1.3]`
+   - `JWT_SECRET`: `your-super-secret-jwt-key-at-least-32-characters-long`
+   - `PORT`: `5000`help you deploy your Indian Meal Planner app for **FREE** using MongoDB Atlas and various hosting providers.
 
 ## 📋 Prerequisites
 
@@ -114,7 +126,8 @@ git push origin main
 cd backend
 heroku create meal-planner-api
 heroku config:set MONGODB_URI="your-mongodb-uri"
-heroku config:set NODE_ENV=production
+heroku config:set ENVIRONMENT=production
+heroku config:set JWT_SECRET="your-super-secret-jwt-key"
 git add .
 git commit -m "Deploy to Heroku"
 git push heroku main
@@ -158,7 +171,8 @@ git push heroku main
 
 **Backend**:
 - ✅ `MONGODB_URI`
-- ✅ `NODE_ENV=production`
+- ✅ `ENVIRONMENT=production`
+- ✅ `JWT_SECRET`
 - ✅ `PORT` (usually auto-set by hosting provider)
 
 **Frontend**:

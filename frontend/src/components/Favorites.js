@@ -17,9 +17,11 @@ const Favorites = () => {
     try {
       setLoading(true);
       const response = await mealPlannerAPI.getFavoriteDishes();
-      setFavoriteDishes(response.data);
+      // Handle the response format from backend: { success: true, dishes: [...], pagination: {...} }
+      setFavoriteDishes(response.data.dishes || []);
     } catch (error) {
       console.error('Error loading favorites:', error);
+      setFavoriteDishes([]); // Set empty array on error
     } finally {
       setLoading(false);
     }

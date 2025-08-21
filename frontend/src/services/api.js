@@ -37,8 +37,8 @@ export const mealPlannerAPI = {
   register: (userData) => api.post('/auth/register', userData),
   logout: () => api.post('/auth/logout'),
   getCurrentUser: () => api.get('/auth/me'),
-  updateProfile: (profileData) => api.put('/auth/profile', profileData),
-  toggleFavorite: (dishId) => api.post(`/auth/favorites/${dishId}`),
+  updateProfile: (profileData) => api.put('/user/profile', profileData),
+  toggleFavorite: (dishId) => api.post(`/dishes/${dishId}/favorite`),
   
   // Get all available dishes with pagination
   getDishes: (params = {}) => api.get('/dishes', { params }),
@@ -68,7 +68,7 @@ export const mealPlannerAPI = {
   deleteMeal: (mealId) => api.delete(`/meals/${mealId}`),
   
   // Analytics
-  getMealAnalytics: (period = 30) => api.get(`/analytics/meals?period=${period}`),
+  getMealAnalytics: (period = 30) => api.get(`/analytics?period=${period}`),
   
   // Shopping list
   getShoppingList: (startDate, endDate) => api.get(`/shopping-list?startDate=${startDate}&endDate=${endDate}`),
@@ -77,8 +77,9 @@ export const mealPlannerAPI = {
   getRecommendations: (mealType, date) => api.get(`/recommendations?mealType=${mealType}&date=${date}`),
   
   // Nutrition tracking
-  getNutritionProgress: (startDate, endDate) => api.get(`/nutrition/progress?startDate=${startDate}&endDate=${endDate}`),
-  updateNutritionGoals: (goals) => api.put('/profile/nutrition-goals', goals),
+  getNutritionProgress: (period = 7) => api.get(`/nutrition/progress?period=${period}`),
+  getNutritionGoals: () => api.get('/nutrition/goals'),
+  updateNutritionGoals: (goals) => api.put('/nutrition/goals', goals),
   
   // Health check
   healthCheck: () => api.get('/health'),

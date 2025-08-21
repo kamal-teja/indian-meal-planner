@@ -15,9 +15,11 @@ const Analytics = () => {
     try {
       setLoading(true);
       const response = await mealPlannerAPI.getMealAnalytics(period);
-      setAnalytics(response.data);
+      // Handle the response format from backend: { success: true, data: analytics }
+      setAnalytics(response.data.data);
     } catch (error) {
       console.error('Error loading analytics:', error);
+      setAnalytics(null);
     } finally {
       setLoading(false);
     }

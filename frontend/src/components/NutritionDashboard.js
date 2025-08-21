@@ -23,14 +23,19 @@ const NutritionDashboard = () => {
   const fetchNutritionData = async () => {
     try {
       setLoading(true);
-      const endDate = new Date().toISOString().split('T')[0];
-      const startDate = new Date(Date.now() - period * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
       
-      const response = await mealPlannerAPI.getNutritionProgress(startDate, endDate);
-      setNutritionData(response.data);
-      setGoals(response.data.goals);
+      // Get nutrition progress and goals
+      const [progressResponse, goalsResponse] = await Promise.all([
+        mealPlannerAPI.getNutritionProgress(period),
+        mealPlannerAPI.getNutritionGoals()
+      ]);
+      
+      // Handle the response format from backend: { success: true, data: ... }
+      setNutritionData(progressResponse.data.data);
+      setGoals(goalsResponse.data.data);
     } catch (error) {
       console.error('Error fetching nutrition data:', error);
+      setNutritionData(null);
     } finally {
       setLoading(false);
     }
@@ -38,7 +43,9 @@ const NutritionDashboard = () => {
 
   const updateGoals = async () => {
     try {
-      await mealPlannerAPI.updateNutritionGoals(goals);
+      const response = await mealPlannerAPI.updateNutritionGoals(goals);
+      // Handle the response format from backend: { success: true, data: goals }
+      setGoals(response.data.data);
       setIsEditing(false);
       fetchNutritionData();
     } catch (error) {
@@ -80,7 +87,9 @@ const NutritionDashboard = () => {
     );
   }
 
-  const todayData = nutritionData.dailyData[nutritionData.dailyData.length - 1];
+  // Handle the backend response format: { period, progress, goals, summary }
+  const dailyData = nutritionData.progress || [];
+  const todayData = dailyData.length > 0 ? dailyData[dailyData.length - 1] : null;
   const avgData = nutritionData.summary;
 
   return (
@@ -115,29 +124,40 @@ const NutritionDashboard = () => {
         <div className="bg-white rounded-lg shadow-md p-6">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <Calendar className="h-5 w-5 text-green-600 mr-2" />
-            Today's Progress ({todayData.date})
+            Today's Progress ({new Date(todayData.date).toLocaleDateString()})
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {Object.entries(todayData.progress).map(([nutrient, percentage]) => (
-              <div key={nutrient} className="text-center">
-                <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getProgressColor(percentage)}`}>
-                  {Math.round(percentage)}%
+            {[
+              { name: 'calories', value: todayData.calories, goal: nutritionData.goals.dailyCalories, unit: '' },
+              { name: 'protein', value: todayData.protein, goal: nutritionData.goals.protein, unit: 'g' },
+              { name: 'carbs', value: todayData.carbs, goal: nutritionData.goals.carbs, unit: 'g' },
+              { name: 'fat', value: todayData.fat, goal: nutritionData.goals.fat, unit: 'g' },
+              { name: 'fiber', value: todayData.fiber, goal: nutritionData.goals.fiber, unit: 'g' },
+              { name: 'sodium', value: todayData.sodium, goal: nutritionData.goals.sodium, unit: 'mg' }
+            ].map(({ name, value, goal, unit }) => {
+              const percentage = goal > 0 ? (value / goal) * 100 : 0;
+              return (
+                <div key={name} className="text-center">
+                  <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getProgressColor(percentage)}`}>
+                    {Math.round(percentage)}%
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1 capitalize">{name}</p>
+                  <p className="text-xs text-gray-500">{Math.round(value)}{unit} / {goal}{unit}</p>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div 
+                      className={`h-2 rounded-full transition-all ${
+                        percentage >= 90 && percentage <= 110 
+                          ? 'bg-green-500' 
+                          : percentage > 110 
+                            ? 'bg-red-500' 
+                            : 'bg-yellow-500'
+                      }`}
+                      style={{ width: `${Math.min(percentage, 100)}%` }}
+                    ></div>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600 mt-1 capitalize">{nutrient}</p>
-                <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                  <div 
-                    className={`h-2 rounded-full transition-all ${
-                      percentage >= 90 && percentage <= 110 
-                        ? 'bg-green-500' 
-                        : percentage >= 70 && percentage <= 130 
-                        ? 'bg-yellow-500' 
-                        : 'bg-red-500'
-                    }`}
-                    style={{ width: `${getProgressWidth(percentage)}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -201,8 +221,8 @@ const NutritionDashboard = () => {
             <Award className="h-8 w-8 text-blue-600" />
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Days On Track</p>
-              <p className="text-2xl font-bold text-gray-900">{avgData.daysOnTrack}</p>
-              <p className="text-sm text-gray-500">Out of {nutritionData.dailyData.length} days</p>
+              <p className="text-2xl font-bold text-gray-900">{avgData.daysOnTrack || 0}</p>
+              <p className="text-sm text-gray-500">Out of {dailyData.length} days</p>
             </div>
           </div>
         </div>
@@ -223,22 +243,22 @@ const NutritionDashboard = () => {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h3 className="text-lg font-semibold mb-4">Daily Breakdown</h3>
         <div className="space-y-4">
-          {nutritionData.dailyData.slice().reverse().map((day) => (
+          {dailyData.slice().reverse().map((day) => (
             <div key={day.date} className="border border-gray-200 rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-medium text-gray-900">{day.date}</h4>
+                <h4 className="font-medium text-gray-900">{new Date(day.date).toLocaleDateString()}</h4>
                 <div className="flex space-x-2">
-                  {day.goalsStatus.caloriesOnTrack && 
+                  {day.calories >= nutritionData.goals.dailyCalories && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
                       Calories ✓
                     </span>
                   }
-                  {day.goalsStatus.proteinMet && 
+                  {day.protein >= nutritionData.goals.protein && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
                       Protein ✓
                     </span>
                   }
-                  {day.goalsStatus.sodiumOk && 
+                  {day.sodium <= nutritionData.goals.sodium && 
                     <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
                       Sodium ✓
                     </span>
@@ -248,36 +268,36 @@ const NutritionDashboard = () => {
               <div className="grid grid-cols-3 md:grid-cols-6 gap-4 text-sm">
                 <div>
                   <span className="text-gray-600">Calories:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.calories)}</p>
+                  <p className="font-medium">{Math.round(day.calories || 0)}</p>
                 </div>
                 <div>
                   <span className="text-gray-600">Protein:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.protein)}g</p>
+                  <p className="font-medium">{Math.round(day.protein || 0)}g</p>
                 </div>
                 <div>
                   <span className="text-gray-600">Carbs:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.carbs)}g</p>
+                  <p className="font-medium">{Math.round(day.carbs || 0)}g</p>
                 </div>
                 <div>
                   <span className="text-gray-600">Fat:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.fat)}g</p>
+                  <p className="font-medium">{Math.round(day.fat || 0)}g</p>
                 </div>
                 <div>
                   <span className="text-gray-600">Fiber:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.fiber)}g</p>
+                  <p className="font-medium">{Math.round(day.fiber || 0)}g</p>
                 </div>
                 <div>
                   <span className="text-gray-600">Sodium:</span>
-                  <p className="font-medium">{Math.round(day.nutrition.sodium)}mg</p>
+                  <p className="font-medium">{Math.round(day.sodium || 0)}mg</p>
                 </div>
               </div>
-              {day.nutrition.meals && day.nutrition.meals.length > 0 && (
+              {day.meals && day.meals.length > 0 && (
                 <div className="mt-3 pt-3 border-t border-gray-100">
                   <p className="text-sm text-gray-600 mb-2">Meals:</p>
                   <div className="flex flex-wrap gap-2">
-                    {day.nutrition.meals.map((meal, idx) => (
+                    {day.meals.map((meal, idx) => (
                       <span key={idx} className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
-                        {meal.mealType}: {meal.dish.name}
+                        {meal.mealType}: {meal.dish?.name || 'Unknown dish'}
                         {meal.rating && <span className="ml-1">⭐{meal.rating}</span>}
                       </span>
                     ))}

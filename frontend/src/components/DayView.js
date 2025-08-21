@@ -33,9 +33,11 @@ const DayView = ({ loadDishes, onAddDish }) => {
       setLoading(true);
       const dateStr = format(selectedDate, 'yyyy-MM-dd');
       const response = await mealPlannerAPI.getMealsByDate(dateStr);
-      setMeals(response.data);
+      // Backend returns { success: true, data: [meals] }, so we need response.data.data
+      setMeals(response.data.data || []);
     } catch (error) {
       console.error('Error loading meals:', error);
+      setMeals([]); // Set empty array on error to prevent reduce error
     } finally {
       setLoading(false);
     }
@@ -106,11 +108,21 @@ const DayView = ({ loadDishes, onAddDish }) => {
   };
 
   const getMealsForType = (mealType) => {
+    // Safety check: ensure meals is an array before calling filter
+    if (!Array.isArray(meals)) {
+      console.warn('meals is not an array:', meals);
+      return [];
+    }
     return meals.filter(meal => meal.mealType === mealType);
   };
 
   const getTotalCalories = () => {
-    return meals.reduce((total, meal) => total + (meal.dish.calories || 0), 0);
+    // Safety check: ensure meals is an array before calling reduce
+    if (!Array.isArray(meals)) {
+      console.warn('meals is not an array:', meals);
+      return 0;
+    }
+    return meals.reduce((total, meal) => total + (meal.dish?.calories || 0), 0);
   };
 
   return (

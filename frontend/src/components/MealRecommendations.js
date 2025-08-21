@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Clock, Users, Flame, ChefHat, Star, Plus } from 'lucide-react';
-import mealPlannerAPI from '../services/api';
+import { mealPlannerAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 
 const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) => {
@@ -19,7 +19,14 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
     try {
       setLoading(true);
       const response = await mealPlannerAPI.getRecommendations(selectedMealType, selectedDate);
-      setRecommendations(response.data.recommendations);
+      console.log('Recommendations response:', response.data);
+      // Backend returns { success: true, data: { recommendations: [...], reason: "..." } }
+      if (response.data && response.data.success && response.data.data) {
+        setRecommendations(response.data.data.recommendations || []);
+      } else {
+        console.error('Invalid recommendations response format:', response.data);
+        setRecommendations([]);
+      }
     } catch (error) {
       console.error('Error fetching recommendations:', error);
       setRecommendations([]);
@@ -33,7 +40,7 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
       await onAddMeal({
         date: selectedDate,
         mealType: selectedMealType,
-        dishId: dish.id
+        dishId: dish.dishId || dish.id  // Handle both frontend and backend property names
       });
       // Refresh recommendations after adding a meal
       fetchRecommendations();
@@ -97,17 +104,17 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {recommendations.map((dish, index) => (
-            <div key={dish.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div key={dish.dishId || dish.id || index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 mb-1">{dish.name}</h4>
-                  <p className="text-sm text-gray-600 mb-2">{dish.cuisine} • {dish.type}</p>
+                  <h4 className="font-medium text-gray-900 mb-1">{dish.dishName || dish.name}</h4>
+                  <p className="text-sm text-gray-600 mb-2">{dish.cuisine} • {dish.type || 'Main Course'}</p>
                   
                   {/* Recommendation Score */}
                   <div className="flex items-center space-x-2 mb-2">
                     <Star className="h-4 w-4 text-yellow-500" />
                     <span className="text-sm text-gray-600">
-                      Score: {dish.recommendationScore}/10
+                      Score: {Math.round((dish.score || dish.recommendationScore || 0) * 10) / 10}/10
                     </span>
                     {index < 3 && (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-100 text-purple-800">
@@ -120,7 +127,7 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
                 {dish.image && (
                   <img 
                     src={dish.image} 
-                    alt={dish.name}
+                    alt={dish.dishName || dish.name}
                     className="w-16 h-16 rounded-lg object-cover ml-4"
                   />
                 )}
@@ -130,19 +137,21 @@ const MealRecommendations = ({ onAddMeal, selectedDate, mealType = 'lunch' }) =>
               <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
                 <div className="flex items-center">
                   <Flame className="h-4 w-4 text-orange-500 mr-1" />
-                  {dish.calories} cal
+                  {dish.calories || 'N/A'} cal
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 text-blue-500 mr-1" />
-                  {(dish.prepTime || 30) + (dish.cookTime || 30)} min
+                  {dish.prepTime || 30} min
                 </div>
                 <div className="flex items-center">
                   <Users className="h-4 w-4 text-green-500 mr-1" />
                   {dish.servings || 2} servings
                 </div>
                 <div className="flex items-center">
-                  <span className="mr-1">{getSpiceLevelEmoji(dish.spiceLevel)}</span>
-                  <span className="capitalize">{dish.spiceLevel || 'medium'}</span>
+                  <ChefHat className={`h-4 w-4 mr-1 ${getDifficultyColor(dish.difficulty)}`} />
+                  <span className={`capitalize text-xs px-2 py-0.5 rounded-full ${getDifficultyColor(dish.difficulty)}`}>
+                    {dish.difficulty || 'medium'}
+                  </span>
                 </div>
               </div>
 

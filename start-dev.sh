@@ -6,13 +6,13 @@ echo "🍽️  Starting Meal Planner Development Environment..."
 # Check if .env file exists in backend
 if [ ! -f "backend/.env" ]; then
     echo "⚠️  Creating backend/.env file..."
-    cp backend/env.example backend/.env
+    cp backend/.env.example backend/.env
     echo "📝 Please update backend/.env with your MongoDB URI and other settings"
 fi
 
 # Install backend dependencies
 echo "📦 Installing backend dependencies..."
-cd backend && npm install
+cd backend && go mod tidy
 
 # Install frontend dependencies  
 echo "📦 Installing frontend dependencies..."
@@ -20,11 +20,11 @@ cd ../frontend && npm install
 
 # Start backend in background
 echo "🚀 Starting backend server..."
-cd ../backend && npm run dev &
+cd ../backend && go run cmd/server/main.go &
 BACKEND_PID=$!
 
 # Wait a moment for backend to start
-sleep 3
+sleep 5
 
 # Start frontend
 echo "🎨 Starting frontend development server..."

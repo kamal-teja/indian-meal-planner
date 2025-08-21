@@ -25,10 +25,18 @@ const ShoppingList = () => {
         dateRange.startDate,
         dateRange.endDate
       );
-      setShoppingList(response.data);
-      setCheckedItems({});
+      console.log('Shopping list response:', response.data);
+      // Handle the response format from backend: { success: true, data: shoppingListResponse }
+      if (response.data && response.data.success && response.data.data) {
+        setShoppingList(response.data.data);
+        setCheckedItems({});
+      } else {
+        console.error('Invalid shopping list response format:', response.data);
+        setShoppingList(null);
+      }
     } catch (error) {
       console.error('Error generating shopping list:', error);
+      setShoppingList(null);
     } finally {
       setLoading(false);
     }
@@ -69,7 +77,7 @@ const ShoppingList = () => {
   const exportList = () => {
     if (!shoppingList) return;
 
-    const listText = shoppingList.items
+    const listText = shoppingList.ingredients
       .map(item => `${checkedItems[item.name] ? '✓' : '☐'} ${item.name} (needed for ${item.count} dishes)`)
       .join('\n');
 
@@ -230,9 +238,9 @@ const ShoppingList = () => {
               Ingredients List
             </h3>
             
-            {shoppingList.items.length > 0 ? (
+            {shoppingList.ingredients.length > 0 ? (
               <div className="space-y-3">
-                {shoppingList.items.map((item, index) => (
+                {shoppingList.ingredients.map((item, index) => (
                   <div
                     key={index}
                     className={`flex items-center space-x-4 p-4 border rounded-lg transition-all duration-200 ${

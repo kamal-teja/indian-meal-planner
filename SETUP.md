@@ -50,9 +50,9 @@
 ## Installation & Setup
 
 ### Prerequisites
-- Node.js (16+ recommended)
+- Go 1.21+ ([Download from golang.org](https://golang.org/dl/))
 - MongoDB database
-- npm or yarn
+- npm or yarn (for frontend)
 
 ### Backend Setup
 
@@ -63,27 +63,25 @@
 
 2. **Install dependencies:**
    ```bash
-   npm install
+   go mod tidy
    ```
 
 3. **Environment Configuration:**
    ```bash
-   cp env.example .env
+   cp .env.example .env
    ```
    
    Update `.env` with your values:
    ```env
    MONGODB_URI=mongodb+srv://username:password@cluster0.example.mongodb.net/meal-planner
    PORT=5000
-   NODE_ENV=development
-   FRONTEND_URL=http://localhost:3000
+   ENVIRONMENT=development
    JWT_SECRET=your-super-secret-jwt-key-at-least-32-characters-long
-   JWT_EXPIRES_IN=7d
    ```
 
 4. **Start the backend server:**
    ```bash
-   npm run dev
+   go run cmd/server/main.go
    ```
 
 ### Frontend Setup
@@ -111,7 +109,20 @@
 
 ### Quick Development Start
 
-Use the provided development script:
+**Windows (PowerShell):**
+```powershell
+cd backend
+.\setup.ps1
+```
+
+**Linux/macOS:**
+```bash
+cd backend
+chmod +x setup.sh
+./setup.sh
+```
+
+Or use the provided development script:
 ```bash
 chmod +x start-dev.sh
 ./start-dev.sh
@@ -122,20 +133,23 @@ chmod +x start-dev.sh
 ### Authentication
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user
+- `GET /api/auth/me` - Get current user profile
 - `PUT /api/auth/profile` - Update user profile
-- `POST /api/auth/favorites/:dishId` - Toggle favorite dish
 
 ### Dishes
-- `GET /api/dishes/search` - Search dishes with filters
+- `GET /api/dishes` - Get all dishes with optional search/filter
+- `POST /api/dishes` - Create new dish
 - `GET /api/dishes/favorites` - Get user's favorite dishes
+- `POST /api/dishes/:id/favorite` - Toggle favorite dish
+
+### Meals
+- `GET /api/meals` - Get meals with optional date filter
+- `POST /api/meals` - Create meal plan
+- `PUT /api/meals/:id` - Update meal
+- `DELETE /api/meals/:id` - Delete meal
 
 ### Analytics
-- `GET /api/analytics/meals` - Get meal analytics for user
-
-### Shopping List
-- `GET /api/shopping-list` - Generate shopping list for date range
+- `GET /api/analytics/nutrition-summary` - Get nutrition analytics for user
 
 ## User Flow
 

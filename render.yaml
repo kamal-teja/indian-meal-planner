@@ -2,12 +2,12 @@ services:
   # Backend API Service
   - type: web
     name: meal-planner-api
-    env: node
+    env: go
     plan: free
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    buildCommand: cd backend && go build -o main cmd/server/main.go
+    startCommand: cd backend && ./main
     envVars:
-      - key: NODE_ENV
+      - key: ENVIRONMENT
         value: production
       - key: PORT
         fromService:
@@ -15,6 +15,8 @@ services:
           name: meal-planner-api
           property: port
       - key: MONGODB_URI
+        sync: false  # Set this manually in Render dashboard
+      - key: JWT_SECRET
         sync: false  # Set this manually in Render dashboard
     
   # Frontend Static Site Service  
