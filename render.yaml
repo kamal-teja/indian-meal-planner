@@ -29,7 +29,7 @@ services:
         source: /*
         destination: /index.html
     envVars:
-      - key: REACT_APP_API_URL
+      - key: VITE_API_URL
         fromService:
           type: web
           name: meal-planner-api
