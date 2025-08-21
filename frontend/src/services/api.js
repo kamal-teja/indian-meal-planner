@@ -38,7 +38,8 @@ export const mealPlannerAPI = {
   logout: () => api.post('/auth/logout'),
   getCurrentUser: () => api.get('/auth/me'),
   updateProfile: (profileData) => api.put('/user/profile', profileData),
-  toggleFavorite: (dishId) => api.post(`/dishes/${dishId}/favorite`),
+  addToFavorites: (dishId) => api.post(`/dishes/${dishId}/favorite`),
+  removeFromFavorites: (dishId) => api.delete(`/dishes/${dishId}/favorite`),
   
   // Get all available dishes with pagination
   getDishes: (params = {}) => api.get('/dishes', { params }),

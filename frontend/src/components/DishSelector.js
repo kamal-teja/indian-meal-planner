@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { X, Search, Filter, Flame, Clock, Plus, Heart, Loader, Sun, Sunset, Moon, Coffee } from 'lucide-react';
+import { X, Search, Filter, Flame, Clock, Plus, Heart, Loader, Sun, Sunset, Moon, Coffee, Check } from 'lucide-react';
 import AddDishForm from './AddDishForm';
 import CustomDropdown from './ui/CustomDropdown';
 import { useAuth } from '../contexts/AuthContext';
 
 const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAddDish }) => {
-  const { user, toggleFavorite } = useAuth();
+  const { user, toggleFavoriteWithState } = useAuth();
   const [dishes, setDishes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
@@ -17,6 +17,10 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [cuisines, setCuisines] = useState([]);
+  const [selectedDishId, setSelectedDishId] = useState(null);
+  const [isSelecting, setIsSelecting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const isInitialLoadRef = useRef(true);
   
   const observer = useRef();
   
@@ -74,6 +78,9 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
       // Extract unique cuisines for filter dropdown
       const uniqueCuisines = [...new Set((response.dishes || []).map(dish => dish.cuisine))];
       setCuisines(uniqueCuisines.sort());
+      
+      // Mark initial load as complete
+      isInitialLoadRef.current = false;
     } catch (error) {
       console.error('Error loading dishes:', error);
     } finally {
@@ -104,14 +111,17 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
     } finally {
       setLoading(false);
     }
-  }, [loadDishes, searchTerm, selectedType, selectedCuisine]);
+  }, [loadDishes, searchTerm, selectedType, selectedCuisine]); // Restore dependencies
 
   useEffect(() => {
     // Load initial dishes when component mounts
     loadInitialDishes();
-  }, [loadInitialDishes]);
+  }, []); // Only run once on mount
 
   useEffect(() => {
+    // Skip on initial load - loadInitialDishes will handle it
+    if (isInitialLoadRef.current) return;
+    
     // Reset and reload dishes when filters change (debounce if needed)
     const timer = setTimeout(() => {
       resetAndLoadDishes();
@@ -163,16 +173,46 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
     }
   };
 
+  const handleDishSelect = async (dish) => {
+    try {
+      setSelectedDishId(dish.id);
+      setIsSelecting(true);
+      
+      // Add a small delay for visual feedback
+      await new Promise(resolve => setTimeout(resolve, 400));
+      
+      // Call the parent onSelect
+      await onSelect(dish);
+      
+      // Show success state
+      setIsSelecting(false);
+      setIsSuccess(true);
+      
+      // Show success state briefly before closing
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+    } catch (error) {
+      console.error('Error selecting dish:', error);
+    } finally {
+      setIsSelecting(false);
+      setSelectedDishId(null);
+      setIsSuccess(false);
+    }
+  };
+
   const handleToggleFavorite = async (e, dishId) => {
     e.stopPropagation();
     if (!user) return;
 
-    const result = await toggleFavorite(dishId);
+    const currentIsFavorite = isDishFavorite({ id: dishId });
+    const result = await toggleFavoriteWithState(dishId, currentIsFavorite);
     if (result.success) {
       setDishFavorites(prev => ({
         ...prev,
         [dishId]: result.isFavorite
       }));
+    } else {
+      console.error('Failed to toggle favorite:', result.error);
     }
   };
 
@@ -185,9 +225,9 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
 
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-neutral-200">
+      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full overflow-hidden border border-neutral-200 flex flex-col" style={{ height: '80vh', minHeight: '600px' }}>
         {/* Header */}
-        <div className="bg-secondary-600 p-6 text-white">
+        <div className="bg-secondary-600 p-6 text-white flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <span className="flex items-center justify-center">{getMealTypeIcon(mealType)}</span>
@@ -217,7 +257,7 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
         </div>
 
         {/* Filters */}
-        <div className="p-6 border-b border-neutral-200 bg-neutral-50">
+        <div className="p-6 border-b border-neutral-200 bg-neutral-50 flex-shrink-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Search */}
             <div className="relative">
@@ -275,8 +315,35 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
         </div>
 
         {/* Dishes Grid */}
-        <div className="p-6 overflow-y-auto max-h-96">
-          {dishes.length === 0 && !loading ? (
+        <div className="flex-1 p-6 overflow-y-auto">
+          {loading && dishes.length === 0 ? (
+            /* Initial Loading Skeleton */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="p-4 border border-neutral-200 rounded-lg bg-white">
+                  <div className="flex items-start space-x-4">
+                    <div className="relative flex-shrink-0">
+                      <div className="w-20 h-20 bg-neutral-200 rounded-lg animate-pulse"></div>
+                      <div className="absolute -top-2 -right-2 w-12 h-6 bg-neutral-200 rounded-full animate-pulse"></div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="h-5 bg-neutral-200 rounded animate-pulse mb-2" style={{ width: `${75 + (index * 5)}%` }}></div>
+                      <div className="h-4 bg-neutral-200 rounded animate-pulse mb-3 w-1/2"></div>
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="h-4 bg-neutral-200 rounded animate-pulse w-16"></div>
+                        <div className="h-4 bg-neutral-200 rounded animate-pulse w-16"></div>
+                      </div>
+                      <div className="flex space-x-1">
+                        <div className="h-6 bg-neutral-200 rounded animate-pulse w-12"></div>
+                        <div className="h-6 bg-neutral-200 rounded animate-pulse w-12"></div>
+                        <div className="h-6 bg-neutral-200 rounded animate-pulse w-8"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : dishes.length === 0 && !loading ? (
             <div className="text-center py-12">
               <Filter className="h-16 w-16 text-neutral-300 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-neutral-900 mb-2">No dishes found</h3>
@@ -284,12 +351,24 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {dishes.map((dish, index) => (
+              {dishes.map((dish, index) => {
+                const isSelected = selectedDishId === dish.id;
+                const isCurrentlySelecting = isSelecting && isSelected;
+                const isSuccessState = isSuccess && isSelected;
+                
+                return (
                 <div
                   key={dish.id}
                   ref={index === dishes.length - 1 ? lastDishElementRef : null}
-                  onClick={() => onSelect(dish)}
-                  className="p-4 border border-neutral-200 rounded-lg hover:border-accent-300 hover:shadow-md cursor-pointer transition-all duration-200 group bg-white"
+                  onClick={() => !isSelecting && !isSuccess && handleDishSelect(dish)}
+                  className={`
+                    p-4 border rounded-lg cursor-pointer transition-all duration-300 group bg-white relative overflow-hidden
+                    ${(isSelected && isSelecting) || isSuccessState
+                      ? 'border-accent-500 shadow-lg scale-105 bg-accent-50' 
+                      : 'border-neutral-200 hover:border-accent-300 hover:shadow-md'
+                    }
+                    ${(isSelecting && !isSelected) || isSuccess ? 'opacity-50 pointer-events-none' : ''}
+                  `}
                 >
                   <div className="flex items-start space-x-4">
                     <div className="relative flex-shrink-0">
@@ -360,8 +439,34 @@ const DishSelector = ({ loadDishes, onSelect, onClose, mealType, isEditing, onAd
                       )}
                     </div>
                   </div>
+                  
+                  {/* Selection Loading/Success Overlay */}
+                  {(isCurrentlySelecting || isSuccessState) && (
+                    <div className="absolute inset-0 bg-accent-500/10 flex items-center justify-center rounded-lg">
+                      <div className="bg-white rounded-full p-3 shadow-lg">
+                        {isCurrentlySelecting ? (
+                          <div className="flex items-center space-x-2">
+                            <Loader className="h-5 w-5 animate-spin text-accent-600" />
+                            <span className="text-sm font-medium text-accent-700">
+                              Adding to {mealType}...
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center space-x-2">
+                            <div className="h-5 w-5 bg-green-500 rounded-full flex items-center justify-center">
+                              <Check className="h-3 w-3 text-white" />
+                            </div>
+                            <span className="text-sm font-medium text-green-700">
+                              Added successfully!
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
           

@@ -128,6 +128,55 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const toggleFavorite = async (dishId) => {
+    try {
+      console.log('Toggling favorite for dish:', dishId);
+      
+      // We need to determine current state from the local component state
+      // This will be handled by the calling component
+      return { success: false, error: 'Use toggleFavoriteWithState instead' };
+    } catch (error) {
+      console.error('Toggle favorite failed:', error);
+      return { 
+        success: false, 
+        error: error.response?.data?.error || 'Failed to toggle favorite' 
+      };
+    }
+  };
+
+  const toggleFavoriteWithState = async (dishId, currentIsFavorite) => {
+    try {
+      console.log('Toggling favorite for dish:', dishId, 'Current state:', currentIsFavorite);
+      
+      let response;
+      if (currentIsFavorite) {
+        // Remove from favorites
+        response = await mealPlannerAPI.removeFromFavorites(dishId);
+      } else {
+        // Add to favorites
+        response = await mealPlannerAPI.addToFavorites(dishId);
+      }
+      
+      console.log('Toggle favorite response:', response.data);
+      
+      if (response.data && response.data.success) {
+        return { 
+          success: true, 
+          isFavorite: !currentIsFavorite 
+        };
+      } else {
+        console.error('Invalid toggle favorite response:', response.data);
+        return { success: false, error: 'Invalid response format' };
+      }
+    } catch (error) {
+      console.error('Toggle favorite failed:', error);
+      return { 
+        success: false, 
+        error: error.response?.data?.error || 'Failed to toggle favorite' 
+      };
+    }
+  };
+
   const value = {
     user,
     loading,
@@ -136,6 +185,8 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     updateUserProfile,
+    toggleFavorite,
+    toggleFavoriteWithState,
     checkAuthStatus
   };
 
