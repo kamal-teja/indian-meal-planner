@@ -50,6 +50,39 @@ func (h *NutritionHandler) GetNutritionProgress(c *gin.Context) {
 		return
 	}
 
+	// Get user's nutrition goals first
+	user, err := h.userService.GetByID(c.Request.Context(), userID)
+	if err != nil {
+		h.logger.Error("Failed to get user for nutrition progress", "error", err, "userID", userID.Hex())
+		c.JSON(http.StatusNotFound, models.ErrorResponse{
+			Success: false,
+			Error:   "User not found",
+		})
+		return
+	}
+
+	// Get the user's goals and set defaults for any that are 0
+	goals := user.Profile.NutritionGoals
+	if goals.DailyCalories == 0 {
+		goals.DailyCalories = 2000
+	}
+	if goals.Protein == 0 {
+		goals.Protein = 150
+	}
+	if goals.Carbs == 0 {
+		goals.Carbs = 250
+	}
+	if goals.Fat == 0 {
+		goals.Fat = 65
+	}
+	if goals.Fiber == 0 {
+		goals.Fiber = 25
+	}
+	if goals.Sodium == 0 {
+		goals.Sodium = 2300
+	}
+
+	// Get nutrition progress from meal service
 	progress, err := h.mealService.GetNutritionProgress(c.Request.Context(), userID, period)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, models.ErrorResponse{
@@ -58,6 +91,9 @@ func (h *NutritionHandler) GetNutritionProgress(c *gin.Context) {
 		})
 		return
 	}
+
+	// Override the goals in the response with the actual user's goals
+	progress.Goals = goals
 
 	c.JSON(http.StatusOK, models.SuccessResponse{
 		Success: true,
@@ -87,18 +123,25 @@ func (h *NutritionHandler) GetNutritionGoals(c *gin.Context) {
 		return
 	}
 
-	// If user has no nutrition goals set, return default values
+	// Get user's nutrition goals and set defaults for any that are 0
 	goals := user.Profile.NutritionGoals
 	if goals.DailyCalories == 0 {
-		// Set default nutrition goals if none are set
-		goals = models.NutritionGoals{
-			DailyCalories: 2000,
-			Protein:       150,
-			Carbs:         250,
-			Fat:           65,
-			Fiber:         25,
-			Sodium:        2300,
-		}
+		goals.DailyCalories = 2000
+	}
+	if goals.Protein == 0 {
+		goals.Protein = 150
+	}
+	if goals.Carbs == 0 {
+		goals.Carbs = 250
+	}
+	if goals.Fat == 0 {
+		goals.Fat = 65
+	}
+	if goals.Fiber == 0 {
+		goals.Fiber = 25
+	}
+	if goals.Sodium == 0 {
+		goals.Sodium = 2300
 	}
 
 	c.JSON(http.StatusOK, models.SuccessResponse{
@@ -141,11 +184,11 @@ func (h *NutritionHandler) UpdateNutritionGoals(c *gin.Context) {
 	// Update the nutrition goals in the user's profile
 	goals := models.NutritionGoals{
 		DailyCalories: req.DailyCalories,
-		Protein:       req.DailyProtein,
-		Carbs:         req.DailyCarbs,
-		Fat:           req.DailyFat,
-		Fiber:         req.DailyFiber,
-		Sodium:        req.DailySodium,
+		Protein:       req.Protein,
+		Carbs:         req.Carbs,
+		Fat:           req.Fat,
+		Fiber:         req.Fiber,
+		Sodium:        req.Sodium,
 	}
 
 	// Update the user's profile with new nutrition goals

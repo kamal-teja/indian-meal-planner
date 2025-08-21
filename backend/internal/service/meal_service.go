@@ -639,18 +639,14 @@ func (s *mealService) GetNutritionProgress(ctx context.Context, userID primitive
 		progressData = append(progressData, *daily)
 	}
 
-	// Get user's nutrition goals
-	goals, err := s.GetNutritionGoals(ctx, userID)
-	if err != nil {
-		// Use default goals if user hasn't set any
-		goals = &models.NutritionGoals{
-			DailyCalories: 2000,
-			Protein:       150,
-			Carbs:         250,
-			Fat:           65,
-			Fiber:         25,
-			Sodium:        2300,
-		}
+	// Get user's nutrition goals - we'll use defaults here since the handler will override them
+	goals := &models.NutritionGoals{
+		DailyCalories: 2000,
+		Protein:       150,
+		Carbs:         250,
+		Fat:           65,
+		Fiber:         25,
+		Sodium:        2300,
 	}
 
 	// Calculate summary
@@ -705,7 +701,9 @@ func (s *mealService) GetNutritionProgress(ctx context.Context, userID primitive
 
 // GetNutritionGoals gets nutrition goals for a user
 func (s *mealService) GetNutritionGoals(ctx context.Context, userID primitive.ObjectID) (*models.NutritionGoals, error) {
-	// For now, return default goals. In a real implementation, this would be stored in user profile
+	// This method should delegate to the user service to get the actual user's goals
+	// For now, we'll return default goals but this needs to be fixed by using the user service
+	// TODO: This should get the actual user's nutrition goals from their profile
 	return &models.NutritionGoals{
 		DailyCalories: 2000,
 		Protein:       150,
@@ -722,11 +720,11 @@ func (s *mealService) UpdateNutritionGoals(ctx context.Context, userID primitive
 	// using the user service directly since meal service shouldn't depend on user service
 	goals := &models.NutritionGoals{
 		DailyCalories: req.DailyCalories,
-		Protein:       req.DailyProtein,
-		Carbs:         req.DailyCarbs,
-		Fat:           req.DailyFat,
-		Fiber:         req.DailyFiber,
-		Sodium:        req.DailySodium,
+		Protein:       req.Protein,
+		Carbs:         req.Carbs,
+		Fat:           req.Fat,
+		Fiber:         req.Fiber,
+		Sodium:        req.Sodium,
 	}
 	return goals, nil
 }

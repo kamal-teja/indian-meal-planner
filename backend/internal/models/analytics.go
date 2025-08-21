@@ -113,9 +113,9 @@ type NutritionSummary struct {
 // NutritionGoalsRequest represents the request to update nutrition goals
 type NutritionGoalsRequest struct {
 	DailyCalories int `json:"dailyCalories" validate:"min=0"`
-	DailyProtein  int `json:"dailyProtein" validate:"min=0"`
-	DailyCarbs    int `json:"dailyCarbs" validate:"min=0"`
-	DailyFat      int `json:"dailyFat" validate:"min=0"`
-	DailyFiber    int `json:"dailyFiber" validate:"min=0"`
-	DailySodium   int `json:"dailySodium" validate:"min=0"`
+	Protein       int `json:"protein" validate:"min=0"`
+	Carbs         int `json:"carbs" validate:"min=0"`
+	Fat           int `json:"fat" validate:"min=0"`
+	Fiber         int `json:"fiber" validate:"min=0"`
+	Sodium        int `json:"sodium" validate:"min=0"`
 }
