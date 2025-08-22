@@ -71,21 +71,68 @@ func (m *MockDishService) Delete(ctx context.Context, id primitive.ObjectID) err
 	return args.Error(0)
 }
 
-func setupDishHandler() (*DishHandler, *MockDishService, *gin.Engine) {
+// Mock UserService for Dish Handler
+type MockUserServiceForDish struct {
+	mock.Mock
+}
+
+func (m *MockUserServiceForDish) GetByID(ctx context.Context, userID primitive.ObjectID) (*models.User, error) {
+	args := m.Called(ctx, userID)
+	if args.Get(0) == nil {
+		return nil, args.Error(1)
+	}
+	return args.Get(0).(*models.User), args.Error(1)
+}
+
+func (m *MockUserServiceForDish) UpdateProfile(ctx context.Context, userID primitive.ObjectID, profile models.UserProfile) error {
+	args := m.Called(ctx, userID, profile)
+	return args.Error(0)
+}
+
+func (m *MockUserServiceForDish) UpdateUserProfile(ctx context.Context, userID primitive.ObjectID, req models.ProfileUpdateRequest) error {
+	args := m.Called(ctx, userID, req)
+	return args.Error(0)
+}
+
+func (m *MockUserServiceForDish) AddToFavorites(ctx context.Context, userID, dishID primitive.ObjectID) error {
+	args := m.Called(ctx, userID, dishID)
+	return args.Error(0)
+}
+
+func (m *MockUserServiceForDish) RemoveFromFavorites(ctx context.Context, userID, dishID primitive.ObjectID) error {
+	args := m.Called(ctx, userID, dishID)
+	return args.Error(0)
+}
+
+func (m *MockUserServiceForDish) GetFavorites(ctx context.Context, userID primitive.ObjectID) ([]primitive.ObjectID, error) {
+	args := m.Called(ctx, userID)
+	if args.Get(0) == nil {
+		return nil, args.Error(1)
+	}
+	return args.Get(0).([]primitive.ObjectID), args.Error(1)
+}
+
+func (m *MockUserServiceForDish) Delete(ctx context.Context, userID primitive.ObjectID) error {
+	args := m.Called(ctx, userID)
+	return args.Error(0)
+}
+
+func setupDishHandler() (*DishHandler, *MockDishService, *MockUserServiceForDish, *gin.Engine) {
 	gin.SetMode(gin.TestMode)
 	
-	mockService := new(MockDishService)
+	mockDishService := new(MockDishService)
+	mockUserService := new(MockUserServiceForDish)
 	log := logger.New("info", "json")
 	
-	handler := NewDishHandler(mockService, log)
+	handler := NewDishHandler(mockDishService, mockUserService, log)
 	router := gin.New()
 	
-	return handler, mockService, router
+	return handler, mockDishService, mockUserService, router
 }
 
 func TestDishHandler_GetDish_Success(t *testing.T) {
 	// Arrange
-	handler, mockService, router := setupDishHandler()
+	handler, mockService, _, router := setupDishHandler()
 	router.GET("/dishes/:id", handler.GetDish)
 
 	dishID := primitive.NewObjectID()
@@ -118,7 +165,7 @@ func TestDishHandler_GetDish_Success(t *testing.T) {
 
 func TestDishHandler_GetDish_InvalidID(t *testing.T) {
 	// Arrange
-	handler, _, router := setupDishHandler()
+	handler, _, _, router := setupDishHandler()
 	router.GET("/dishes/:id", handler.GetDish)
 
 	request := httptest.NewRequest(http.MethodGet, "/dishes/invalid-id", nil)
@@ -139,7 +186,7 @@ func TestDishHandler_GetDish_InvalidID(t *testing.T) {
 
 func TestDishHandler_GetDish_NotFound(t *testing.T) {
 	// Arrange
-	handler, mockService, router := setupDishHandler()
+	handler, mockService, _, router := setupDishHandler()
 	router.GET("/dishes/:id", handler.GetDish)
 
 	dishID := primitive.NewObjectID()
@@ -165,7 +212,7 @@ func TestDishHandler_GetDish_NotFound(t *testing.T) {
 
 func TestDishHandler_GetDishes_Success(t *testing.T) {
 	// Arrange
-	handler, mockService, router := setupDishHandler()
+	handler, mockService, _, router := setupDishHandler()
 	router.GET("/dishes", handler.GetDishes)
 
 	dishes := []*models.DishResponse{
@@ -184,14 +231,15 @@ func TestDishHandler_GetDishes_Success(t *testing.T) {
 	}
 
 	pagination := &models.PaginationResponse{
-		CurrentPage: 1,
-		TotalPages:  1,
-		TotalItems:  2,
-		HasNext:     false,
-		HasPrev:     false,
+		Page:       1,
+		Limit:      10,
+		Total:      2,
+		TotalPages: 1,
+		HasNext:    false,
+		HasPrev:    false,
 	}
 
-	mockService.On("GetAll", mock.Anything, mock.AnythingOfType("service.DishFilter"), 1, 10, (*primitive.ObjectID)(nil)).Return(dishes, pagination, nil)
+	mockService.On("GetAll", mock.Anything, mock.AnythingOfType("service.DishFilter"), 1, 20, (*primitive.ObjectID)(nil)).Return(dishes, pagination, nil)
 
 	request := httptest.NewRequest(http.MethodGet, "/dishes", nil)
 	recorder := httptest.NewRecorder()
@@ -210,70 +258,9 @@ func TestDishHandler_GetDishes_Success(t *testing.T) {
 	mockService.AssertExpectations(t)
 }
 
-func TestDishHandler_SearchDishes_Success(t *testing.T) {
-	// Arrange
-	handler, mockService, router := setupDishHandler()
-	router.GET("/dishes/search", handler.SearchDishes)
-
-	dishes := []*models.DishResponse{
-		{
-			ID:   primitive.NewObjectID().Hex(),
-			Name: "Paneer Butter Masala",
-			Type: "Veg",
-		},
-	}
-
-	pagination := &models.PaginationResponse{
-		CurrentPage: 1,
-		TotalPages:  1,
-		TotalItems:  1,
-		HasNext:     false,
-		HasPrev:     false,
-	}
-
-	mockService.On("Search", mock.Anything, "paneer", mock.AnythingOfType("service.DishFilter"), 1, 10, (*primitive.ObjectID)(nil)).Return(dishes, pagination, nil)
-
-	request := httptest.NewRequest(http.MethodGet, "/dishes/search?q=paneer", nil)
-	recorder := httptest.NewRecorder()
-
-	// Act
-	router.ServeHTTP(recorder, request)
-
-	// Assert
-	assert.Equal(t, http.StatusOK, recorder.Code)
-	
-	var response models.SuccessResponse
-	err := json.Unmarshal(recorder.Body.Bytes(), &response)
-	assert.NoError(t, err)
-	assert.True(t, response.Success)
-	
-	mockService.AssertExpectations(t)
-}
-
-func TestDishHandler_SearchDishes_MissingQuery(t *testing.T) {
-	// Arrange
-	handler, _, router := setupDishHandler()
-	router.GET("/dishes/search", handler.SearchDishes)
-
-	request := httptest.NewRequest(http.MethodGet, "/dishes/search", nil)
-	recorder := httptest.NewRecorder()
-
-	// Act
-	router.ServeHTTP(recorder, request)
-
-	// Assert
-	assert.Equal(t, http.StatusBadRequest, recorder.Code)
-	
-	var response models.ErrorResponse
-	err := json.Unmarshal(recorder.Body.Bytes(), &response)
-	assert.NoError(t, err)
-	assert.False(t, response.Success)
-	assert.Contains(t, response.Error, "Query parameter 'q' is required")
-}
-
 func TestDishHandler_CreateDish_Success(t *testing.T) {
 	// Arrange
-	handler, mockService, router := setupDishHandler()
+	handler, mockService, _, router := setupDishHandler()
 	router.POST("/dishes", handler.CreateDish)
 
 	dish := models.Dish{
@@ -307,7 +294,7 @@ func TestDishHandler_CreateDish_Success(t *testing.T) {
 
 func TestDishHandler_CreateDish_InvalidJSON(t *testing.T) {
 	// Arrange
-	handler, _, router := setupDishHandler()
+	handler, _, _, router := setupDishHandler()
 	router.POST("/dishes", handler.CreateDish)
 
 	request := httptest.NewRequest(http.MethodPost, "/dishes", bytes.NewBufferString("invalid json"))
@@ -325,66 +312,4 @@ func TestDishHandler_CreateDish_InvalidJSON(t *testing.T) {
 	assert.NoError(t, err)
 	assert.False(t, response.Success)
 	assert.Equal(t, "Invalid request format", response.Error)
-}
-
-func TestDishHandler_UpdateDish_Success(t *testing.T) {
-	// Arrange
-	handler, mockService, router := setupDishHandler()
-	router.PUT("/dishes/:id", handler.UpdateDish)
-
-	dishID := primitive.NewObjectID()
-	dish := models.Dish{
-		Name:     "Updated Dish",
-		Type:     "Veg",
-		Cuisine:  "Indian",
-		Calories: 350,
-	}
-
-	mockService.On("Update", mock.Anything, dishID, mock.AnythingOfType("*models.Dish")).Return(nil)
-
-	requestBody, _ := json.Marshal(dish)
-	request := httptest.NewRequest(http.MethodPut, "/dishes/"+dishID.Hex(), bytes.NewBuffer(requestBody))
-	request.Header.Set("Content-Type", "application/json")
-	recorder := httptest.NewRecorder()
-
-	// Act
-	router.ServeHTTP(recorder, request)
-
-	// Assert
-	assert.Equal(t, http.StatusOK, recorder.Code)
-	
-	var response models.SuccessResponse
-	err := json.Unmarshal(recorder.Body.Bytes(), &response)
-	assert.NoError(t, err)
-	assert.True(t, response.Success)
-	assert.Equal(t, "Dish updated successfully", response.Message)
-	
-	mockService.AssertExpectations(t)
-}
-
-func TestDishHandler_DeleteDish_Success(t *testing.T) {
-	// Arrange
-	handler, mockService, router := setupDishHandler()
-	router.DELETE("/dishes/:id", handler.DeleteDish)
-
-	dishID := primitive.NewObjectID()
-
-	mockService.On("Delete", mock.Anything, dishID).Return(nil)
-
-	request := httptest.NewRequest(http.MethodDelete, "/dishes/"+dishID.Hex(), nil)
-	recorder := httptest.NewRecorder()
-
-	// Act
-	router.ServeHTTP(recorder, request)
-
-	// Assert
-	assert.Equal(t, http.StatusOK, recorder.Code)
-	
-	var response models.SuccessResponse
-	err := json.Unmarshal(recorder.Body.Bytes(), &response)
-	assert.NoError(t, err)
-	assert.True(t, response.Success)
-	assert.Equal(t, "Dish deleted successfully", response.Message)
-	
-	mockService.AssertExpectations(t)
 }

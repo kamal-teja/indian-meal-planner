@@ -2,6 +2,11 @@ import React from 'react';
 import { Clock, Users, Flame } from 'lucide-react';
 
 const MealCard = ({ meal }) => {
+  // Handle null or undefined meal
+  if (!meal) {
+    return null;
+  }
+
   const { dish } = meal;
 
   const getCuisineColor = (cuisine) => {

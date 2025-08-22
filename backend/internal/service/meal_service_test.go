@@ -108,7 +108,7 @@ func TestMealService_Create_Success(t *testing.T) {
 	req := models.MealRequest{
 		DishID:   dishID.Hex(),
 		MealType: "breakfast",
-		Date:     models.FlexibleDate(time.Now().Format("2006-01-02")),
+		Date:     models.FlexibleDate{Time: time.Now()},
 		Rating:   5,
 		Notes:    "Delicious",
 	}
@@ -143,7 +143,7 @@ func TestMealService_Create_DishNotFound(t *testing.T) {
 	req := models.MealRequest{
 		DishID:   dishID.Hex(),
 		MealType: "breakfast",
-		Date:     models.FlexibleDate(time.Now().Format("2006-01-02")),
+		Date:     models.FlexibleDate{Time: time.Now()},
 	}
 
 	mockDishRepo.On("GetByID", mock.Anything, dishID).Return(nil, mongo.ErrNoDocuments)
@@ -172,7 +172,7 @@ func TestMealService_Create_InvalidDate(t *testing.T) {
 	req := models.MealRequest{
 		DishID:   dishID.Hex(),
 		MealType: "breakfast",
-		Date:     models.FlexibleDate("invalid-date"),
+		Date:     models.FlexibleDate{},
 	}
 
 	// Act
@@ -223,7 +223,7 @@ func TestMealService_GetByID_Success(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 	assert.Equal(t, meal.ID, result.ID)
-	assert.Equal(t, meal.UserID, result.UserID)
+	assert.Equal(t, meal.UserID.Hex(), result.User)
 	assert.Equal(t, dish.Name, result.Dish.Name)
 	mockMealRepo.AssertExpectations(t)
 	mockDishRepo.AssertExpectations(t)

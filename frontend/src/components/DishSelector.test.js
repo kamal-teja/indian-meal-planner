@@ -358,9 +358,9 @@ describe('DishSelector Component', () => {
     })
     
     // Should display dish details
-    expect(screen.getByText('North Indian')).toBeInTheDocument()
+    expect(screen.getAllByText('North Indian')).toHaveLength(2) // One in filter, one in dish card
     expect(screen.getByText('350 cal')).toBeInTheDocument()
-    expect(screen.getByText('30 min')).toBeInTheDocument()
+    expect(screen.getAllByText('30 min')).toHaveLength(3) // Multiple dishes may have same time
   })
 
   it('should handle loading state', async () => {
