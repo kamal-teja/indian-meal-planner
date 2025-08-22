@@ -178,23 +178,32 @@ func TestDishService_GetAll_Success(t *testing.T) {
 		},
 	}
 
-	filter := service.DishFilter{Type: "Veg"}
+	filter := DishFilter{Type: "Veg"}
 	page := 1
 	limit := 10
 
-	mockService.On("GetAll", mock.Anything, filter, page, limit, (*primitive.ObjectID)(nil)).Return(dishes, pagination, nil)
+	pagination := &models.PaginationResponse{
+		Page:       1,
+		Limit:      10,
+		Total:      2,
+		TotalPages: 1,
+		HasNext:    false,
+		HasPrev:    false,
+	}
+
+	mockDishRepo.On("GetAll", mock.Anything, mock.AnythingOfType("repository.DishFilter"), page, limit).Return(dishes, int64(2), nil)
 
 	// Act
-	result, pagination, err := service.GetAll(context.Background(), filter, page, limit, nil)
+	result, paginationResult, err := service.GetAll(context.Background(), filter, page, limit, nil)
 
 	// Assert
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 	assert.Len(t, result, 2)
-	assert.NotNil(t, pagination)
-	assert.Equal(t, page, pagination.Page)
-	assert.Equal(t, 3, pagination.TotalPages) // 25 total / 10 per page = 3 pages
-	assert.Equal(t, 25, pagination.Total)
+	assert.NotNil(t, paginationResult)
+	assert.Equal(t, page, paginationResult.Page)
+	assert.Equal(t, 1, paginationResult.TotalPages)
+	assert.Equal(t, 2, paginationResult.Total)
 	mockDishRepo.AssertExpectations(t)
 }
 
@@ -214,21 +223,30 @@ func TestDishService_Search_Success(t *testing.T) {
 	}
 
 	query := "paneer"
-	filter := service.DishFilter{}
+	filter := DishFilter{}
 	page := 1
 	limit := 10
 
-	mockService.On("Search", mock.Anything, query, filter, page, limit, (*primitive.ObjectID)(nil)).Return(dishes, pagination, nil)
+	pagination := &models.PaginationResponse{
+		Page:       1,
+		Limit:      10,
+		Total:      1,
+		TotalPages: 1,
+		HasNext:    false,
+		HasPrev:    false,
+	}
+
+	mockDishRepo.On("Search", mock.Anything, query, page, limit).Return(dishes, int64(1), nil)
 
 	// Act
-	result, pagination, err := service.Search(context.Background(), query, filter, page, limit, nil)
+	result, paginationResult, err := service.Search(context.Background(), query, filter, page, limit, nil)
 
 	// Assert
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 	assert.Len(t, result, 1)
 	assert.Equal(t, "Paneer Butter Masala", result[0].Name)
-	assert.NotNil(t, pagination)
+	assert.NotNil(t, paginationResult)
 	mockDishRepo.AssertExpectations(t)
 }
 

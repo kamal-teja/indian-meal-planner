@@ -66,51 +66,45 @@ type MockUserServiceForAuth struct {
 	mock.Mock
 }
 
-func (m *MockUserServiceForAuth) GetProfile(ctx context.Context, userID primitive.ObjectID) (*models.UserResponse, error) {
+func (m *MockUserServiceForAuth) GetByID(ctx context.Context, userID primitive.ObjectID) (*models.User, error) {
 	args := m.Called(ctx, userID)
 	if args.Get(0) == nil {
 		return nil, args.Error(1)
 	}
-	return args.Get(0).(*models.UserResponse), args.Error(1)
+	return args.Get(0).(*models.User), args.Error(1)
 }
 
-func (m *MockUserServiceForAuth) UpdateProfile(ctx context.Context, userID primitive.ObjectID, req models.UserProfileUpdateRequest) (*models.UserResponse, error) {
+func (m *MockUserServiceForAuth) UpdateProfile(ctx context.Context, userID primitive.ObjectID, profile models.UserProfile) error {
+	args := m.Called(ctx, userID, profile)
+	return args.Error(0)
+}
+
+func (m *MockUserServiceForAuth) UpdateUserProfile(ctx context.Context, userID primitive.ObjectID, req models.ProfileUpdateRequest) error {
 	args := m.Called(ctx, userID, req)
-	if args.Get(0) == nil {
-		return nil, args.Error(1)
-	}
-	return args.Get(0).(*models.UserResponse), args.Error(1)
+	return args.Error(0)
 }
 
-func (m *MockUserServiceForAuth) GetFavorites(ctx context.Context, userID primitive.ObjectID) ([]string, error) {
+func (m *MockUserServiceForAuth) GetFavorites(ctx context.Context, userID primitive.ObjectID) ([]primitive.ObjectID, error) {
 	args := m.Called(ctx, userID)
 	if args.Get(0) == nil {
 		return nil, args.Error(1)
 	}
-	return args.Get(0).([]string), args.Error(1)
+	return args.Get(0).([]primitive.ObjectID), args.Error(1)
 }
 
-func (m *MockUserServiceForAuth) AddFavorite(ctx context.Context, userID, dishID primitive.ObjectID) error {
+func (m *MockUserServiceForAuth) AddToFavorites(ctx context.Context, userID, dishID primitive.ObjectID) error {
 	args := m.Called(ctx, userID, dishID)
 	return args.Error(0)
 }
 
-func (m *MockUserServiceForAuth) RemoveFavorite(ctx context.Context, userID, dishID primitive.ObjectID) error {
+func (m *MockUserServiceForAuth) RemoveFromFavorites(ctx context.Context, userID, dishID primitive.ObjectID) error {
 	args := m.Called(ctx, userID, dishID)
 	return args.Error(0)
 }
 
-func (m *MockUserServiceForAuth) DeleteAccount(ctx context.Context, userID primitive.ObjectID) error {
+func (m *MockUserServiceForAuth) Delete(ctx context.Context, userID primitive.ObjectID) error {
 	args := m.Called(ctx, userID)
 	return args.Error(0)
-}
-
-func (m *MockUserServiceForAuth) ListUsers(ctx context.Context, limit, skip int) ([]*models.UserResponse, error) {
-	args := m.Called(ctx, limit, skip)
-	if args.Get(0) == nil {
-		return nil, args.Error(1)
-	}
-	return args.Get(0).([]*models.UserResponse), args.Error(1)
 }
 
 func setupAuthHandler() (*AuthHandler, *MockAuthService, *MockUserServiceForAuth, *gin.Engine) {
