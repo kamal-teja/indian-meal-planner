@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Settings, Save, AlertCircle, CheckCircle, CircleDot, Flame, Zap, Thermometer } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useNotification } from '../contexts/NotificationContext';
 
 const UserProfile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -14,6 +15,7 @@ const UserProfile = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
+  const { notify } = useNotification();
 
   useEffect(() => {
     if (user) {
@@ -60,11 +62,14 @@ const UserProfile = () => {
       const result = await updateUserProfile(formData);
       if (result.success) {
         setMessage({ type: 'success', text: 'Profile updated successfully!' });
+        notify('Profile updated successfully!', { variant: 'success' });
       } else {
         setMessage({ type: 'error', text: result.error || 'Failed to update profile' });
+        notify(result.error || 'Failed to update profile', { variant: 'error' });
       }
     } catch (error) {
       setMessage({ type: 'error', text: 'An unexpected error occurred' });
+      notify('An unexpected error occurred', { variant: 'error' });
     } finally {
       setLoading(false);
     }
@@ -114,14 +119,14 @@ const UserProfile = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center space-x-3 mb-4">
-          <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg">
+          <div className="p-2 bg-accent-600 rounded-xl shadow-sm">
             <User className="h-8 w-8 text-white" />
           </div>
           <div>
             <h1 className="text-3xl font-display font-bold gradient-text">
               Profile Settings
             </h1>
-            <p className="text-gray-600">
+            <p className="text-neutral-600">
               Manage your account and preferences
             </p>
           </div>
@@ -255,14 +260,15 @@ const UserProfile = () => {
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg text-white shadow-sm transition-colors ${loading ? 'bg-accent-500 cursor-wait opacity-80' : 'bg-accent-600 hover:bg-accent-700'}`}
+            aria-live="polite"
           >
             {loading ? (
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" aria-hidden="true" />
             ) : (
-              <Save className="h-5 w-5 mr-2" />
+              <Save className="h-4 w-4" aria-hidden="true" />
             )}
-            <span>{loading ? 'Saving...' : 'Save Changes'}</span>
+            <span className="text-sm font-medium">{loading ? 'Saving...' : 'Save Changes'}</span>
           </button>
         </div>
       </form>

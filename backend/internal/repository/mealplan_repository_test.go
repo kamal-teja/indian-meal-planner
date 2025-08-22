@@ -24,7 +24,6 @@ func TestMealPlanRepository_Create(t *testing.T) {
 			Description: "Test meal plan",
 			StartDate:   time.Now(),
 			EndDate:     time.Now().AddDate(0, 0, 7),
-			IsActive:    true,
 			CreatedAt:   time.Now(),
 			UpdatedAt:   time.Now(),
 		}
@@ -87,7 +86,6 @@ func TestMealPlanRepository_GetByID(t *testing.T) {
 		assert.NotNil(t, mealPlan)
 		assert.Equal(t, mealPlanID, mealPlan.ID)
 		assert.Equal(t, "Test Plan", mealPlan.Name)
-		assert.True(t, mealPlan.IsActive)
 	})
 
 	mt.Run("not found", func(mt *mtest.T) {
@@ -183,7 +181,6 @@ func TestMealPlanRepository_Update(t *testing.T) {
 			ID:          mealPlanID,
 			Name:        "Updated Plan",
 			Description: "Updated description",
-			IsActive:    false,
 			UpdatedAt:   time.Now(),
 		}
 
@@ -274,7 +271,6 @@ func TestMealPlanRepository_GetActivePlans(t *testing.T) {
 				{"_id", mealPlanID},
 				{"userId", userID},
 				{"name", "Active Plan"},
-				{"isActive", true},
 			}))
 		mt.AddMockResponses(mtest.CreateCursorResponse(0, "test.mealplans", mtest.NextBatch))
 
@@ -286,7 +282,6 @@ func TestMealPlanRepository_GetActivePlans(t *testing.T) {
 		assert.Len(t, mealPlans, 1)
 		if len(mealPlans) > 0 {
 			assert.Equal(t, "Active Plan", mealPlans[0].Name)
-			assert.True(t, mealPlans[0].IsActive)
 		}
 	})
 

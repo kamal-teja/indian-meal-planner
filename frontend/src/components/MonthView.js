@@ -62,6 +62,19 @@ const MonthView = ({ loadDishes, onAddDish }) => {
     return filteredMeals;
   };
 
+  const dedupeMealsByDish = (meals) => {
+    const seen = new Set();
+    const out = [];
+    for (const m of meals) {
+      const dishId = m?.dish?.id || m?.dishId || m?.dish?.name;
+      if (!seen.has(dishId)) {
+        seen.add(dishId);
+        out.push(m);
+      }
+    }
+    return out;
+  };
+
   const getCalendarDays = () => {
     const start = startOfMonth(selectedDate);
     const end = endOfMonth(selectedDate);
@@ -216,43 +229,53 @@ const MonthView = ({ loadDishes, onAddDish }) => {
 
                     {/* Meals for the day */}
                     {isCurrentMonth && (
-                      <div className="space-y-1">
-                        {dayMeals.slice(0, 3).map((meal, mealIndex) => (
-                          <div
-                            key={mealIndex}
-                            className={`
-                              px-2 py-1 rounded-md text-xs font-medium border
-                              ${mealColors[meal.mealType] || 'bg-neutral-100 border-neutral-300 text-neutral-600'}
-                            `}
-                          >
-                            <div className="truncate">
-                              {meal.dish.name}
-                            </div>
-                          </div>
-                        ))}
-                        
-                        {dayMeals.length > 3 && (
-                          <div className="text-xs text-neutral-500 px-2">
-                            +{dayMeals.length - 3} more
+                          <div className="space-y-1">
+                            {(() => {
+                              const uniqueMeals = dedupeMealsByDish(dayMeals);
+                              return uniqueMeals.slice(0, 3).map((meal, mealIndex) => (
+                                <div
+                                  key={mealIndex}
+                                  className={`
+                                    px-2 py-1 rounded-md text-xs font-medium border
+                                    ${mealColors[meal.mealType] || 'bg-neutral-100 border-neutral-300 text-neutral-600'}
+                                  `}
+                                >
+                                  <div className="truncate">
+                                    {meal.dish.name}
+                                  </div>
+                                </div>
+                              ));
+                            })()}
+
+                            {(() => {
+                              const uniqueMeals = dedupeMealsByDish(dayMeals);
+                              return uniqueMeals.length > 3 ? (
+                                <div className="text-xs text-neutral-500 px-2">
+                                  +{uniqueMeals.length - 3} more
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Total calories (based on unique dishes shown) */}
+                            {(() => {
+                              const uniqueMeals = dedupeMealsByDish(dayMeals);
+                              const total = uniqueMeals.reduce((total, meal) => total + (meal.dish?.calories || 0), 0);
+                              return total > 0 ? (
+                                <div className="text-xs text-neutral-600 px-2 mt-2 border-t border-neutral-200 pt-1">
+                                  {total} cal
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Empty state */}
+                            {dedupeMealsByDish(dayMeals).length === 0 && (
+                              <div className="text-center py-4">
+                                <Calendar className="h-6 w-6 text-neutral-300 mx-auto mb-1" />
+                                <p className="text-xs text-neutral-500">No meals</p>
+                              </div>
+                            )}
                           </div>
                         )}
-                        
-                        {/* Total calories */}
-                        {totalCalories > 0 && (
-                          <div className="text-xs text-neutral-600 px-2 mt-2 border-t border-neutral-200 pt-1">
-                            {totalCalories} cal
-                          </div>
-                        )}
-                        
-                        {/* Empty state */}
-                        {dayMeals.length === 0 && (
-                          <div className="text-center py-4">
-                            <Calendar className="h-6 w-6 text-neutral-300 mx-auto mb-1" />
-                            <p className="text-xs text-neutral-500">No meals</p>
-                          </div>
-                        )}
-                      </div>
-                    )}
                   </div>
                 );
               })}

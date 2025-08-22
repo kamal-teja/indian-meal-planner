@@ -100,6 +100,9 @@ func NewRouter(services *service.Services, cfg *config.Config, log *logger.Logge
 			meals.GET("/:id", mealHandler.GetMeal)                        // This will handle both ObjectIDs and dates
 			meals.PUT("/:id", mealHandler.UpdateMeal)
 			meals.DELETE("/:id", mealHandler.DeleteMeal)
+			meals.DELETE("", mealHandler.DeleteMealsBulk)                  // bulk delete by IDs in body
+			meals.DELETE("/by-date-dish", mealHandler.DeleteByDateAndDish) // delete by date + dishId
+			meals.POST("/undo", mealHandler.UndoByToken)                   // undo by token
 		}
 
 		// Analytics routes

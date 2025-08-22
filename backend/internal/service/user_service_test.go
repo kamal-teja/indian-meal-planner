@@ -110,7 +110,7 @@ func TestUserService_GetProfile_Success(t *testing.T) {
 	mockRepo.On("GetByID", mock.Anything, userID).Return(user, nil)
 
 	// Act
-	result, err := service.GetProfile(context.Background(), userID)
+	result, err := service.GetByID(context.Background(), userID)
 
 	// Assert
 	assert.NoError(t, err)
@@ -132,7 +132,7 @@ func TestUserService_GetProfile_UserNotFound(t *testing.T) {
 	mockRepo.On("GetByID", mock.Anything, userID).Return(nil, mongo.ErrNoDocuments)
 
 	// Act
-	result, err := service.GetProfile(context.Background(), userID)
+	result, err := service.GetByID(context.Background(), userID)
 
 	// Assert
 	assert.Error(t, err)
@@ -154,7 +154,7 @@ func TestUserService_UpdateProfile_Success(t *testing.T) {
 		Email: "john@example.com",
 	}
 
-	req := models.UserProfileUpdateRequest{
+	req := models.UserProfile{
 		Name: "John Smith",
 		Profile: models.UserProfile{
 			DietaryPreferences: []string{"vegan"},

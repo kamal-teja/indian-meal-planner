@@ -20,6 +20,11 @@ type MealRepository interface {
 	GetByUserAndDateRange(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time) ([]*models.Meal, error)
 	Update(ctx context.Context, id primitive.ObjectID, meal *models.Meal) error
 	Delete(ctx context.Context, id primitive.ObjectID) error
+	DeleteMany(ctx context.Context, ids []primitive.ObjectID) error
+	DeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error
+	UndoDeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error
+	SoftDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error
+	UndoDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error
 	GetNutritionByDateRange(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time) ([]NutritionSummary, error)
 }
 
@@ -158,6 +163,63 @@ func (r *mealRepository) Update(ctx context.Context, id primitive.ObjectID, meal
 // Delete deletes a meal
 func (r *mealRepository) Delete(ctx context.Context, id primitive.ObjectID) error {
 	_, err := r.collection.DeleteOne(ctx, bson.M{"_id": id})
+	return err
+}
+
+// DeleteMany deletes multiple meals by their ObjectIDs
+func (r *mealRepository) DeleteMany(ctx context.Context, ids []primitive.ObjectID) error {
+	if len(ids) == 0 {
+		return nil
+	}
+	filter := bson.M{"_id": bson.M{"$in": ids}}
+	_, err := r.collection.DeleteMany(ctx, filter)
+	return err
+}
+
+// DeleteByUserDateAndDish deletes meals for a user within a date range that match a dish ID
+func (r *mealRepository) DeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error {
+	filter := bson.M{
+		"userId": userID,
+		"date":   bson.M{"$gte": startDate, "$lte": endDate},
+		"dishId": dishID,
+	}
+	// Soft-delete: set deletedAt timestamp
+	update := bson.M{"$set": bson.M{"deletedAt": time.Now()}}
+	_, err := r.collection.UpdateMany(ctx, filter, update)
+	return err
+}
+
+// UndoDeleteByUserDateAndDish clears DeletedAt for meals matching the criteria
+func (r *mealRepository) UndoDeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error {
+	filter := bson.M{
+		"userId": userID,
+		"date":   bson.M{"$gte": startDate, "$lte": endDate},
+		"dishId": dishID,
+	}
+	update := bson.M{"$unset": bson.M{"deletedAt": ""}}
+	_, err := r.collection.UpdateMany(ctx, filter, update)
+	return err
+}
+
+// SoftDeleteByIDs sets DeletedAt on the given meal ObjectIDs
+func (r *mealRepository) SoftDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error {
+	if len(ids) == 0 {
+		return nil
+	}
+	filter := bson.M{"_id": bson.M{"$in": ids}}
+	update := bson.M{"$set": bson.M{"deletedAt": time.Now()}}
+	_, err := r.collection.UpdateMany(ctx, filter, update)
+	return err
+}
+
+// UndoDeleteByIDs clears DeletedAt on the given meal ObjectIDs
+func (r *mealRepository) UndoDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error {
+	if len(ids) == 0 {
+		return nil
+	}
+	filter := bson.M{"_id": bson.M{"$in": ids}}
+	update := bson.M{"$unset": bson.M{"deletedAt": ""}}
+	_, err := r.collection.UpdateMany(ctx, filter, update)
 	return err
 }
 

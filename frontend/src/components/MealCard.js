@@ -1,7 +1,7 @@
 import React from 'react';
 import { Clock, Users, Flame } from 'lucide-react';
 
-const MealCard = ({ meal }) => {
+const MealCard = ({ meal, count = 1, animateDecrease = false }) => {
   // Handle null or undefined meal
   if (!meal) {
     return null;
@@ -28,7 +28,12 @@ const MealCard = ({ meal }) => {
   };
 
   return (
-    <div className="meal-card group">
+    <div className={`meal-card group relative transition-all ${animateDecrease ? 'animate-count-decrease' : ''}`}>
+      {count > 1 && (
+        <div className="absolute -top-2 -right-2 bg-warm-600 text-white text-xs rounded-full h-7 w-7 flex items-center justify-center shadow-md font-semibold transform translate-z-0">
+          <span className="text-xs">×{count}</span>
+        </div>
+      )}
       <div className="flex items-start space-x-4">
         {/* Dish Image */}
         <div className="flex-shrink-0">

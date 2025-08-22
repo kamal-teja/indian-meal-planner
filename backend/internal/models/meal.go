@@ -19,8 +19,9 @@ type Meal struct {
 	Rating int    `bson:"rating" json:"rating" validate:"min=0,max=5"` // 0 means no rating
 
 	// Metadata
-	CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
-	UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
+	CreatedAt time.Time  `bson:"createdAt" json:"createdAt"`
+	UpdatedAt time.Time  `bson:"updatedAt" json:"updatedAt"`
+	DeletedAt *time.Time `bson:"deletedAt,omitempty" json:"deletedAt,omitempty"`
 }
 
 // MealWithDish represents a meal with populated dish information

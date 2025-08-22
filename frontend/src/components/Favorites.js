@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Search, Calendar, Plus } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import { useNotification } from '../contexts/NotificationContext';
 
 const Favorites = () => {
   const { user, toggleFavorite } = useAuth();
+  const { notify } = useNotification();
   const [favoriteDishes, setFavoriteDishes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -51,11 +53,11 @@ const Favorites = () => {
         mealType,
         dishId: dish.id
       });
-      // Show success notification (you could add a toast notification here)
-      alert(`${dish.name} added to today's ${mealType}!`);
+  // Show success notification
+  notify(`${dish.name} added to today's ${mealType}!`);
     } catch (error) {
       console.error('Error adding to meal plan:', error);
-      alert('Failed to add dish to meal plan. Please try again.');
+  notify('Failed to add dish to meal plan. Please try again.');
     }
   };
 
@@ -77,14 +79,14 @@ const Favorites = () => {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center space-x-3 mb-4">
-          <div className="p-2 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl shadow-lg">
+          <div className="p-2 bg-warm-600 rounded-xl shadow-sm">
             <Heart className="h-8 w-8 text-white fill-current" />
           </div>
           <div>
             <h1 className="text-3xl font-display font-bold gradient-text">
               Favorite Dishes
             </h1>
-            <p className="text-gray-600">
+            <p className="text-neutral-600">
               Your collection of loved dishes
             </p>
           </div>

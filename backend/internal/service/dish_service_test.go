@@ -81,10 +81,10 @@ func TestDishService_GetByID_Success(t *testing.T) {
 	dishID := primitive.NewObjectID()
 	userID := primitive.NewObjectID()
 	dish := &models.Dish{
-		ID:      dishID,
-		Name:    "Test Dish",
-		Type:    "Veg",
-		Cuisine: "Indian",
+		ID:       dishID,
+		Name:     "Test Dish",
+		Type:     "Veg",
+		Cuisine:  "Indian",
 		Calories: 300,
 	}
 
@@ -134,10 +134,10 @@ func TestDishService_GetByID_WithoutUser(t *testing.T) {
 
 	dishID := primitive.NewObjectID()
 	dish := &models.Dish{
-		ID:      dishID,
-		Name:    "Test Dish",
-		Type:    "Veg",
-		Cuisine: "Indian",
+		ID:       dishID,
+		Name:     "Test Dish",
+		Type:     "Veg",
+		Cuisine:  "Indian",
 		Calories: 300,
 	}
 
@@ -182,15 +182,6 @@ func TestDishService_GetAll_Success(t *testing.T) {
 	page := 1
 	limit := 10
 
-	pagination := &models.PaginationResponse{
-		Page:       1,
-		Limit:      10,
-		Total:      2,
-		TotalPages: 1,
-		HasNext:    false,
-		HasPrev:    false,
-	}
-
 	mockDishRepo.On("GetAll", mock.Anything, mock.AnythingOfType("repository.DishFilter"), page, limit).Return(dishes, int64(2), nil)
 
 	// Act
@@ -226,15 +217,6 @@ func TestDishService_Search_Success(t *testing.T) {
 	filter := DishFilter{}
 	page := 1
 	limit := 10
-
-	pagination := &models.PaginationResponse{
-		Page:       1,
-		Limit:      10,
-		Total:      1,
-		TotalPages: 1,
-		HasNext:    false,
-		HasPrev:    false,
-	}
 
 	mockDishRepo.On("Search", mock.Anything, query, page, limit).Return(dishes, int64(1), nil)
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { NotificationProvider } from './contexts/NotificationContext';
+import NotificationSnackbar from './components/NotificationSnackbar';
 import Header from './components/Header';
 import DayView from './components/DayView';
 import MonthView from './components/MonthView';
@@ -41,7 +43,8 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-neutral-50">
+        <NotificationProvider>
+          <div className="min-h-screen bg-neutral-50">
           <Header currentView={currentView} onViewChange={setCurrentView} />
           
           <main className="container mx-auto px-6 py-8">
@@ -121,7 +124,9 @@ function App() {
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-200/30 to-secondary-200/30 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-secondary-200/30 to-primary-200/30 rounded-full blur-3xl"></div>
           </div>
-        </div>
+          </div>
+          <NotificationSnackbar />
+        </NotificationProvider>
       </AuthProvider>
     </Router>
   );

@@ -10,6 +10,7 @@ type Repositories struct {
 	Dish     DishRepository
 	Meal     MealRepository
 	MealPlan MealPlanRepository
+	Undo     UndoRepository
 }
 
 // NewRepositories creates and returns all repository instances
@@ -19,5 +20,6 @@ func NewRepositories(db *mongo.Database) *Repositories {
 		Dish:     NewDishRepository(db),
 		Meal:     NewMealRepository(db),
 		MealPlan: NewMealPlanRepository(db),
+		Undo:     NewUndoRepository(db),
 	}
 }

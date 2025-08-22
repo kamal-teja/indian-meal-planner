@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { format, addDays, subDays } from 'date-fns';
-import { ChevronLeft, ChevronRight, Plus, X, Pencil, Trash, ShoppingCart, Coffee, Sun, Moon, Sunset, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, X, Trash, ShoppingCart, Coffee, Sun, Moon, Sunset, Sparkles, MoreHorizontal } from 'lucide-react';
 import { mealPlannerAPI } from '../services/api';
 import MealCard from './MealCard';
 import DishSelector from './DishSelector';
 import IngredientsList from './IngredientsList';
 import MealRecommendations from './MealRecommendations';
+import ConfirmDialog from './ConfirmDialog';
+import UndoSnackbar from './UndoSnackbar';
+import { useNotification } from '../contexts/NotificationContext';
 
 const MEAL_TYPES = [
   { id: 'breakfast', name: 'Breakfast', icon: <Coffee className="h-5 w-5" />, color: 'bg-warm-100 border-warm-200', bgColor: 'bg-warm-50', textColor: 'text-warm-700' },
@@ -21,12 +24,52 @@ const DayView = ({ loadDishes, onAddDish }) => {
   const [showDishSelector, setShowDishSelector] = useState(false);
   const [selectedMealType, setSelectedMealType] = useState(null);
   const [editingMeal, setEditingMeal] = useState(null);
+  const [openMenuKey, setOpenMenuKey] = useState(null);
+  const [hoverMenuKey, setHoverMenuKey] = useState(null);
+  const [confirmState, setConfirmState] = useState({ open: false, title: '', description: '', onConfirm: null });
+  const hideTimerRef = useRef(null);
+  const menuRef = useRef(null);
+  const firstMenuItemRef = useRef(null);
+  const [animatingGroupKey, setAnimatingGroupKey] = useState(null);
+  const mountedRef = useRef(false);
+  // hover-delete and quick-delete removed: deletions are explicit via the menu
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', date: null, dishId: null });
+  const { notify } = useNotification();
   const [showIngredientsPanel, setShowIngredientsPanel] = useState(false);
   const [showRecommendations, setShowRecommendations] = useState(false);
 
   useEffect(() => {
     loadMealsForDate();
   }, [selectedDate]);
+
+  // Click-away listener + cleanup for hide timer
+  useEffect(() => {
+    const handleDocMouseDown = (e) => {
+      if (openMenuKey && menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpenMenuKey(null);
+        setHoverMenuKey(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleDocMouseDown);
+    return () => {
+      document.removeEventListener('mousedown', handleDocMouseDown);
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = null;
+      }
+    };
+  }, [openMenuKey]);
+
+  // Focus the first menu item when a menu opens
+  useEffect(() => {
+    if (openMenuKey) {
+      // small timeout to ensure element is mounted
+      setTimeout(() => {
+        try { firstMenuItemRef.current?.focus(); } catch (e) { /* ignore */ }
+      }, 0);
+    }
+  }, [openMenuKey]);
 
   const loadMealsForDate = async () => {
     try {
@@ -55,6 +98,52 @@ const DayView = ({ loadDishes, onAddDish }) => {
     setShowDishSelector(true);
   };
 
+  const handleDeleteOneMeal = async (meal) => {
+    if (!meal) return;
+    try {
+      await mealPlannerAPI.deleteMeal(meal.id);
+      // trigger small count-decrease animation for this group
+      const groupKey = meal?.dish?.id || meal?.dishId || `meal-${meal.id}`;
+      setAnimatingGroupKey(groupKey);
+      setTimeout(() => setAnimatingGroupKey(null), 450);
+      await loadMealsForDate();
+      setOpenMenuKey(null);
+    } catch (error) {
+      console.error('Error deleting meal:', error);
+    }
+  };
+
+  const handleDeleteAllMeals = async (groupKey) => {
+    if (!groupKey) return;
+    try {
+      // If groupKey is an actual dishId (not a fallback like `meal-<id>`), use date+dish API for bulk delete
+      const isDishId = !groupKey.startsWith('meal-');
+      if (isDishId) {
+        const dateStr = format(selectedDate, 'yyyy-MM-dd');
+        await mealPlannerAPI.deleteMealsByDateAndDish(dateStr, groupKey);
+      } else {
+        // fallback to deleting by individual IDs
+        const toDelete = meals.filter(m => {
+          const dishId = m?.dish?.id || m?.dishId || `meal-${m.id}`;
+          return dishId === groupKey;
+        });
+        const ids = toDelete.map(m => m.id);
+        const resp = await mealPlannerAPI.deleteMealsBulk(ids);
+        // backend returns { success: true, undoToken }
+        if (resp?.data?.undoToken) {
+          const token = resp.data.undoToken;
+          notify(`${toDelete.length} meal(s) deleted`, { variant: 'success', action: { label: 'Undo', onClick: async () => { await mealPlannerAPI.undoByToken(token); await loadMealsForDate(); } } });
+        }
+      }
+      setAnimatingGroupKey(groupKey);
+      setTimeout(() => setAnimatingGroupKey(null), 450);
+  await loadMealsForDate();
+      setOpenMenuKey(null);
+    } catch (error) {
+      console.error('Error deleting meals:', error);
+    }
+  };
+
   const addMeal = async (mealData) => {
     try {
       await mealPlannerAPI.addMeal(mealData);
@@ -79,8 +168,7 @@ const DayView = ({ loadDishes, onAddDish }) => {
           dishId: dish.id
         });
       }
-      
-      await loadMealsForDate();
+  await loadMealsForDate();
       setShowDishSelector(false);
       setEditingMeal(null);
     } catch (error) {
@@ -89,13 +177,12 @@ const DayView = ({ loadDishes, onAddDish }) => {
   };
 
   const handleDeleteMeal = async (mealId) => {
-    if (window.confirm('Are you sure you want to delete this meal?')) {
-      try {
-        await mealPlannerAPI.deleteMeal(mealId);
-        await loadMealsForDate();
-      } catch (error) {
-        console.error('Error deleting meal:', error);
-      }
+    // Confirmation handled by ConfirmDialog in menu flow; preserve API call for other uses
+    try {
+      await mealPlannerAPI.deleteMeal(mealId);
+      await loadMealsForDate();
+    } catch (error) {
+      console.error('Error deleting meal:', error);
     }
   };
 
@@ -115,6 +202,8 @@ const DayView = ({ loadDishes, onAddDish }) => {
     }
     return meals.filter(meal => meal.mealType === mealType);
   };
+
+  // Quick-delete keyboard shortcut removed for explicit UX.
 
   const getTotalCalories = () => {
     // Safety check: ensure meals is an array before calling reduce
@@ -203,7 +292,23 @@ const DayView = ({ loadDishes, onAddDish }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {MEAL_TYPES.map((mealType) => {
                 const mealTypemeals = getMealsForType(mealType.id);
-                
+
+                // Group meals by dish id so duplicate dishes show as a single card with a count
+                const groupedMealsMap = mealTypemeals.reduce((acc, meal) => {
+                  const dishId = meal?.dish?.id || meal?.dishId || `meal-${meal.id}`;
+                  if (!acc[dishId]) {
+                    acc[dishId] = {
+                      key: dishId,
+                      count: 0,
+                      representative: meal
+                    };
+                  }
+                  acc[dishId].count += 1;
+                  return acc;
+                }, {});
+
+                const groupedMeals = Object.values(groupedMealsMap);
+
                 return (
                   <div key={mealType.id} className="card-elevated p-6">
                     <div className="flex items-center justify-between mb-6">
@@ -229,8 +334,8 @@ const DayView = ({ loadDishes, onAddDish }) => {
                       </button>
                     </div>
 
-                    <div className="space-y-4">
-                      {mealTypemeals.length === 0 ? (
+                      <div className="space-y-4">
+                      {groupedMeals.length === 0 ? (
                         <div className="text-center py-8 text-accent-500">
                           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-100 flex items-center justify-center">
                             <span className="flex items-center justify-center">{mealType.icon}</span>
@@ -244,27 +349,123 @@ const DayView = ({ loadDishes, onAddDish }) => {
                           </button>
                         </div>
                       ) : (
-                        mealTypemeals.map((meal) => (
-                          <div key={meal.id} className="relative group">
-                            <MealCard meal={meal} />
-                            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <div className="flex space-x-2">
-                                <button
-                                  onClick={() => handleEditMeal(meal)}
-                                  className="p-2 bg-secondary-500 hover:bg-secondary-600 text-white rounded-lg shadow-md transition-colors"
+                        groupedMeals.map((group) => {
+                          const meal = group.representative;
+                          return (
+                            <div key={group.key} className="relative group" tabIndex={0}>
+                              <MealCard meal={meal} count={group.count} animateDecrease={animatingGroupKey === group.key} />
+                              <div className="absolute bottom-2 right-2">
+                                <div
+                                  className="relative"
+                                  onMouseEnter={() => {
+                                    if (hideTimerRef.current) { clearTimeout(hideTimerRef.current); hideTimerRef.current = null; }
+                                    setHoverMenuKey(group.key);
+                                  }}
+                                  onMouseLeave={() => {
+                                    // delay hiding so users can move to the dropdown without it disappearing
+                                    hideTimerRef.current = setTimeout(() => { setHoverMenuKey(null); }, 180);
+                                  }}
                                 >
-                                  <Pencil className="h-4 w-4" />
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteMeal(meal.id)}
-                                  className="p-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg shadow-md transition-colors"
-                                >
-                                  <Trash className="h-4 w-4" />
-                                </button>
+                                  {/* Icon visible only when hovering the meal card (parent has 'group') or when menu is open */}
+                                  <button
+                                    onClick={() => {
+                                      if (group.count === 1) {
+                                        setConfirmState({
+                                          open: true,
+                                          title: 'Delete',
+                                          description: 'Delete this meal?',
+                                          onConfirm: async () => { await handleDeleteOneMeal(meal); }
+                                        });
+                                      } else {
+                                        setOpenMenuKey(openMenuKey === group.key ? null : group.key);
+                                      }
+                                    }}
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        if (group.count === 1) {
+                                          setConfirmState({ open: true, title: 'Delete', description: 'Delete this meal?', onConfirm: async () => { await handleDeleteOneMeal(meal); } });
+                                        } else {
+                                          setOpenMenuKey(openMenuKey === group.key ? null : group.key);
+                                        }
+                                      } else if (e.key === 'Escape') {
+                                        setOpenMenuKey(null);
+                                        setHoverMenuKey(null);
+                                      }
+                                    }}
+                                    aria-haspopup={group.count > 1}
+                                    aria-expanded={openMenuKey === group.key}
+                                    aria-label="Meal actions"
+                                    className={`p-1.5 bg-white/80 text-neutral-600 rounded-full border border-neutral-200 hover:text-accent-700 hover:bg-accent-50 transition-colors opacity-0 group-hover:opacity-100 ${openMenuKey === group.key || hoverMenuKey === group.key ? 'opacity-100 pointer-events-auto' : 'pointer-events-none'}`}
+                                  >
+                                    <Trash className="h-4 w-4" />
+                                  </button>
+
+                                  {/* Dropdown: appears only when hovering the icon/dropdown or when explicitly opened */}
+                                  {group.count > 1 && (openMenuKey === group.key || hoverMenuKey === group.key) && (
+                                    <div
+                                      ref={menuRef}
+                                      onMouseEnter={() => {
+                                        if (hideTimerRef.current) { clearTimeout(hideTimerRef.current); hideTimerRef.current = null; }
+                                        setHoverMenuKey(group.key);
+                                      }}
+                                      onMouseLeave={() => {
+                                        hideTimerRef.current = setTimeout(() => { setHoverMenuKey(null); }, 180);
+                                      }}
+                                      className={`absolute right-0 bottom-12 w-44 bg-white rounded-md shadow-lg border border-neutral-100 z-20`}
+                                      role="menu"
+                                      aria-label="Meal delete menu"
+                                      onKeyDown={(e) => {
+                                        const items = Array.from(menuRef.current?.querySelectorAll('button')) || [];
+                                        const idx = items.indexOf(document.activeElement);
+                                        if (e.key === 'ArrowDown') {
+                                          e.preventDefault();
+                                          const next = items[(idx + 1) % items.length];
+                                          next?.focus();
+                                        } else if (e.key === 'ArrowUp') {
+                                          e.preventDefault();
+                                          const prev = items[(idx - 1 + items.length) % items.length];
+                                          prev?.focus();
+                                        } else if (e.key === 'Escape') {
+                                          setOpenMenuKey(null);
+                                          setHoverMenuKey(null);
+                                        }
+                                      }}
+                                    >
+                                      <button
+                                        ref={firstMenuItemRef}
+                                        onClick={() => setConfirmState({
+                                          open: true,
+                                          title: 'Delete one',
+                                          description: 'Delete one instance of this meal?',
+                                          onConfirm: async () => { await handleDeleteOneMeal(meal); }
+                                        })}
+                                        className="w-full text-left px-3 py-2 hover:bg-accent-50 flex items-center space-x-2"
+                                      >
+                                        <Trash className="h-4 w-4 text-neutral-700" />
+                                        <span className="text-sm">Delete one</span>
+                                      </button>
+                                      {group.count > 1 && (
+                                        <button
+                                          onClick={() => setConfirmState({
+                                            open: true,
+                                            title: 'Delete all',
+                                            description: 'Delete all instances of this dish for this day?',
+                                            onConfirm: async () => { await handleDeleteAllMeals(group.key); }
+                                          })}
+                                          className="w-full text-left px-3 py-2 hover:bg-warm-50 flex items-center space-x-2"
+                                        >
+                                          <Trash className="h-4 w-4 text-warm-700" />
+                                          <span className="text-sm">Delete all</span>
+                                        </button>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        ))
+                          );
+                        })
                       )}
                     </div>
                   </div>
@@ -312,8 +513,35 @@ const DayView = ({ loadDishes, onAddDish }) => {
           onAddDish={onAddDish}
         />
       )}
+      <ConfirmDialog
+        open={confirmState.open}
+        title={confirmState.title}
+        description={confirmState.description}
+        onCancel={() => setConfirmState({ open: false, title: '', description: '', onConfirm: null })}
+        onConfirm={async () => {
+          if (confirmState.onConfirm) await confirmState.onConfirm();
+          setConfirmState({ open: false, title: '', description: '', onConfirm: null });
+        }}
+      />
+      <UndoSnackbar
+        open={snackbar.open}
+        message={snackbar.message}
+        onUndo={async () => {
+          if (!snackbar.date || !snackbar.dishId) return;
+          try {
+            await mealPlannerAPI.undoDeleteByDateAndDish(snackbar.date, snackbar.dishId);
+            await loadMealsForDate();
+          } catch (err) {
+            console.error('Undo failed', err);
+          } finally {
+            setSnackbar({ open: false, message: '', date: null, dishId: null });
+          }
+        }}
+        onClose={() => setSnackbar({ open: false, message: '', date: null, dishId: null })}
+      />
     </div>
   );
 };
 
 export default DayView;
+

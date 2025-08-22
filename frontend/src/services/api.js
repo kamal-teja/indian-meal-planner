@@ -67,6 +67,14 @@ export const mealPlannerAPI = {
   
   // Delete a meal
   deleteMeal: (mealId) => api.delete(`/meals/${mealId}`),
+  // Bulk delete meals by IDs
+  deleteMealsBulk: (ids) => api.delete('/meals', { data: { ids } }),
+  // Delete meals by date and dishId
+  deleteMealsByDateAndDish: (date, dishId) => api.delete('/meals/by-date-dish', { data: { date, dishId } }),
+  // Undo soft-delete by date + dish
+  undoDeleteByDateAndDish: (date, dishId) => api.post('/meals/undo-by-date-dish', { date, dishId }),
+  // Undo by token
+  undoByToken: (token) => api.post('/meals/undo', { token }),
   
   // Analytics
   getMealAnalytics: (period = 30) => api.get(`/analytics?period=${period}`),

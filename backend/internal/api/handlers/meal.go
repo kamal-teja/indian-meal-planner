@@ -300,16 +300,12 @@ func (h *MealHandler) DeleteMeal(c *gin.Context) {
 		return
 	}
 
-	err = h.mealService.Delete(c.Request.Context(), id)
-	if err != nil {
-		status := http.StatusInternalServerError
-		if err.Error() == "meal not found" {
-			status = http.StatusNotFound
-		}
-
-		c.JSON(status, models.ErrorResponse{
+	// Soft-delete the meal by setting DeletedAt
+	if err := h.mealService.SoftDeleteByIDs(c.Request.Context(), []primitive.ObjectID{id}); err != nil {
+		h.logger.Error("Failed to soft-delete meal", "error", err, "mealID", id.Hex())
+		c.JSON(http.StatusInternalServerError, models.ErrorResponse{
 			Success: false,
-			Error:   err.Error(),
+			Error:   "failed to delete meal",
 		})
 		return
 	}
@@ -318,6 +314,166 @@ func (h *MealHandler) DeleteMeal(c *gin.Context) {
 		Success: true,
 		Message: "Meal deleted successfully",
 	})
+}
+
+// DeleteMealsBulk handles DELETE /api/meals with body { ids: ["id1","id2"] }
+func (h *MealHandler) DeleteMealsBulk(c *gin.Context) {
+	// Auth is enforced by middleware; proceed to parse IDs from body
+
+	var body struct {
+		IDs []string `json:"ids"`
+	}
+	if err := c.ShouldBindJSON(&body); err != nil {
+		h.logger.Error("Failed to parse bulk delete request", "error", err)
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid request format"})
+		return
+	}
+
+	var objIDs []primitive.ObjectID
+	for _, idStr := range body.IDs {
+		id, err := primitive.ObjectIDFromHex(idStr)
+		if err != nil {
+			h.logger.Error("Invalid meal ID in bulk delete", "id", idStr)
+			c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid meal ID in request"})
+			return
+		}
+		objIDs = append(objIDs, id)
+	}
+
+	userID, exists := middleware.GetUserIDFromContext(c)
+	if !exists {
+		c.JSON(http.StatusUnauthorized, models.ErrorResponse{Success: false, Error: "Authentication required"})
+		return
+	}
+
+	// Soft-delete the provided IDs and create undo token
+	token, err := h.mealService.CreateUndoableSoftDelete(c.Request.Context(), userID, objIDs, 5*time.Minute)
+	if err != nil {
+		h.logger.Error("Failed to soft-delete meals bulk", "error", err)
+		c.JSON(http.StatusInternalServerError, models.ErrorResponse{Success: false, Error: "Failed to delete meals"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success":   true,
+		"message":   "Meals deleted successfully",
+		"undoToken": token,
+	})
+}
+
+// DeleteByDateAndDish handles DELETE /api/meals/by-date-dish with body { date: "YYYY-MM-DD", dishId: "..." }
+func (h *MealHandler) DeleteByDateAndDish(c *gin.Context) {
+	userID, exists := middleware.GetUserIDFromContext(c)
+	if !exists {
+		c.JSON(http.StatusUnauthorized, models.ErrorResponse{Success: false, Error: "Authentication required"})
+		return
+	}
+
+	var body struct {
+		Date   string `json:"date"`
+		DishID string `json:"dishId"`
+	}
+	if err := c.ShouldBindJSON(&body); err != nil {
+		h.logger.Error("Failed to parse delete-by-date-dish request", "error", err)
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid request format"})
+		return
+	}
+
+	date, err := time.Parse("2006-01-02", body.Date)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid date format"})
+		return
+	}
+
+	dishObjID, err := primitive.ObjectIDFromHex(body.DishID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid dish ID"})
+		return
+	}
+
+	startDate := time.Date(date.Year(), date.Month(), date.Day(), 0, 0, 0, 0, date.Location())
+	endDate := time.Date(date.Year(), date.Month(), date.Day(), 23, 59, 59, 999999999, date.Location())
+
+	if err := h.mealService.DeleteByUserDateAndDish(c.Request.Context(), userID, startDate, endDate, dishObjID); err != nil {
+		h.logger.Error("Failed to delete meals by date and dish", "error", err)
+		c.JSON(http.StatusInternalServerError, models.ErrorResponse{Success: false, Error: "Failed to delete meals"})
+		return
+	}
+
+	c.JSON(http.StatusOK, models.SuccessResponse{Success: true, Message: "Meals deleted successfully"})
+}
+
+// UndoDeleteByDateAndDish handles POST /api/meals/undo-by-date-dish with body { date: "YYYY-MM-DD", dishId: "..." }
+func (h *MealHandler) UndoDeleteByDateAndDish(c *gin.Context) {
+	userID, exists := middleware.GetUserIDFromContext(c)
+	if !exists {
+		c.JSON(http.StatusUnauthorized, models.ErrorResponse{Success: false, Error: "Authentication required"})
+		return
+	}
+
+	var body struct {
+		Date   string `json:"date"`
+		DishID string `json:"dishId"`
+	}
+	if err := c.ShouldBindJSON(&body); err != nil {
+		h.logger.Error("Failed to parse undo-delete request", "error", err)
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid request format"})
+		return
+	}
+
+	date, err := time.Parse("2006-01-02", body.Date)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid date format"})
+		return
+	}
+
+	dishObjID, err := primitive.ObjectIDFromHex(body.DishID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid dish ID"})
+		return
+	}
+
+	startDate := time.Date(date.Year(), date.Month(), date.Day(), 0, 0, 0, 0, date.Location())
+	endDate := time.Date(date.Year(), date.Month(), date.Day(), 23, 59, 59, 999999999, date.Location())
+
+	if err := h.mealService.UndoDeleteByUserDateAndDish(c.Request.Context(), userID, startDate, endDate, dishObjID); err != nil {
+		h.logger.Error("Failed to undo delete by date and dish", "error", err)
+		c.JSON(http.StatusInternalServerError, models.ErrorResponse{Success: false, Error: "Failed to undo delete"})
+		return
+	}
+
+	c.JSON(http.StatusOK, models.SuccessResponse{Success: true, Message: "Undo successful"})
+}
+
+// UndoByToken handles POST /api/meals/undo with body { token: "..." }
+func (h *MealHandler) UndoByToken(c *gin.Context) {
+	userID, exists := middleware.GetUserIDFromContext(c)
+	if !exists {
+		c.JSON(http.StatusUnauthorized, models.ErrorResponse{Success: false, Error: "Authentication required"})
+		return
+	}
+
+	var body struct {
+		Token string `json:"token"`
+	}
+	if err := c.ShouldBindJSON(&body); err != nil {
+		h.logger.Error("Failed to parse undo-by-token request", "error", err)
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "Invalid request format"})
+		return
+	}
+
+	if body.Token == "" {
+		c.JSON(http.StatusBadRequest, models.ErrorResponse{Success: false, Error: "token is required"})
+		return
+	}
+
+	if err := h.mealService.UndoByToken(c.Request.Context(), body.Token); err != nil {
+		h.logger.Error("Failed to undo by token", "error", err)
+		c.JSON(http.StatusInternalServerError, models.ErrorResponse{Success: false, Error: "Failed to undo"})
+		return
+	}
+
+	c.JSON(http.StatusOK, models.SuccessResponse{Success: true, Message: "Undo successful"})
 }
 
 // GetNutritionSummary handles GET /api/meals/nutrition-summary

@@ -97,7 +97,7 @@ func TestMealService_Create_Success(t *testing.T) {
 
 	userID := primitive.NewObjectID()
 	dishID := primitive.NewObjectID()
-	
+
 	dish := &models.Dish{
 		ID:       dishID,
 		Name:     "Test Dish",
@@ -278,7 +278,6 @@ func TestMealService_GetByUserID_Success(t *testing.T) {
 
 	page := 1
 	limit := 10
-	skip := 0
 
 	mockMealRepo.On("GetByUserID", mock.Anything, userID, page, limit).Return(meals, int64(5), nil)
 	mockDishRepo.On("GetByID", mock.Anything, dishID).Return(dish, nil)
@@ -293,7 +292,7 @@ func TestMealService_GetByUserID_Success(t *testing.T) {
 	assert.Equal(t, meals[0].ID, result[0].ID)
 	assert.Equal(t, dish.Name, result[0].Dish.Name)
 	assert.NotNil(t, pagination)
-	assert.Equal(t, page, pagination.CurrentPage)
+	assert.Equal(t, page, pagination.Page)
 	mockMealRepo.AssertExpectations(t)
 	mockDishRepo.AssertExpectations(t)
 }
@@ -368,7 +367,7 @@ func TestMealService_Update_Success(t *testing.T) {
 	req := models.MealRequest{
 		DishID:   dishID.Hex(),
 		MealType: "lunch",
-		Date:     models.FlexibleDate(time.Now().Format("2006-01-02")),
+		Date:     models.FlexibleDate{Time: time.Now()},
 		Rating:   4,
 		Notes:    "Updated notes",
 	}
@@ -447,7 +446,7 @@ func TestMealService_GetNutritionSummary_Success(t *testing.T) {
 
 	nutritionSummary := []repository.NutritionSummary{
 		{
-			Date:     time.Now().Format("2006-01-02"),
+			Date:     time.Now(),
 			Calories: 1800,
 			Protein:  80,
 			Carbs:    200,
@@ -465,5 +464,8 @@ func TestMealService_GetNutritionSummary_Success(t *testing.T) {
 	assert.NotNil(t, result)
 	assert.Len(t, result, 1)
 	assert.Equal(t, nutritionSummary[0].Calories, result[0].Calories)
+	assert.Equal(t, nutritionSummary[0].Protein, result[0].Protein)
+	assert.Equal(t, nutritionSummary[0].Carbs, result[0].Carbs)
+	assert.Equal(t, nutritionSummary[0].Fat, result[0].Fat)
 	mockMealRepo.AssertExpectations(t)
 }

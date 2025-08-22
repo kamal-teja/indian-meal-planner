@@ -23,6 +23,14 @@ type MealService interface {
 	GetByDateRange(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time) ([]*models.MealWithDish, error)
 	Update(ctx context.Context, id primitive.ObjectID, req models.MealRequest) (*models.MealWithDish, error)
 	Delete(ctx context.Context, id primitive.ObjectID) error
+	DeleteMany(ctx context.Context, ids []primitive.ObjectID) error
+	DeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error
+	UndoDeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error
+	SoftDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error
+	// Create an undoable soft-delete: soft-delete provided IDs and return an undo token
+	CreateUndoableSoftDelete(ctx context.Context, userID primitive.ObjectID, ids []primitive.ObjectID, ttl time.Duration) (string, error)
+	// Undo a soft-delete using a token
+	UndoByToken(ctx context.Context, token string) error
 	GetNutritionSummary(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time) ([]repository.NutritionSummary, error)
 	GetAnalytics(ctx context.Context, userID primitive.ObjectID, period int) (*models.AnalyticsResponse, error)
 	GetShoppingList(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time) (*models.ShoppingListResponse, error)
@@ -37,15 +45,88 @@ type mealService struct {
 	mealRepo repository.MealRepository
 	dishRepo repository.DishRepository
 	logger   *logger.Logger
+	undoRepo repository.UndoRepository
 }
 
 // NewMealService creates a new meal service
-func NewMealService(mealRepo repository.MealRepository, dishRepo repository.DishRepository, log *logger.Logger) MealService {
+func NewMealService(mealRepo repository.MealRepository, dishRepo repository.DishRepository, undoRepo repository.UndoRepository, log *logger.Logger) MealService {
 	return &mealService{
 		mealRepo: mealRepo,
 		dishRepo: dishRepo,
+		undoRepo: undoRepo,
 		logger:   log,
 	}
+}
+
+// CreateUndoableSoftDelete soft-deletes IDs and stores an undo token that can be used within ttl to undo the operation
+func (s *mealService) CreateUndoableSoftDelete(ctx context.Context, userID primitive.ObjectID, ids []primitive.ObjectID, ttl time.Duration) (string, error) {
+	if len(ids) == 0 {
+		return "", nil
+	}
+
+	// Soft-delete the meals
+	if err := s.mealRepo.SoftDeleteByIDs(ctx, ids); err != nil {
+		s.logger.Error("Failed to soft-delete meals for undoable op", "error", err)
+		return "", errors.New("failed to delete meals")
+	}
+
+	// Generate a token
+	token := primitive.NewObjectID().Hex()
+
+	// Create undo operation record
+	op := &models.UndoOperation{
+		Token:     token,
+		UserID:    userID,
+		MealIDs:   ids,
+		CreatedAt: time.Now(),
+		ExpiresAt: time.Now().Add(ttl),
+		Undone:    false,
+	}
+
+	// If undoRepo is not configured, return token but no persistence
+	if s.undoRepo == nil {
+		s.logger.Warn("UndoRepo not configured; undo token will not be persisted")
+		return token, nil
+	}
+
+	if err := s.undoRepo.Create(ctx, op); err != nil {
+		s.logger.Error("Failed to create undo operation record", "error", err)
+		return "", errors.New("failed to prepare undo operation")
+	}
+
+	return token, nil
+}
+
+// UndoByToken reverts a previous soft-delete using the token
+func (s *mealService) UndoByToken(ctx context.Context, token string) error {
+	if s.undoRepo == nil {
+		return errors.New("undo not supported")
+	}
+
+	op, err := s.undoRepo.GetByToken(ctx, token)
+	if err != nil {
+		s.logger.Error("Failed to fetch undo op", "error", err, "token", token)
+		return errors.New("invalid token")
+	}
+
+	if op.Undone {
+		return errors.New("already undone")
+	}
+	if time.Now().After(op.ExpiresAt) {
+		return errors.New("token expired")
+	}
+
+	// Clear DeletedAt for the meal IDs
+	if err := s.mealRepo.UndoDeleteByIDs(ctx, op.MealIDs); err != nil {
+		s.logger.Error("Failed to undo soft-delete for token", "error", err, "token", token)
+		return errors.New("failed to undo delete")
+	}
+
+	if err := s.undoRepo.MarkUndone(ctx, token); err != nil {
+		s.logger.Error("Failed to mark undo op as undone", "error", err, "token", token)
+	}
+
+	return nil
 }
 
 // Create creates a new meal
@@ -273,6 +354,45 @@ func (s *mealService) Delete(ctx context.Context, id primitive.ObjectID) error {
 		return errors.New("failed to delete meal")
 	}
 
+	return nil
+}
+
+// DeleteMany deletes multiple meals
+func (s *mealService) DeleteMany(ctx context.Context, ids []primitive.ObjectID) error {
+	if len(ids) == 0 {
+		return nil
+	}
+	if err := s.mealRepo.DeleteMany(ctx, ids); err != nil {
+		s.logger.Error("Failed to delete many meals", "error", err)
+		return errors.New("failed to delete meals")
+	}
+	return nil
+}
+
+// DeleteByUserDateAndDish deletes meals for a user within a date range that match dishID
+func (s *mealService) DeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error {
+	if err := s.mealRepo.DeleteByUserDateAndDish(ctx, userID, startDate, endDate, dishID); err != nil {
+		s.logger.Error("Failed to delete meals by date and dish", "error", err)
+		return errors.New("failed to delete meals")
+	}
+	return nil
+}
+
+// Undo delete by date and dish (clears DeletedAt)
+func (s *mealService) UndoDeleteByUserDateAndDish(ctx context.Context, userID primitive.ObjectID, startDate, endDate time.Time, dishID primitive.ObjectID) error {
+	if err := s.mealRepo.UndoDeleteByUserDateAndDish(ctx, userID, startDate, endDate, dishID); err != nil {
+		s.logger.Error("Failed to undo delete by date and dish", "error", err)
+		return errors.New("failed to undo delete")
+	}
+	return nil
+}
+
+// SoftDeleteByIDs soft-deletes multiple meals by ID
+func (s *mealService) SoftDeleteByIDs(ctx context.Context, ids []primitive.ObjectID) error {
+	if err := s.mealRepo.SoftDeleteByIDs(ctx, ids); err != nil {
+		s.logger.Error("Failed to soft-delete meals by IDs", "error", err)
+		return errors.New("failed to delete meals")
+	}
 	return nil
 }
 
