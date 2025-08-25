@@ -37,6 +37,9 @@ const DayView = ({ loadDishes, onAddDish }) => {
   const { notify } = useNotification();
   const [showIngredientsPanel, setShowIngredientsPanel] = useState(false);
   const [showRecommendations, setShowRecommendations] = useState(false);
+  const newAddedDishIdRef = useRef(null);
+  const recommendationsRef = useRef(null);
+  const [highlightRecommendations, setHighlightRecommendations] = useState(false);
 
   useEffect(() => {
     loadMealsForDate();
@@ -70,6 +73,23 @@ const DayView = ({ loadDishes, onAddDish }) => {
       }, 0);
     }
   }, [openMenuKey]);
+
+  // When recommendations are shown, scroll them into view so user sees them
+  useEffect(() => {
+    if (showRecommendations && recommendationsRef.current) {
+      // small timeout to ensure layout is settled
+      setTimeout(() => {
+        try {
+          recommendationsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // briefly highlight the recommendations block
+          setHighlightRecommendations(true);
+          setTimeout(() => setHighlightRecommendations(false), 900);
+        } catch (e) {
+          // ignore
+        }
+      }, 80);
+    }
+  }, [showRecommendations]);
 
   const loadMealsForDate = async () => {
     try {
@@ -146,8 +166,23 @@ const DayView = ({ loadDishes, onAddDish }) => {
 
   const addMeal = async (mealData) => {
     try {
-      await mealPlannerAPI.addMeal(mealData);
-      loadMealsForDate(); // Refresh meals after adding
+      const resp = await mealPlannerAPI.addMeal(mealData);
+      // store dish id so we can scroll to it after reload
+      if (mealData?.dishId) newAddedDishIdRef.current = mealData.dishId;
+      await loadMealsForDate(); // Refresh meals after adding
+
+      // scroll to the newly added dish group if present
+      if (newAddedDishIdRef.current) {
+        setTimeout(() => {
+          try {
+            const el = document.querySelector(`[data-dish-id="${newAddedDishIdRef.current}"]`);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (e) {
+            // ignore
+          }
+          newAddedDishIdRef.current = null;
+        }, 150);
+      }
     } catch (error) {
       console.error('Error adding meal:', error);
     }
@@ -263,10 +298,10 @@ const DayView = ({ loadDishes, onAddDish }) => {
                       ? 'bg-sage-100 text-sage-700 hover:bg-sage-200 shadow-md border border-sage-200' 
                       : 'bg-white hover:bg-accent-50 text-accent-600 hover:shadow-md border border-accent-200 shadow-sm'
                   }`}
-                  title="Toggle Shopping List"
+                  title="Toggle Groceries"
                 >
                   <ShoppingCart className="h-4 w-4" />
-                  <span className="hidden sm:inline text-sm">Shopping List</span>
+                  <span className="hidden sm:inline text-sm">Groceries</span>
                   {meals.length > 0 && (
                     <span className="absolute -top-1 -right-1 bg-accent-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
                       {meals.reduce((count, meal) => count + (meal.dish?.ingredients?.length || 0), 0)}
@@ -352,7 +387,7 @@ const DayView = ({ loadDishes, onAddDish }) => {
                         groupedMeals.map((group) => {
                           const meal = group.representative;
                           return (
-                            <div key={group.key} className="relative group" tabIndex={0}>
+                            <div key={group.key} className="relative group" tabIndex={0} data-dish-id={group.representative?.dish?.id || group.key}>
                               <MealCard meal={meal} count={group.count} animateDecrease={animatingGroupKey === group.key} />
                               <div className="absolute bottom-2 right-2">
                                 <div
@@ -475,18 +510,7 @@ const DayView = ({ loadDishes, onAddDish }) => {
           )}
         </div>
 
-        {/* Recommendations Panel */}
-        {showRecommendations && (
-          <div className="lg:col-span-1">
-            <div className="sticky top-6">
-              <MealRecommendations
-                onAddMeal={addMeal}
-                selectedDate={format(selectedDate, 'yyyy-MM-dd')}
-                mealType="lunch"
-              />
-            </div>
-          </div>
-        )}
+  {/* Recommendations used to be a right column; now render full-width below so Groceries stays on the right */}
 
         {/* Ingredients Panel */}
         {showIngredientsPanel && (
@@ -501,6 +525,20 @@ const DayView = ({ loadDishes, onAddDish }) => {
           </div>
         )}
       </div>
+
+      {/* Full-width Recommendations section shown below meals */}
+      {showRecommendations && (
+        <div
+          className={`mt-6 transition-transform duration-300 ${highlightRecommendations ? 'animate-pulse scale-101 ring-4 ring-accent-200/60 rounded-lg' : ''}`}
+          ref={recommendationsRef}
+        >
+          <MealRecommendations
+            onAddMeal={addMeal}
+            selectedDate={format(selectedDate, 'yyyy-MM-dd')}
+            mealType="lunch"
+          />
+        </div>
+      )}
 
       {/* Dish Selector Modal */}
       {showDishSelector && (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, CalendarDays, Utensils, User, LogOut, ChevronDown, Settings, Heart, BarChart3, ShoppingCart, Activity } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,7 +7,6 @@ const Header = ({ currentView, onViewChange }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout, isAuthenticated } = useAuth();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleViewChange = (view) => {
     onViewChange(view);
@@ -74,65 +73,20 @@ const Header = ({ currentView, onViewChange }) => {
 
             {/* User Menu */}
             {isAuthenticated ? (
-              <div className="relative">
-                <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center space-x-2 bg-neutral-100 rounded-lg px-3 py-2 text-accent-700 hover:bg-neutral-200 transition-all duration-200"
-                >
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 bg-neutral-100 rounded-lg px-3 py-2 text-accent-700">
                   <div className="w-8 h-8 bg-sage-500 rounded-lg flex items-center justify-center">
                     <User className="h-4 w-4 text-white" />
                   </div>
                   <span className="hidden sm:inline font-medium">{user?.name}</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center space-x-2 px-3 py-2 text-sm text-warm-600 hover:bg-warm-50 rounded-lg transition-colors bg-neutral-100"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sign Out</span>
                 </button>
-
-                {dropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 border border-neutral-200">
-                    <button
-                      onClick={() => handleNavigation('/profile')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-neutral-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <Settings className="h-4 w-4" />
-                      <span>Profile Settings</span>
-                    </button>
-                    <button
-                      onClick={() => handleNavigation('/favorites')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-sage-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <Heart className="h-4 w-4" />
-                      <span>Favorite Dishes</span>
-                    </button>
-                    <button
-                      onClick={() => handleNavigation('/analytics')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-lavender-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <BarChart3 className="h-4 w-4" />
-                      <span>Analytics</span>
-                    </button>
-                    <button
-                      onClick={() => handleNavigation('/nutrition')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-secondary-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <Activity className="h-4 w-4" />
-                      <span>Nutrition</span>
-                    </button>
-                    <button
-                      onClick={() => handleNavigation('/shopping-list')}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-accent-700 hover:bg-warm-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <ShoppingCart className="h-4 w-4" />
-                      <span>Shopping List</span>
-                    </button>
-                    <div className="border-t border-neutral-200 my-2 mx-2"></div>
-                    <button
-                      onClick={handleLogout}
-                      className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-warm-600 hover:bg-warm-50 rounded-lg mx-2 transition-colors"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span>Sign Out</span>
-                    </button>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="flex items-center space-x-3">
@@ -154,13 +108,7 @@ const Header = ({ currentView, onViewChange }) => {
         </div>
       </div>
 
-      {/* Close dropdown when clicking outside */}
-      {dropdownOpen && (
-        <div
-          className="fixed inset-0 z-40"
-          onClick={() => setDropdownOpen(false)}
-        />
-      )}
+  {/* No profile dropdown — simplified header */}
     </header>
   );
 };

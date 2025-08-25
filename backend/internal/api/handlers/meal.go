@@ -447,7 +447,7 @@ func (h *MealHandler) UndoDeleteByDateAndDish(c *gin.Context) {
 
 // UndoByToken handles POST /api/meals/undo with body { token: "..." }
 func (h *MealHandler) UndoByToken(c *gin.Context) {
-	userID, exists := middleware.GetUserIDFromContext(c)
+	_, exists := middleware.GetUserIDFromContext(c)
 	if !exists {
 		c.JSON(http.StatusUnauthorized, models.ErrorResponse{Success: false, Error: "Authentication required"})
 		return

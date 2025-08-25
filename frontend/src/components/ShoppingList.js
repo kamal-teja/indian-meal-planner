@@ -81,16 +81,16 @@ const ShoppingList = () => {
       .map(item => `${checkedItems[item.name] ? '✓' : '☐'} ${item.name} (needed for ${item.count} dishes)`)
       .join('\n');
 
-    const startDate = shoppingList.period?.startDate || dateRange.startDate;
-    const endDate = shoppingList.period?.endDate || dateRange.endDate;
-    const fullText = `Shopping List (${startDate} to ${endDate})\n\n${listText}`;
+  const startDate = shoppingList.period?.startDate || dateRange.startDate;
+  const endDate = shoppingList.period?.endDate || dateRange.endDate;
+  const fullText = `Grocery List (${startDate} to ${endDate})\n\n${listText}`;
 
     // Create and download file
     const blob = new Blob([fullText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `shopping-list-${startDate}-to-${endDate}.txt`;
+  a.download = `grocery-list-${startDate}-to-${endDate}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -109,12 +109,12 @@ const ShoppingList = () => {
             <ShoppingCart className="h-8 w-8 text-white" />
           </div>
           <div>
-            <h1 className="text-3xl font-semibold gradient-text">
-              Shopping List
-            </h1>
-            <p className="text-accent-600">
-              Generate ingredient lists from your meal plans
-            </p>
+              <h1 className="text-3xl font-semibold gradient-text">
+                Grocery Planner
+              </h1>
+              <p className="text-accent-600">
+                Plan and export grocery lists for a selected date range
+              </p>
           </div>
         </div>
 
@@ -188,7 +188,7 @@ const ShoppingList = () => {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-xl font-semibold text-accent-800">
-                  Shopping List Summary
+                  Grocery List Summary
                 </h3>
                 <p className="text-accent-600">
                   {shoppingList.period?.startDate ? format(new Date(shoppingList.period.startDate), 'MMM dd') : 'Start'} -{' '}

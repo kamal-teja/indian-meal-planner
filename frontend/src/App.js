@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext';
 import NotificationSnackbar from './components/NotificationSnackbar';
 import Header from './components/Header';
+import LeftNav from './components/LeftNav';
 import DayView from './components/DayView';
 import MonthView from './components/MonthView';
 import Login from './components/auth/Login';
@@ -46,9 +47,12 @@ function App() {
         <NotificationProvider>
           <div className="min-h-screen bg-neutral-50">
           <Header currentView={currentView} onViewChange={setCurrentView} />
-          
-          <main className="container mx-auto px-6 py-8">
-            <Routes>
+
+          <div className="container mx-auto px-6 py-8">
+            <div className="md:flex md:items-start md:space-x-6">
+              <LeftNav />
+              <main className="flex-1">
+                <Routes>
               {/* Authentication Routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
@@ -117,7 +121,9 @@ function App() {
                 element={<Navigate to="/day" replace />} 
               />
             </Routes>
-          </main>
+              </main>
+            </div>
+          </div>
           
           {/* Decorative background elements */}
           <div className="fixed inset-0 pointer-events-none overflow-hidden">

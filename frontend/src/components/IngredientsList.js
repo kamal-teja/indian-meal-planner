@@ -79,17 +79,17 @@ const IngredientsList = ({ meals, selectedDate, onClose }) => {
   const totalCount = consolidatedIngredients.length;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 h-full flex flex-col">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 rounded-t-2xl text-white">
+  <div className="bg-white rounded-2xl shadow-sm border border-gray-200 h-full flex flex-col">
+    {/* Header (softer theme) */}
+  <div className="bg-primary-50 p-6 rounded-t-2xl text-accent-900">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <ShoppingCart className="w-6 h-6" />
+              <ShoppingCart className="w-6 h-6 text-white" />
             <div>
-              <h2 className="text-xl font-bold">Shopping List</h2>
-              <p className="text-green-100 text-sm">
-                {formatDate(selectedDate)}
-              </p>
+                <h2 className="text-xl font-bold">Groceries</h2>
+                <p className="text-white/90 text-sm">
+                  {formatDate(selectedDate)}
+                </p>
             </div>
           </div>
           <button
@@ -160,23 +160,23 @@ const IngredientsList = ({ meals, selectedDate, onClose }) => {
                       )}
                     </div>
                     
-                    <div className="flex-1 min-w-0">
-                      <h4 className={`font-medium ${
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <h4 className={`font-medium truncate ${
                         checkedIngredients.has(item.name)
                           ? 'line-through text-gray-500'
                           : 'text-gray-800'
-                      }`}>
+                      }`} title={item.name}>
                         {item.name}
                       </h4>
-                      
+
                       <div className="mt-2 flex flex-wrap gap-1">
                         {item.meals.map((meal, mealIndex) => (
                           <span
                             key={mealIndex}
-                            className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${getMealTypeColor(meal.mealType)}`}
+                            className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium max-w-[160px] truncate overflow-hidden ${getMealTypeColor(meal.mealType)}`}
                           >
-                            <span>{getMealTypeIcon(meal.mealType)}</span>
-                            <span>{meal.dishName}</span>
+                            <span className="flex-shrink-0">{getMealTypeIcon(meal.mealType)}</span>
+                            <span className="truncate">{meal.dishName}</span>
                           </span>
                         ))}
                       </div>
