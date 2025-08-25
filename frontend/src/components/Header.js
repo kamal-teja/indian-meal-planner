@@ -8,13 +8,6 @@ const Header = ({ currentView, onViewChange }) => {
   const location = useLocation();
   const { user, logout, isAuthenticated } = useAuth();
 
-  const handleViewChange = (view) => {
-    onViewChange(view);
-    navigate(`/${view}`);
-  };
-
-  const isActive = (path) => location.pathname === `/${path}`;
-
   const handleLogout = async () => {
     await logout();
     navigate('/login');
@@ -46,30 +39,6 @@ const Header = ({ currentView, onViewChange }) => {
           </div>
 
           <div className="flex items-center space-x-4">
-            {/* Navigation Tabs (only if authenticated) */}
-            {isAuthenticated && (
-              <div className="flex items-center space-x-2 bg-neutral-100 rounded-lg p-1">
-                <button
-                  onClick={() => handleViewChange('day')}
-                  className={`nav-tab ${
-                    isActive('day') ? 'nav-tab-active' : 'nav-tab-inactive'
-                  }`}
-                >
-                  <Calendar className="h-4 w-4" />
-                  <span className="hidden sm:inline">Day View</span>
-                </button>
-                
-                <button
-                  onClick={() => handleViewChange('month')}
-                  className={`nav-tab ${
-                    isActive('month') ? 'nav-tab-active' : 'nav-tab-inactive'
-                  }`}
-                >
-                  <CalendarDays className="h-4 w-4" />
-                  <span className="hidden sm:inline">Month View</span>
-                </button>
-              </div>
-            )}
 
             {/* User Menu */}
             {isAuthenticated ? (

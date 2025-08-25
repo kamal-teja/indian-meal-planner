@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext';
 import NotificationSnackbar from './components/NotificationSnackbar';
@@ -7,6 +7,7 @@ import Header from './components/Header';
 import LeftNav from './components/LeftNav';
 import DayView from './components/DayView';
 import MonthView from './components/MonthView';
+import HomeLayout from './components/HomeLayout';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -58,22 +59,25 @@ function App() {
               <Route path="/register" element={<Register />} />
               
               {/* Protected Routes */}
-              <Route 
-                path="/day" 
+              {/* Home route groups day and month as children under /home */}
+              <Route
+                path="/home"
                 element={
                   <ProtectedRoute>
-                    <DayView loadDishes={loadDishes} onAddDish={addDish} />
+                    <HomeLayout onViewChange={setCurrentView} />
                   </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/month" 
-                element={
-                  <ProtectedRoute>
-                    <MonthView loadDishes={loadDishes} onAddDish={addDish} />
-                  </ProtectedRoute>
-                } 
-              />
+                }
+              >
+                <Route index element={<Navigate to="day" replace />} />
+                <Route
+                  path="day"
+                  element={<DayView loadDishes={loadDishes} onAddDish={addDish} />}
+                />
+                <Route
+                  path="month"
+                  element={<MonthView loadDishes={loadDishes} onAddDish={addDish} />}
+                />
+              </Route>
               <Route 
                 path="/favorites" 
                 element={
